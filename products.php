@@ -2,8 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
-        <title>Hello World</title>
-        <link rel="stylesheet" type="text/css" href="./css/normalize.css" />
+        <title>Hello Products</title>
     </head>
     <body>
         <header>
@@ -11,13 +10,13 @@
         </header>
         <nav>
             <ul>
-                <li>Home</li>
-                <li><a href="./products.php">Produkte</a></li>
+                <li><a href="./index.php">Home</a></li>
+                <li>Produkte</li>
             </ul>
 
         </nav>
         <main>
-            <p><?php echo "Hello World" ?></p>
+            <p><?php echo "Hello Products" ?></p>
         </main>
         <footer></footer>
 
