@@ -1,5 +1,5 @@
 # PHP Webshop
-- URL Master-Branch: http://web-php-shop-bfh.apps.cloud.wg-burggasse.ch/
+- URL Master-Branch: <a href="http://web-php-shop-bfh.apps.cloud.wg-burggasse.ch/" taget="_blank">Webshop</a>
 
 ## Tasks Description
 The goal of the project is to create a simple online shop, in parallel to theWeb Pro-grammingcourse.
