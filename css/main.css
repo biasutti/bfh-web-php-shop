@@ -1,4 +1,13 @@
 header {
-    height: 50px;
     background-color: darkgrey;
+    float: none;
+    height: 80px;
+    width: 99.99999%;
+}
+
+footer {
+    background-color: darkgrey;
+    float: none;
+    height: 40px;
+    width: 99.99999%;
 }
