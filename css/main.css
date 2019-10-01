@@ -11,3 +11,7 @@ footer {
     height: 40px;
     width: 99.99999%;
 }
+
+.header-right, .header-middle, .header-left {
+    height: 100%;
+}
