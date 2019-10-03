@@ -20,8 +20,15 @@ include "./includes/enum/pages.php"
     include "includes/header.php";
     include "includes/navigation.php";
     ?>
-    <main>
-        <p><?php echo "Hello World" ?></p>
+    <main class="">
+        <div class="sidenav w3-col s3">
+            <div class="sidenav-container">
+                <p>Sidenavigation</p>
+            </div>
+        </div>
+        <div class="content w3-col s9">
+            <p><?php echo "Hello World" ?></p>
+        </div>
     </main>
     <?php
     include "includes/footer.php";
