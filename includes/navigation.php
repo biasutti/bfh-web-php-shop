@@ -1,6 +1,6 @@
-<nav class="">
-    <ul>
-        <li class="w3-col s1 w3-center">
+<nav>
+    <ul class="navigation">
+        <li class="">
             <?php
                 if($_ACTIVE_PAGE != Pages::Homepage) {
                     echo "<a href=\"./index.php\">Home</a>";
@@ -9,7 +9,7 @@
                 }
             ?>
         </li>
-        <li class="w3-col s1 w3-center">
+        <li class="">
             <?php
             if($_ACTIVE_PAGE != Pages::Products) {
                 echo "<a href=\"./products.php\">Produkte</a>";

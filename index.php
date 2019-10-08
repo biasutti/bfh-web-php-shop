@@ -16,22 +16,20 @@ include "./includes/enum/pages.php"
 
     </head>
     <body>
-    <?php
-    include "includes/header.php";
-    include "includes/navigation.php";
-    ?>
-    <main class="">
-        <div class="sidenav w3-col s3">
-            <div class="sidenav-container">
+        <?php
+        include "includes/header.php";
+        include "includes/navigation.php";
+        ?>
+        <main class="flex-container">
+            <div class="flex-item-1 flex-size-1">
                 <p>Sidenavigation</p>
             </div>
-        </div>
-        <div class="content w3-col s9">
-            <p><?php echo "Hello World" ?> Jenkins do stuff!!!</p>
-        </div>
-    </main>
-    <?php
-    include "includes/footer.php";
-    ?>
+            <div class="flex-item-2 flex-size-5">
+                <p><?php echo "Hello World" ?> Jenkins do stuff!!!</p>
+            </div>
+        </main>
+        <?php
+        include "includes/footer.php";
+        ?>
     </body>
 </html>
