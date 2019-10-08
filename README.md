@@ -1,5 +1,5 @@
 # PHP Webshop
-- URL Master-Branch: <a href="http://web-php-shop-bfh.apps.cloud.wg-burggasse.ch/">Webshop</a>
+- URL Master-Branch: <a href="http://webshop.biasutti.ch">Webshop</a>
 
 ## Tasks Description
 The goal of the project is to create a simple online shop, in parallel to theWeb Pro-grammingcourse.
