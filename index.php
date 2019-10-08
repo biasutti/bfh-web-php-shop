@@ -1,25 +1,37 @@
+<?php
+include "./includes/enum/pages.php"
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8"/>
-        <title>Hello World</title>
-        <link rel="stylesheet" type="text/css" href="./css/normalize.css" />
+        <?php
+        include "./includes/head.php";
+        include "./includes/globals.php";
+
+        // Additional page related globals
+        $_ACTIVE_PAGE = Pages::Homepage;
+
+        echo "<title>$_SHOP_NAME - Homepage</title>"
+        ?>
+
     </head>
     <body>
-        <header>
-            <div id="logo"></div>
-        </header>
-        <nav>
-            <ul>
-                <li>Home</li>
-                <li><a href="./products.php">Produkte</a></li>
-            </ul>
-
-        </nav>
-        <main>
+    <?php
+    include "includes/header.php";
+    include "includes/navigation.php";
+    ?>
+    <main class="">
+        <div class="sidenav w3-col s3">
+            <div class="sidenav-container">
+                <p>Sidenavigation</p>
+            </div>
+        </div>
+        <div class="content w3-col s9">
             <p><?php echo "Hello World" ?></p>
-        </main>
-        <footer></footer>
-
+        </div>
+    </main>
+    <?php
+    include "includes/footer.php";
+    ?>
     </body>
 </html>
