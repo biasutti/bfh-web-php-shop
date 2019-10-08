@@ -3,6 +3,10 @@ header {
     height: 80px;
 }
 
+#logo img {
+    max-height: 75px;
+}
+
 body {
     width: 99.99999%;
     font-family: Verdana, sans-serif;
