@@ -11,7 +11,7 @@ include "./includes/enum/pages.php"
         // Additional page related globals
         $_ACTIVE_PAGE = Pages::Homepage;
 
-        echo "<title>$_SHOP_NAME - Homepage</title>"
+        echo "<title>$_SHOP_NAME - $_ACTIVE_PAGE</title>"
         ?>
 
     </head>

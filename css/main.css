@@ -8,7 +8,7 @@ body {
     font-family: Verdana, sans-serif;
 }
 
-@media (min-width:1280px) {
+@media (min-width: 1280px) {
     body {
         margin: auto;
         width: 1280px;
@@ -28,15 +28,16 @@ body {
     justify-content: flex-start;
 }
 
-.navigation li  {
+.navigation li {
     font-weight: bold;
     display: block;
     padding: 1em 3em;
 }
 
-.navigation a {
+.navigation a, .navigation-footer a {
     font-weight: normal;
     text-decoration: none;
+    color: black;
 }
 
 .navigation a:hover {
@@ -48,6 +49,7 @@ body {
         justify-content: space-around;
     }
 }
+
 @media all and (max-width: 600px) {
     .navigation, main {
         -webkit-flex-flow: column wrap;
@@ -55,16 +57,34 @@ body {
         padding: 0;
     }
 
-    .navigation a, .navigation li{
+    .navigation li {
         text-align: center;
         padding-top: 1em;
         border-top: 1px solid rgba(255, 255, 255, 0.3);
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
-    .navigation li:last-of-type a {
-        border-bottom: none;
-    }
+
+}
+
+.navigation-footer {
+    list-style: none;
+    margin: 0;
+    background: #dddddd;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row-reverse wrap-reverse;
+    justify-content: flex-start;
+}
+
+.navigation-footer li {
+    font-size: 12px;
+    font-weight: bold;
+    display: block;
+    padding: 1em 2em;
 }
 
 footer {
