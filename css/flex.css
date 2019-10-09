@@ -17,3 +17,7 @@
 .flex-size-3 { flex-grow: 3; }
 .flex-size-4 { flex-grow: 4; }
 .flex-size-5 { flex-grow: 5; }
+
+.flex-shrink {
+    flex-shrink: 1 !important;
+}

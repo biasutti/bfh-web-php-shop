@@ -13,7 +13,6 @@ include "./includes/enum/pages.php"
 
         echo "<title>$_SHOP_NAME - $_ACTIVE_PAGE</title>"
         ?>
-
     </head>
     <body>
         <?php
