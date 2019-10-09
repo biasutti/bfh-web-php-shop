@@ -1,19 +1,28 @@
-header {
-    background-color: darkgrey;
-    height: 80px;
-}
-
-#logo img {
-    max-height: 75px;
-}
-
-body {
-    width: 99.99999%;
+html {
     font-family: Verdana, sans-serif;
 }
 
-@media (min-width: 1280px) {
-    body {
+header {
+    background-color: darkcyan;
+    height: 200px;
+}
+
+#logo img {
+    padding-top: 1%;
+    max-height: 85%;
+}
+
+.header-content, nav, main, footer {
+    width: 99.99999%;
+}
+
+.header-content {
+    height: 100%;
+    background-color: cadetblue;
+}
+
+@media all and (min-width: 1280px) {
+    .header-content, nav, main, footer {
         margin: auto;
         width: 1280px;
     }
@@ -68,6 +77,14 @@ body {
 }
 
 @media all and (max-width: 800px) {
+    header {
+        height: 80px;
+    }
+
+    #logo img {
+        padding-top: .5%;
+    }
+
     .navigation, main {
         justify-content: space-around;
     }
