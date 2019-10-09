@@ -26,10 +26,6 @@ header {
         width: 1280px;
         margin: auto;
     }
-
-    .header-content {
-
-    }
 }
 
 .navigation-header {
@@ -85,7 +81,8 @@ header {
         height: 80px;
     }
 
-    header .logo img {
+    .header-logo img {
+        height: 75px;
         padding-top: .5%;
     }
 
