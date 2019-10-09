@@ -7,9 +7,9 @@ header {
     height: 200px;
 }
 
-#logo img {
+.header-logo img {
     padding-top: 1%;
-    max-height: 85%;
+    height: 180px;
 }
 
 .header-content, nav, main, footer {
@@ -23,8 +23,12 @@ header {
 
 @media all and (min-width: 1280px) {
     .header-content, nav, main, footer {
-        margin: auto;
         width: 1280px;
+        margin: auto;
+    }
+
+    .header-content {
+
     }
 }
 
@@ -40,7 +44,7 @@ header {
     justify-content: flex-start;
 }
 
-.navigation-header li {
+.header-navigation li {
     font-size: 14px;
     font-weight: bold;
     display: block;
@@ -66,7 +70,7 @@ header {
     padding: 1em 3em;
 }
 
-.navigation-header a, .navigation a, .navigation-footer a {
+.header-navigation a, .navigation a, .navigation-footer a {
     font-weight: normal;
     text-decoration: none;
     color: black;
@@ -81,7 +85,7 @@ header {
         height: 80px;
     }
 
-    #logo img {
+    header .logo img {
         padding-top: .5%;
     }
 

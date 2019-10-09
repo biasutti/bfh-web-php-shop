@@ -1,12 +1,16 @@
 <header class="">
-    <div class="header-content flex-container">
-        <div id="logo" class="flex-item flex-shrink flex-size-2">
-            <a href="./index.php"><img src="./img/logo.png" alt="Drinkshop Logo"/></a>
+    <div class="header-content">
+        <div class="flex-container">
+            <div class="header-logo flex-item flex-size-1">
+                <a href="./index.php"><img src="./img/logo.png" alt="Drinkshop Logo"/></a>
+            </div>
+            <div class="flex-item flex-size-1">
+                <ul class="header-navigation">
+                    <li class="">
+                        <a href="#">Login</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <ul class="navigation-header flex-item">
-            <li class="">
-                <a href="#">Login</a>
-            </li>
-        </ul>
     </div>
 </header>
