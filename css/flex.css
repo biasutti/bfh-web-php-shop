@@ -29,3 +29,7 @@
 .flex-shrink {
     flex-shrink: 1 !important;
 }
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
