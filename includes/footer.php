@@ -1,5 +1,5 @@
 <footer>
-    <ul class="navigation-footer">
+    <ul class="navigation-footer flex-container">
         <li class="">
             <?php
             if($_ACTIVE_PAGE != Pages::Contact) {

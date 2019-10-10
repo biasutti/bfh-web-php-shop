@@ -1,5 +1,5 @@
 <nav>
-    <ul class="navigation">
+    <ul class="navigation flex-container">
         <li class="">
             <?php
                 if($_ACTIVE_PAGE != Pages::Homepage) {
