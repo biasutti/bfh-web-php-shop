@@ -18,5 +18,14 @@
             }
             ?>
         </li>
+        <li class="navigation-mobile">
+            <?php
+            if($_ACTIVE_PAGE != Pages::Login) {
+                echo "<a href=\"#\">Login</a>";
+            } else {
+                echo "Login";
+            }
+            ?>
+        </li>
     </ul>
 </nav>

@@ -6,6 +6,7 @@ abstract class Pages {
     const Products = "Products";
     const Contact = "Contact";
     const Impressum = "Impressum";
+    const Login = "Login";
 
 }
 ?>
