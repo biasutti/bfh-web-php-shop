@@ -1,0 +1,3 @@
+page=Page
+content=Welcome to page 
+products=My Products

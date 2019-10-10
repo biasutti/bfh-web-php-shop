@@ -1,34 +1,67 @@
 <?php
-include "./includes/enum/pages.php"
+require_once("lib/helper.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <?php
-        include "./includes/head.php";
-        include "./includes/globals.php";
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        // Additional page related globals
-        $_ACTIVE_PAGE = Pages::Homepage;
+    <link rel="stylesheet" type="text/css" href="./css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="./css/flex.css" />
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <?php
+    include "./lib/globals.php";
 
-        echo "<title>$_SHOP_NAME - $_ACTIVE_PAGE</title>"
-        ?>
-    </head>
-    <body>
-        <?php
-        include "includes/header.php";
-        include "includes/navigation.php";
-        ?>
-        <main class="flex-container">
-            <div class="flex-item-1 flex-size-1">
-                <p>Sidenavigation</p>
+    // Additional page related globals
+    $_ACTIVE_PAGE = t($pageId);
+
+    echo "<title>$_SHOP_NAME - $_ACTIVE_PAGE</title>"
+    ?>
+</head>
+<body>
+    <header class="">
+        <div class="header-content">
+            <div class="flex-container">
+                <div class="header-logo flex-item flex-size-2">
+                    <a href="./index.php"><img src="./img/logo.png" alt="Drinkshop Logo"/></a>
+                </div>
+                <div class="flex-item flex-size-1">
+                    <ul class="header-navigation flex-container-reverse">
+                        <li class="">
+                            <a href="#">Login</a>
+                        </li>
+                        <li>
+                            <?php render_languages($language, $pageId); ?>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="flex-item-2 flex-size-5">
-                <p><?php echo "Hello World" ?> Jenkins do stuff!!!</p>
-            </div>
-        </main>
+        </div>
+    </header>
+    <nav>
+        <ul class="navigation flex-container">
+            <?php
+            render_generic_navigation($language, $pageId, array('home', 'products', 'login'));
+            ?>
+        </ul>
+    </nav>
+    <main class="flex-container">
         <?php
-        include "includes/footer.php";
+        $fn = "pages/$pageId.php";
+        if(is_file($fn)) {
+            include($fn);
+        } else {
+            echo "<h2>Not yet implemented.... coming soon... sorry!</h2>";
+        }
         ?>
-    </body>
+    </main>
+    <footer>
+        <ul class="navigation-footer flex-container">
+            <?php
+                render_generic_navigation($language, $pageId, array('contact', 'impressum'));
+            ?>
+        </ul>
+    </footer>
+</body>
 </html>
