@@ -50,6 +50,22 @@ header {
     justify-content: flex-start;
 }
 
+.sideNav.navigation li{
+  font-weight: normal;
+  background: #E8E8E8;
+}
+
+.sideNav.navigation .sideTitle{
+  font-weight: bold;
+}
+
+.products{
+  border-style: solid;
+  width: 160px;
+  height: 180px;
+  margin: 2em;
+}
+
 .navigation li {
     font-weight: bold;
     display: block;
@@ -127,4 +143,3 @@ footer {
     background-color: darkgrey;
     height: 50px;
 }
-
