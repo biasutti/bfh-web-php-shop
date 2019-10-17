@@ -65,5 +65,7 @@ function render_generic_navigation($language, $pageId, $navs) {
 	$file = file("messages/messages_$language.txt");
 	foreach($file as $line) {
 		list($key, $val) = explode('=', $line);
+		//remove newline which is read in the file
+		$val = str_replace("\n", "", $val);
 		$messages[$key] = $val;
 	}
