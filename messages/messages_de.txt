@@ -1,8 +1,8 @@
 page=Seite
 content=Willkommen auf der Seite
-products=Meine Produkte
+products=Produkte
 contact=Kontakt
-home=HOME
+home=Home
 agb=AGB
 contactContent=Für allfällige fragen schicken sie uns doch ein email mit unserem Email formular !
 firstName=Vorname

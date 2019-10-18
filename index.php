@@ -1,10 +1,12 @@
 <?php
 require_once("lib/helper.php");
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
+    <link rel="shortcut icon" href="./img/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="./css/normalize.css" />
@@ -24,12 +26,19 @@ require_once("lib/helper.php");
         <div class="header-content">
             <div class="flex-container">
                 <div class="header-logo flex-item flex-size-2">
-                    <a href="./index.php"><img src="./img/logo.png" alt="Drinkshop Logo"/></a>
+                    <a href="<?php echo get_localizedPagePath('home') ?>"><img src="./img/logo.png" alt="Drinkshop Logo"/></a>
                 </div>
                 <div class="flex-item flex-size-1">
                     <ul class="header-navigation flex-container-reverse">
                         <li class="">
-                            <a href="#">Login</a>
+                            <?php
+                            if ( isset( $_SESSION['uid'] ) ) {
+                                echo "<a href=" . get_localizedPagePath('logout') . ">Logout</a>";
+                            } else {
+                                echo "<a href=" . get_localizedPagePath('login') .">Login</a>";
+                            }
+                            ?>
+
                         </li>
                         <li>
                             <?php render_languages($language, $pageId); ?>
@@ -42,7 +51,7 @@ require_once("lib/helper.php");
     <nav>
         <ul class="navigation flex-container">
             <?php
-            render_generic_navigation($language, $pageId, array('home', 'products', 'login'));
+            render_generic_navigation(array('home', 'products', 'login'));
             ?>
         </ul>
     </nav>
@@ -59,7 +68,7 @@ require_once("lib/helper.php");
     <footer>
         <ul class="navigation-footer flex-container">
             <?php
-                render_generic_navigation($language, $pageId, array('contact', 'impressum'));
+                render_generic_navigation(array('contact', 'impressum'));
             ?>
         </ul>
     </footer>

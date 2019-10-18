@@ -1,9 +1,9 @@
-<div class="flex-item-1">
-  <div class="flex-container">
-    <div class="flex-item-1 flex-size-1">
-      <ul class="sideNav navigation">
+<div class="flex-item-1 side-navigation-background">
+  <div class="flex-container-column">
+    <div class="flex-item-1">
+      <ul class="side-navigation">
+          <li>Filter</li>
       <?php
-        echo "<li class=\"sideTitle\">Filter</li>";
         //sql request to fill array
         $typesOf = array("Blonde","Amber","Dunkel");
         foreach ($typesOf as $types ) {
@@ -12,10 +12,10 @@
       ?>
       </ul>
     </div>
-    <div class="flex-item-2 flex-size-1">
-      <ul class="sideNav navigation">
+    <div class="flex-item-2">
+      <ul class="side-navigation">
+          <li>Brand</li>
       <?php
-        echo "<li class=\"sideTitle\">Brand</li>";
         //sql request to fill array
         $typesOf = array("Feldschlöschen","Heineken","Aare Bier");
         foreach ($typesOf as $types ) {

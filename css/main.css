@@ -7,6 +7,10 @@ header {
     height: 200px;
 }
 
+main {
+    min-height: 150px;
+}
+
 .header-logo img {
     padding-top: 1%;
     height: 180px;
@@ -19,13 +23,6 @@ header {
 .header-content {
     height: 100%;
     background-color: cadetblue;
-}
-
-@media all and (min-width: 1280px) {
-    .header-content, nav, main, footer {
-        width: 1280px;
-        margin: auto;
-    }
 }
 
 .navigation-header {
@@ -50,22 +47,6 @@ header {
     justify-content: flex-start;
 }
 
-.sideNav.navigation li{
-  font-weight: normal;
-  background: #E8E8E8;
-}
-
-.sideNav.navigation .sideTitle{
-  font-weight: bold;
-}
-
-.products{
-  border-style: solid;
-  width: 160px;
-  height: 180px;
-  margin: 2em;
-}
-
 .navigation li {
     font-weight: bold;
     display: block;
@@ -82,8 +63,90 @@ header {
     color: black;
 }
 
-.navigation a:hover {
-    /*background: #00b7f5;*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/* MAIN
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+.login-form, .login-infobox {
+    width: 460px;
+}
+
+.flex-container-login {
+    flex-flow: column;
+    align-items: center;
+}
+
+.login-form {
+    padding: 2em 0 1em 0;
+}
+
+.login-infobox a {
+    padding-left: 5px;
+}
+
+.side-navigation {
+    list-style: none;
+    margin: 0;
+    -webkit-flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.side-navigation li {
+    display: block;
+    padding: 1em 3em 1em 4em;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.side-navigation li:first-child {
+    padding: 1em 3em;
+}
+
+ul.side-navigation {
+    padding: 0;
+}
+
+.side-navigation-background {
+    background: #dddddd;
+}
+
+.side-navigation li:first-child {
+    font-weight: bold;
+}
+
+.products {
+    border-style: solid;
+    width: 160px;
+    height: 180px;
+    margin: 2em;
+}
+
+.navigation-footer {
+    list-style: none;
+    margin: 0;
+    background: #dddddd;
+    -webkit-flex-flow: row-reverse wrap-reverse;
+    justify-content: flex-start;
+}
+
+.navigation-footer li {
+    font-size: 12px;
+    font-weight: bold;
+    display: block;
+    padding: 1em 2em 1em 1em;
+}
+
+footer {
+    background-color: darkgrey;
+    height: 50px;
+}
+
+
+@media all and (min-width: 1280px) {
+    .header-content, nav, main, footer {
+        width: 1280px;
+        margin: auto;
+    }
 }
 
 @media all and (max-width: 800px) {
@@ -122,24 +185,8 @@ header {
     .navigation li.navigation-mobile {
         display: revert;
     }
-}
 
-.navigation-footer {
-    list-style: none;
-    margin: 0;
-    background: #dddddd;
-    -webkit-flex-flow: row-reverse wrap-reverse;
-    justify-content: flex-start;
-}
-
-.navigation-footer li {
-    font-size: 12px;
-    font-weight: bold;
-    display: block;
-    padding: 1em 2em 1em 1em;
-}
-
-footer {
-    background-color: darkgrey;
-    height: 50px;
+    #login div .flex-item {
+        width: 70%;
+    }
 }
