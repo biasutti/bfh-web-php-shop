@@ -7,6 +7,27 @@
     flex-direction: row;
 }
 
+.flex-container-center {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.flex-container-column {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-flow: column;
+}
+
 .flex-container-reverse {
     display: -webkit-box;
     display: -moz-box;

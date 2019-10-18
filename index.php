@@ -1,10 +1,12 @@
 <?php
 require_once("lib/helper.php");
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
+    <link rel="shortcut icon" href="./img/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="./css/normalize.css" />
@@ -29,7 +31,14 @@ require_once("lib/helper.php");
                 <div class="flex-item flex-size-1">
                     <ul class="header-navigation flex-container-reverse">
                         <li class="">
-                            <a href="#">Login</a>
+                            <?php
+                            if ( isset( $_SESSION['uid'] ) ) {
+                                echo "<a href=\"./index.php?id=logout\">Logout</a>";
+                            } else {
+                                echo "<a href=\"./index.php?id=login\">Login</a>";
+                            }
+                            ?>
+
                         </li>
                         <li>
                             <?php render_languages($language, $pageId); ?>
