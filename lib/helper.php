@@ -77,7 +77,9 @@ $pageId = get_param('id', 'home');
 
 $messages = array();
 $file = file("messages/messages_$language.txt");
-foreach ($file as $line) {
+foreach($file as $line) {
     list($key, $val) = explode('=', $line);
+    //remove newline which is read in the file
+    $val = str_replace("\n", "", $val);
     $messages[$key] = $val;
 }
