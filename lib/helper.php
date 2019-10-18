@@ -17,9 +17,10 @@ function add_param(&$url, $name, $value)
     return $url;
 }
 
-function get_localizedPagePath($name) {
+function get_localizedPagePath($name)
+{
     global $language;
-    $url =  "";
+    $url = "";
     add_param($url, 'lang', $language);
     add_param($url, 'id', $name);
     return $url;
@@ -77,7 +78,7 @@ $pageId = get_param('id', 'home');
 
 $messages = array();
 $file = file("messages/messages_$language.txt");
-foreach($file as $line) {
+foreach ($file as $line) {
     list($key, $val) = explode('=', $line);
     //remove newline which is read in the file
     $val = str_replace("\n", "", $val);
