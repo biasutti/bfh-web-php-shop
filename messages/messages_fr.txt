@@ -1,3 +1,4 @@
 page=Page
 content=Bienvenue sur la page
-products=Mes produits
+products=Produits
+home=Home

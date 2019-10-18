@@ -26,16 +26,16 @@ session_start();
         <div class="header-content">
             <div class="flex-container">
                 <div class="header-logo flex-item flex-size-2">
-                    <a href="./index.php"><img src="./img/logo.png" alt="Drinkshop Logo"/></a>
+                    <a href="<?php echo get_localizedPagePath('home') ?>"><img src="./img/logo.png" alt="Drinkshop Logo"/></a>
                 </div>
                 <div class="flex-item flex-size-1">
                     <ul class="header-navigation flex-container-reverse">
                         <li class="">
                             <?php
                             if ( isset( $_SESSION['uid'] ) ) {
-                                echo "<a href=\"./index.php?id=logout\">Logout</a>";
+                                echo "<a href=" . get_localizedPagePath('logout') . ">Logout</a>";
                             } else {
-                                echo "<a href=\"./index.php?id=login\">Login</a>";
+                                echo "<a href=" . get_localizedPagePath('login') .">Login</a>";
                             }
                             ?>
 
@@ -51,7 +51,7 @@ session_start();
     <nav>
         <ul class="navigation flex-container">
             <?php
-            render_generic_navigation($language, $pageId, array('home', 'products', 'login'));
+            render_generic_navigation(array('home', 'products', 'login'));
             ?>
         </ul>
     </nav>
@@ -68,7 +68,7 @@ session_start();
     <footer>
         <ul class="navigation-footer flex-container">
             <?php
-                render_generic_navigation($language, $pageId, array('contact', 'impressum'));
+                render_generic_navigation(array('contact', 'impressum'));
             ?>
         </ul>
     </footer>

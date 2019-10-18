@@ -1,6 +1,6 @@
 page=Seite
 content=Willkommen auf der Seite
-products=Meine Produkte
+products=Produkte
 contact=Kontakt
-home=HOME
+home=Home
 agb=AGB
