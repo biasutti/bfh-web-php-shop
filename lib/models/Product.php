@@ -2,15 +2,22 @@
 
 
 class Product {
-    public $id;
+    public $pid;
     public $name;
+    public $type;
+    public $brand;
     public $price;
+    //image source, reference from products folder : ./img/products/
+    public $imgSrc;
 
-    function __construct($id, $name, $price)
+    public function __construct($pid, $name, $type, $brand, $price, $imgSrc)
     {
-        $this->id = $id;
+        $this->pid = $pid;
         $this->name = $name;
+        $this->type = $type;
+        $this->brand = $brand;
         $this->price = $price;
+        $this->imgSrc = "./img/products/".$imgSrc;
     }
 
 }

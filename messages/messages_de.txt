@@ -14,3 +14,4 @@ FormLastNameError=Geben sie bitte ihr Nachname ein.
 FormEmailError=Ungültige Email
 FormCommentError=Schreiben sie doch ein kommentar
 successMail=Das Email wurde erfolgreich gesendet
+productBuy=Kaufen

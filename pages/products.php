@@ -32,8 +32,18 @@ require_once("lib/db-helper.php");
 <div class="flex-item-2 flex-size-5">
     <div class="flex-container flex-wrap">
         <?php
+        $order = 1;
         foreach (getAllProducts() as $prod) {
-            echo "<div class=\"products\"><p>" . $prod->name . "</p></div>";
+            echo '<div class="products" style="order:'.$order.';\"><ul class="prodList">'.
+            '<li><img class="prodImg" height="140px" src="'.$prod->imgSrc.'" alt="product image"></li>'.
+            '<li><b>'.$prod->name.'</b></li>'.
+            '<li>'.$prod->type.'</li>'.
+            '<li>'.$prod->brand.'</li>'.
+            '<li>'.$prod->price.' CHF</li>'.
+            '<li><button type="button" onclick="">'.t('productBuy').'</button></li>'.
+            "</ul></div>";
+
+            $order++;
         }
         ?>
     </div>
