@@ -1,5 +1,5 @@
 <?php
-require_once("lib/helper.php");
+require_once("./lib/helper.php");
 session_start();
 ?>
 <!DOCTYPE html>
