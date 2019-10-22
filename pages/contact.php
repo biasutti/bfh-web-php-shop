@@ -1,6 +1,6 @@
 <div class="flex-item-1 flex-size-1">
 <?php
-  include("./lib/PHPMailer/emailConfig.php");
+  include("./ext-lib/PHPMailer/emailConfig.php");
 
   // Form validation
   $errArray = array(); // An array holding the form errArray

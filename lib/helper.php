@@ -1,6 +1,7 @@
 <?php
 // Returns a certain GET parameter or $default if the parameter
 // does not exist.
+
 function get_param($name, $default)
 {
     if (isset($_GET[$name]))
@@ -61,6 +62,22 @@ function render_languages($language, $pageId)
     }
 }
 
+function loadEnv($customFile = null)
+{
+    global $_ENV;
+    if (is_null($customFile)) {
+        $file = file("../.env");
+    } else {
+        $file = file($customFile);
+    }
+
+    foreach ($file as $line) {
+        list($key, $val) = explode('=', $line);
+        $val = str_replace("\n", "", $val);
+        $_ENV[$key] = $val;
+    }
+}
+
 // The translation function.
 function t($key)
 {
@@ -71,6 +88,9 @@ function t($key)
         return "[$key]";
     }
 }
+
+$_ENV;
+loadEnv();
 
 // Set langauage and page ID as global variables.
 $language = get_param('lang', 'de');
@@ -84,3 +104,4 @@ foreach ($file as $line) {
     $val = str_replace("\n", "", $val);
     $messages[$key] = $val;
 }
+
