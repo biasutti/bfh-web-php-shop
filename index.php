@@ -12,6 +12,16 @@ session_start();
     <link rel="stylesheet" type="text/css" href="./css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="./css/flex.css" />
     <link rel="stylesheet" type="text/css" href="./css/main.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        function toggleMenu() {
+            var el = $("nav ul");
+            el.css("display", el.css("display") == "none" ? "flex" : "none");
+        }
+    </script>
+
     <?php
     include "./lib/globals.php";
 
@@ -30,6 +40,9 @@ session_start();
                 </div>
                 <div class="flex-item flex-size-1">
                     <ul class="header-navigation flex-container-reverse">
+                        <li>
+                            <a href="#" onclick="toggleMenu();">Burger</a>
+                        </li>
                         <li class="">
                             <?php
                             if ( isset( $_SESSION['uid'] ) ) {

@@ -180,6 +180,7 @@ footer {
         -webkit-flex-flow: column wrap;
         flex-flow: column wrap;
         padding: 0;
+        display: none;
     }
 
     .navigation li {
