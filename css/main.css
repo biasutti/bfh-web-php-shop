@@ -114,6 +114,10 @@ ul.side-navigation {
     font-weight: bold;
 }
 
+.productDetail{
+    display: none;
+}
+
 .products {
     border-style: solid;
     width: 160px;
