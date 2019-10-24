@@ -116,6 +116,11 @@ ul.side-navigation {
 
 .productDetail{
     display: none;
+    border-style: solid;
+    /*height: 180px;*/
+    margin: 2em;
+    text-align: center;
+    background-color: Dark;
 }
 
 .products {

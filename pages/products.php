@@ -6,7 +6,7 @@ require_once("lib/db-helper.php");
     <div class="flex-container-column">
         <div class="flex-item-1">
             <ul class="side-navigation">
-                <li>Filter</li>
+                <li class="filterMenu">TypeOf</li>
                 <?php
                 foreach (getAllTypesOfBeer() as $types) {
                     echo "<li>" . $types->name . "</li>";
@@ -16,7 +16,7 @@ require_once("lib/db-helper.php");
         </div>
         <div class="flex-item-2">
             <ul class="side-navigation">
-                <li>Brand</li>
+                <li class="filterMenu">Brand</li>
                 <?php
                 foreach (getAllBrands() as $brand) {
                     echo "<li>" . $brand->name. "</li>";
@@ -35,13 +35,13 @@ require_once("lib/db-helper.php");
             '<li><img class="prodImg" height="140px" src="'.$prod->imgSrc.'" alt="product image"></li>'.
             '<li><b>'.$prod->name.'</b></li>'.
             '<li>'.$prod->price.' CHF</li>'.
-            '<li><button type="button" onclick="">'.t('productBuy').'</button></li>'.
+            '<li><button type="button" class="buy" name="'.$prod->pid.'">'.t('productBuy').'</button></li>'.
             "</ul></div>";
             $order++;
             //prodDetails div
             //print_r($prod);
-            echo '<div class="productDetail" style="order:'.$order.';""><ul class="prodList">'.
-            '<li><img class="closeImg" height="30px" src="./img/ui/close.png" alt="product image"></li>'.
+            echo '<div class="productDetail flex-size-1" style="order:'.$order.';""><ul class="prodList">'.
+            '<img class="closeImg" height="30px" src="./img/ui/close.png" alt="product image">'.
             '<li><img class="prodImg" height="140px" src="'.$prod->imgSrc.'" alt="product image"></li>'.
             '<li><b>'.$prod->name.'</b></li>'.
             '<li>'.$prod->type.'</li>'.

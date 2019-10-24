@@ -41,7 +41,7 @@ session_start();
                 <div class="flex-item flex-size-1">
                     <ul class="header-navigation flex-container-reverse">
                         <li>
-                            <a href="#" onclick="toggleMenu();">Burger</a>
+                            <a href="#" id="burger" onclick="toggleMenu();">Burger</a>
                         </li>
                         <li class="">
                             <?php

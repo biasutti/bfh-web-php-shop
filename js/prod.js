@@ -1,16 +1,38 @@
 var itemSelected;
 $(function(){
+
+  $(".buy").click(function(){
+    alert($(this).attr("name"));
+  });
+
+  $(".filterMenu").click(function(){
+      $(this).next().slideDown(500);
+  });
+
+  $("#burger").click(function(){
+      $(".side-navigation").toggle();
+  });
+
+
   $(".products").click(function(){
+    //if there is any previous selected show it again
+    if(typeof($itemSelected) != "undefined" && $itemSelected !== null) {
+      $itemSelected.show();
+    }
+    //put the selected item into a variable
     $itemSelected = $(this);
     var $prod = $(this).next();
     if ($prod.is(":hidden")) {
-      $(".productDetail").slideUp(0);
-      $(this).slideUp(0);
+      $(this).parent().removeClass("flex-container");
+      $(".productDetail").hide();
+      $(this).hide();
       $prod.slideDown(500);
     }
   });
   $(".closeImg").click(function(){
-    $(".productDetail").slideUp(0);
+    $itemSelected.parent().addClass("flex-container");
+    $(".productDetail").hide();
     $itemSelected.slideDown(500);
   });
+
 });
