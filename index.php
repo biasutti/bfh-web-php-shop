@@ -14,13 +14,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="./css/main.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <script>
-        function toggleMenu() {
-            var el = $("nav ul");
-            el.css("display", el.css("display") == "none" ? "flex" : "none");
-        }
-    </script>
+    <script src="js/prod.js"></script>
 
     <?php
     include "./lib/globals.php";
@@ -41,7 +35,7 @@ session_start();
                 <div class="flex-item flex-size-1">
                     <ul class="header-navigation flex-container-reverse">
                         <li>
-                            <a href="#" id="burger" onclick="toggleMenu();">Burger</a>
+                            <a href="#" id="burger""><img src="./img/burger.svg"/></a>
                         </li>
                         <li class="">
                             <?php
