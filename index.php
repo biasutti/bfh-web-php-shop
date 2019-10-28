@@ -1,5 +1,6 @@
 <?php
 require_once("./lib/helper.php");
+require_once("./lib/globals.php");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -17,8 +18,6 @@ session_start();
     <script src="js/prod.js"></script>
 
     <?php
-    include "./lib/globals.php";
-
     // Additional page related globals
     $_ACTIVE_PAGE = t($pageId);
 
@@ -58,7 +57,7 @@ session_start();
     <nav>
         <ul class="navigation flex-container">
             <?php
-            render_generic_navigation(array('home', 'products', 'login'));
+            render_generic_navigation(array('home', 'products', 'account', 'login', 'register'));
             ?>
         </ul>
     </nav>
