@@ -2,7 +2,7 @@
 require_once("lib/db-helper.php");
 
 if (!isset($_SESSION['uid'])) {
-    echo "<p>Sie müssen eingeloggt sein</p>";
+    echo "<p>".t('accNeeded')."</p>";
 } else {
     ?>
     <form id="account" name="account" method="post">
@@ -13,4 +13,3 @@ if (!isset($_SESSION['uid'])) {
     </form>
     <?php
 }
-

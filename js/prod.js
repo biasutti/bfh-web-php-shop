@@ -11,6 +11,7 @@ $(function () {
 
     $("#burger").click(function () {
         $("nav ul").css("display", $("nav ul").css("display") == "none" ? "flex" : "none");
+        $(".side-navigation").toggle();
     });
 
     $(".products").click(function () {

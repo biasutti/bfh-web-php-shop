@@ -18,12 +18,47 @@ function add_param(&$url, $name, $value)
     return $url;
 }
 
+// remove the parameter of the url for product filter
+function removeFilterParam($name){
+  $url = get_localizedPagePath('products');
+  if($name === "TypeOfBeer"){
+    if(get_param("Brand","") !== ""){
+        add_param($url,"Brand",get_param("Brand",""));
+    }
+  }else if($name === "Brand"){
+    if(get_param("TypeOfBeer","") !== ""){
+        add_param($url,"TypeOfBeer",get_param("TypeOfBeer",""));
+    }
+  }
+  return $url;
+}
+
 function get_localizedPagePath($name)
 {
     global $language;
     $url = "";
     add_param($url, 'lang', $language);
     add_param($url, 'id', $name);
+    return $url;
+}
+
+//renders the link to use for the filter with the brands
+function renderProductFilterBrand($value){
+    $url = get_localizedPagePath('products');
+    add_param($url,"Brand" , $value);
+    if(get_param("TypeOfBeer","") !== ""){
+        add_param($url,"TypeOfBeer",get_param("TypeOfBeer",""));
+    }
+    return $url;
+}
+
+//renders the link to use for the filter with the type of beers
+function renderProductFilterType($value){
+    $url = get_localizedPagePath('products');
+    if(get_param("Brand","") !== ""){
+        add_param($url,"Brand",get_param("Brand",""));
+    }
+    add_param($url,"TypeOfBeer" , $value);
     return $url;
 }
 
@@ -47,6 +82,7 @@ function render_generic_navigation($navs)
         echo "<li class=\"$class\"><a href=\"$url\">" . t($nav) . "</a></li>";
     }
 }
+
 
 // Renders the language navigation.
 function render_languages($language, $pageId)
@@ -104,4 +140,3 @@ foreach ($file as $line) {
     $val = str_replace("\n", "", $val);
     $messages[$key] = $val;
 }
-

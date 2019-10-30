@@ -15,3 +15,5 @@ FormEmailError=Ungültige Email
 FormCommentError=Schreiben sie doch ein kommentar
 successMail=Das Email wurde erfolgreich gesendet
 productBuy=Kaufen
+accNeeded=Sie müssen eingeloggt sein.
+allReadyLogged=Sie sind bereits eingeloggt.

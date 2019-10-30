@@ -1,2 +1,3 @@
 beer.svg -> https://www.stockio.com/free-icon/party-icon-set-beer
 burger.svg -> https://en.wikipedia.org/wiki/Hamburger_button#/media/File:Hamburger_icon.svg
+products/* -> https://feldschloesschen.ch
