@@ -72,6 +72,15 @@ main {
 /* MAIN
 /*--------------------------------------------------------------------------------------------------------------------*/
 
+label {
+    display: inline-block;
+    width: 150px;
+}
+
+.content {
+    padding: 20px;
+}
+
 .login-form, .login-infobox {
     width: 460px;
 }
