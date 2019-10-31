@@ -103,6 +103,7 @@ label {
     margin: 0;
     -webkit-flex-flow: row wrap;
     justify-content: flex-start;
+    display:block;
 }
 
 .side-navigation li {
@@ -151,6 +152,15 @@ ul.side-navigation {
     padding: 0;
 }
 
+#dropDownArrow{
+  margin-top: 5px;
+  display:none;
+}
+
+#dropDownArrow>img{
+  width: 50px;
+}
+
 .navigation-footer {
     list-style: none;
     margin: 0;
@@ -197,6 +207,10 @@ footer {
 @media all and (max-width: 600px) {
     .header-navigation li {
         display: none;
+    }
+
+    #dropDownArrow{
+      display:block;
     }
 
     .header-navigation li:first-child {

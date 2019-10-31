@@ -1,9 +1,12 @@
 <?php
 require_once("lib/db-helper.php");
 ?>
-<div class="flex-item-1 side-navigation-background">
+<div class="flex-item-1 flex-size-1 side-navigation-background">
     <div class="flex-container-column">
         <div class="flex-item-1">
+          <a href="#" id="dropDownArrow" ><img alt="drop down arrow button" src="./img/ui/arrow-left.png"/></a>
+        </div>
+        <div class="flex-item-2">
             <ul class="side-navigation">
                 <li class="filterMenu">TypeOf</li>
                 <?php
@@ -18,7 +21,7 @@ require_once("lib/db-helper.php");
                 ?>
             </ul>
         </div>
-        <div class="flex-item-2">
+        <div class="flex-item-3">
             <ul class="side-navigation">
                 <li class="filterMenu">Brand</li>
                 <?php

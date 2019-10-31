@@ -11,7 +11,6 @@ $(function () {
 
     $("#burger").click(function () {
         $("nav ul").css("display", $("nav ul").css("display") == "none" ? "flex" : "none");
-        $(".side-navigation").toggle();
     });
 
     $(".products").click(function () {
@@ -33,6 +32,12 @@ $(function () {
         $itemSelected.parent().addClass("flex-container");
         $(".productDetail").hide();
         $itemSelected.slideDown(500);
+    });
+
+    $("#dropDownArrow").click(function(){
+      //make a rotation to the arrow image
+      //$(this).children(":first");
+      $(".side-navigation").toggle(500);
     });
 
 });
