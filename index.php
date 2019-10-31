@@ -14,8 +14,23 @@ session_start();
     <link rel="stylesheet" type="text/css" href="./css/flex.css" />
     <link rel="stylesheet" type="text/css" href="./css/main.css" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/prod.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/jquery-ui.css" />
+
+    <?php
+        if($_STAGE == "DEV") {
+            ?>
+            <script src="./js/jquery-3.4.1.js"></script>
+            <script src="./js/jquery-ui-1.12.1.js"></script>
+            <?php
+        } else {
+            ?>
+            <script src="./js/min/jquery-3.4.1.min.js"></script>
+            <script src="./js/min/jquery-ui-1.12.1.min.js"></script>
+            <?php
+        }
+
+    ?>
+    <script src="./js/prod.js"></script>
 
     <?php
     // Additional page related globals
@@ -57,7 +72,7 @@ session_start();
     <nav>
         <ul class="navigation flex-container">
             <?php
-            render_generic_navigation(array('home', 'products', 'account', 'login', 'register'));
+            render_generic_navigation(array('home', 'products', 'account', 'login'));
             ?>
         </ul>
     </nav>
