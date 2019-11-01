@@ -37,8 +37,8 @@ $(function () {
 
     $("#dropDownArrow").click(function(){
       //make a rotation to the arrow image
-      //$(this).children(":first")
-      AnimateRotate(90,$(this).children(":first"),500);
+      var $image = $(this).children(":first");
+      AnimateRotate(90,$image,500);
       $(".side-navigation").toggle(500);
     });
 
@@ -48,10 +48,17 @@ $(function () {
 function AnimateRotate(angle,element,duration) {
     // caching the object for performance reasons
     var $elem = $(element);
-
+    var $angelPos = 0;
+    if ($(element).val()=="down"){
+      $(element).val("up");
+      angle = -1 * angle;
+      $angelPos = 90;
+    }else{
+      $(element).val("down");
+    }
     // we use a pseudo object for the animation
     // (starts from `0` to `angle`), you can name it as you want
-    $({deg: 0}).animate({deg: angle}, {
+    $({deg: $angelPos}).animate({deg: angle}, {
         duration: duration,
         step: function(now) {
             // in the step-callback (that is fired each step of the animation),
