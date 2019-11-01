@@ -10,7 +10,8 @@ $(function () {
     });
 
     $("#burger").click(function () {
-        $("nav ul").css("display", $("nav ul").css("display") == "none" ? "flex" : "none");
+        //$("nav ul").css("display", $("nav ul").css("display") == "none" ? "flex" : "none");
+        $("nav ul").toggle(500);
     });
 
     $(".products").click(function () {
@@ -36,8 +37,29 @@ $(function () {
 
     $("#dropDownArrow").click(function(){
       //make a rotation to the arrow image
-      //$(this).children(":first");
+      //$(this).children(":first")
+      AnimateRotate(90,$(this).children(":first"),500);
       $(".side-navigation").toggle(500);
     });
 
 });
+
+//copied from https://stackoverflow.com/questions/15191058/css-rotation-cross-browser-with-jquery-animate
+function AnimateRotate(angle,element,duration) {
+    // caching the object for performance reasons
+    var $elem = $(element);
+
+    // we use a pseudo object for the animation
+    // (starts from `0` to `angle`), you can name it as you want
+    $({deg: 0}).animate({deg: angle}, {
+        duration: duration,
+        step: function(now) {
+            // in the step-callback (that is fired each step of the animation),
+            // you can use the `now` paramter which contains the current
+            // animation-position (`0` up to `angle`)
+            $elem.css({
+                transform: 'rotate(' + now + 'deg)'
+            });
+        }
+    });
+}
