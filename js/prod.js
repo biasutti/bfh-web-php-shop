@@ -1,6 +1,10 @@
 var itemSelected;
 $(function () {
 
+    $(document).ready(function() {
+        SetCookie('eucookie','eucookie',365*10);
+    });
+
     $(".buy").click(function () {
         alert($(this).attr("name"));
     });
@@ -35,4 +39,14 @@ $(function () {
         $itemSelected.slideDown(500);
     });
 
+    $(".my-cookie-container button").click(function () {
+        $(".my-cookie-container").hide();
+    })
+
 });
+
+function SetCookie(c_name, value, expiredays) {
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate()+expiredays);
+    document.cookie=c_name+ "=" +escape(value)+";path=/"+((expiredays==null) ? "" : ";expires="+exdate.toUTCString());
+}

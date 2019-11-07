@@ -10,6 +10,15 @@ function get_param($name, $default)
         return $default;
 }
 
+function get_cookieValue($name, $default)
+{
+    if (isset($_COOKIE[$name]))
+        return $_COOKIE[$name];
+    else
+        setcookie($name, $default);
+        return $default;
+}
+
 // Adds a GET parameter to the url. The url is passed by reference.
 function add_param(&$url, $name, $value)
 {
@@ -37,7 +46,7 @@ function get_localizedPagePath($name)
 {
     global $language;
     $url = "";
-    add_param($url, 'lang', $language);
+    // add_param($url, 'lang', $language);
     add_param($url, 'id', $name);
     return $url;
 }
@@ -125,11 +134,21 @@ function t($key)
     }
 }
 
+function loadLang() {
+    $language = "de";
+    if (isset($_GET["lang"])) {
+        $language = $_GET["lang"];
+        setcookie('lang', $language);
+    }
+    else {
+        $language = get_cookieValue('lang', 'de');
+    }
+    return $language;
+}
+
 $_ENV;
 loadEnv();
-
-// Set langauage and page ID as global variables.
-$language = get_param('lang', 'de');
+$language = loadLang();
 $pageId = get_param('id', 'home');
 
 $messages = array();

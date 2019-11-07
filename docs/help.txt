@@ -1,3 +1,5 @@
 Flexbox Tutorials:
 https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 https://css-tricks.com/snippets/css/complete-guide-grid/
+
+EU Cookie: https://www.daretothink.co.uk/eu-cookie-law-script/
