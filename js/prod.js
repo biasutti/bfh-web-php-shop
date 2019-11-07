@@ -48,7 +48,7 @@ $(function () {
 
     $(".my-cookie-container button").click(function () {
         $(".my-cookie-container").hide();
-    })
+    });
 
 });
 
@@ -77,10 +77,10 @@ function AnimateRotate(angle,element,duration) {
             });
         }
     });
-});
+};
 
 
-}
+
 function SetCookie(c_name, value, expiredays) {
     var exdate = new Date();
     exdate.setDate(exdate.getDate()+expiredays);
