@@ -72,9 +72,27 @@ main {
 /* MAIN
 /*--------------------------------------------------------------------------------------------------------------------*/
 
+.my-cookie-law {
+    padding: 20px;
+    min-height: 60px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.my-cookie-container button {
+    margin-left: auto;
+}
+
 label {
     display: inline-block;
-    width: 150px;
+    min-width: 150px;
+}
+
+.form-row, .form-row-button {
+    min-height: 35px;
+}
+
+.form-row-button {
+    text-align: right;
 }
 
 .content {
@@ -183,7 +201,7 @@ footer {
 
 
 @media all and (min-width: 1280px) {
-    .header-content, nav, main, footer {
+    .header-content, nav, main, footer, .my-cookie-container {
         width: 1280px;
         margin: auto;
     }
@@ -240,5 +258,13 @@ footer {
 
     #login div .flex-item {
         width: 70%;
+    }
+
+    label {
+        padding-bottom: 5px;
+    }
+
+    .form-row, .form-row-button {
+       padding-bottom: 10px;
     }
 }
