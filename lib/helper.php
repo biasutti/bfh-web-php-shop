@@ -1,4 +1,5 @@
 <?php
+require_once("./lib/models/Page.php");
 // Returns a certain GET parameter or $default if the parameter
 // does not exist.
 
@@ -78,17 +79,26 @@ function render_content($pageId)
 }
 
 // Renders the navigation for the passed language and page ID.
-function render_generic_navigation($navs)
+function render_generic_navigation($pages)
 {
     $urlBase = $_SERVER['PHP_SELF'];
-    foreach ($navs as $nav) {
+    foreach ($pages as $page) {
         $url = $urlBase;
-        $url .= get_localizedPagePath($nav);
+        $url .= get_localizedPagePath($page->getBezeichnung());
         $class = "";
-        if ($nav == 'login') {
+
+        if ($page->getBezeichnung() == 'login') {
             $class = 'navigation-mobile';
         }
-        echo "<li class=\"$class\"><a href=\"$url\">" . t($nav) . "</a></li>";
+
+        if($page->isProtected()) {
+            if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
+                echo "<li class=\"$class\"><a href=\"$url\">" . t($page->getBezeichnung()) . "</a></li>";
+            }
+        } else {
+            echo "<li class=\"$class\"><a href=\"$url\">" . t($page->getBezeichnung()) . "</a></li>";
+        }
+
     }
 }
 
