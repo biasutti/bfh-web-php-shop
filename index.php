@@ -72,7 +72,14 @@ session_start();
     <nav>
         <ul class="navigation flex-container">
             <?php
-            render_generic_navigation(array('home', 'products', 'account', 'login'));
+            $pages_navigation = array(
+                    new Page('home'),
+                    new Page('products'),
+                    new Page('account'),
+                    new Page('login'),
+                    new Page('admin', true)
+            );
+            render_generic_navigation($pages_navigation);
             ?>
         </ul>
     </nav>
@@ -92,7 +99,11 @@ session_start();
     <footer>
         <ul class="navigation-footer flex-container">
             <?php
-                render_generic_navigation(array('contact', 'impressum'));
+            $pages_footer = array(
+                    new Page('contact'),
+                    new Page('impressum')
+            );
+            render_generic_navigation($pages_footer);
             ?>
         </ul>
     </footer>
