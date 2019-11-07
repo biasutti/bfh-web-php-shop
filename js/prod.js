@@ -46,6 +46,10 @@ $(function () {
       $(".side-navigation").toggle(500);
     });
 
+    $(".my-cookie-container button").click(function () {
+        $(".my-cookie-container").hide();
+    })
+
 });
 
 //copied from https://stackoverflow.com/questions/15191058/css-rotation-cross-browser-with-jquery-animate
@@ -73,10 +77,6 @@ function AnimateRotate(angle,element,duration) {
             });
         }
     });
-    $(".my-cookie-container button").click(function () {
-        $(".my-cookie-container").hide();
-    })
-
 });
 
 
