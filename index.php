@@ -40,14 +40,6 @@ session_start();
     ?>
 </head>
 <body>
-    <?php
-    if(!isset($_COOKIE['eucookie']))
-    { ?>
-        <p id="eucookielaw" >
-            <p>By browsing our site you agree to our use of cookies. You will only see this message once.</p>
-            <a href="#" id="more">Find out more</a>
-        </p>
-    <?php } ?>
     <header class="">
         <div class="header-content">
             <div class="flex-container">
@@ -94,6 +86,9 @@ session_start();
         }
         ?>
     </main>
+    <?php
+        include("./pages/cookie-message.php");
+    ?>
     <footer>
         <ul class="navigation-footer flex-container">
             <?php

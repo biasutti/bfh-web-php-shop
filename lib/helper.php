@@ -134,12 +134,21 @@ function t($key)
     }
 }
 
+function loadLang() {
+    $language = "de";
+    if (isset($_GET["lang"])) {
+        $language = $_GET["lang"];
+        setcookie('lang', $language);
+    }
+    else {
+        $language = get_cookieValue('lang', 'de');
+    }
+    return $language;
+}
+
 $_ENV;
 loadEnv();
-
-// Set langauage and page ID as global variables.
-// $language = get_param('lang', 'de');
-$language = get_cookieValue('lang', 'de');
+$language = loadLang();
 $pageId = get_param('id', 'home');
 
 $messages = array();

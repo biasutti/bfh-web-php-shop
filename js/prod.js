@@ -39,6 +39,10 @@ $(function () {
         $itemSelected.slideDown(500);
     });
 
+    $(".my-cookie-container button").click(function () {
+        $(".my-cookie-container").hide();
+    })
+
 });
 
 function SetCookie(c_name, value, expiredays) {

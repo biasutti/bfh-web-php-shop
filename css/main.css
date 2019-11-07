@@ -72,6 +72,16 @@ main {
 /* MAIN
 /*--------------------------------------------------------------------------------------------------------------------*/
 
+.my-cookie-law {
+    padding: 20px;
+    min-height: 60px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.my-cookie-container button {
+    margin-left: auto;
+}
+
 label {
     display: inline-block;
     min-width: 150px;
@@ -181,7 +191,7 @@ footer {
 
 
 @media all and (min-width: 1280px) {
-    .header-content, nav, main, footer {
+    .header-content, nav, main, footer, .my-cookie-container {
         width: 1280px;
         margin: auto;
     }
