@@ -15,7 +15,7 @@ $(function () {
 
     $("#burger").click(function () {
         //$("nav ul").css("display", $("nav ul").css("display") == "none" ? "flex" : "none");
-        $("nav ul").toggle(500);
+        $("nav ul").slideToggle(500);
     });
 
     $(".products").click(function () {
@@ -59,7 +59,7 @@ function AnimateRotate(angle,element,duration) {
     var $angelPos = 0;
     if ($(element).val()=="down"){
       $(element).val("up");
-      angle = -1 * angle;
+      angle = 0;
       $angelPos = 90;
     }else{
       $(element).val("down");

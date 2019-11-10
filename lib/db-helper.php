@@ -38,10 +38,21 @@ function getAllProducts()
     global $_PRODUCTS_GENERATOR;
 
     if ($_MOCK_SWITCH) {
-        return $_PRODUCTS_GENERATOR->generate();
+        return $_PRODUCTS_GENERATOR->getProducts();
     } else {
         // TODO: Implement DB getProducts
     }
+}
+
+function addBeer($name, $type, $brandId, $price, $imgSrc, $alcPercent,$energy){
+  global $_MOCK_SWITCH;
+  global $_PRODUCTS_GENERATOR;
+
+  if ($_MOCK_SWITCH) {
+      return $_PRODUCTS_GENERATOR->addBeer($name, $type, $brandId, $price, $imgSrc, $alcPercent,$energy);
+  } else {
+      // TODO: Implement DB getProducts
+  }
 }
 
 function getAllBrands()

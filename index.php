@@ -77,7 +77,7 @@ session_start();
                     new Page('products'),
                     new Page('account'),
                     new Page('login'),
-                    new Page('admin', true)
+                    new Page('backend', true)
             );
             render_generic_navigation($pages_navigation);
             ?>

@@ -1,4 +1,4 @@
-<div class="flex-item-1 flex-size-1">
+<div class="flex-container-column">
 <?php
   include("./ext-lib/PHPMailer/emailConfig.php");
 
@@ -50,21 +50,36 @@
     $errEmail = isset($errArray['email']) ? $errArray['email'] :'';
     $errComment = isset($errArray['comment']) ? $errArray['comment'] :'';
 ?>
-    <p><?php echo t('contactContent');?> </p>
-    <Form method="post">
-      <p><?php echo t('firstName');?>: <input name="person[firstname]" value="<?php echo $firstName;?>" required="required"/>
-      <mark><?php echo $errFirstName;?></mark></p>
-      <p><?php echo t('lastName')?>: <input name="person[lastname]" value="<?php echo $lastName;?>" required="required" />
-      <mark><?php echo $errLastName;?></mark></p>
-      <p>Email: <input type="email" name="person[email]" value="<?php echo $email;?>" required="required"/>
-      <mark><?php echo $errEmail;?></mark></p>
-      <p><?php echo t('contactComment');?>:</p>
-      <textarea name="person[comment]" rows="10" cols="80" required="required">
-      <?php echo $comment;?>
-      </textarea>
-      <mark><?php echo $errComment;?></mark></p>
-      <p><input type="submit" value="<?php echo t('submit')?>"/></p>
-    </Form>
+    <div class="flex-item-1 flex-size-1 content">
+      <?php echo t('contactContent');?>
+    </div>
+    <div class="flex-item-2 flex-size-1">
+      <Form method="post">
+        <div class="flex-item-3 flex-size-1 content">
+          <label><?php echo t('firstName');?>:</label><input name="person[firstname]" value="<?php echo $firstName;?>" required/>
+          <mark><?php echo $errFirstName;?></mark>
+        </div>
+        <div class="flex-item-4 flex-size-1 content">
+          <label><?php echo t('lastName')?>:</label><input name="person[lastname]" value="<?php echo $lastName;?>" required />
+          <mark><?php echo $errLastName;?></mark>
+        </div>
+        <div class="flex-item-5 flex-size-1 content">
+          <label>Email:</label><input type="email" name="person[email]" value="<?php echo $email;?>" required/>
+          <mark><?php echo $errEmail;?></mark>
+        </div>
+        <div class="flex-item-6 flex-size-1 content">
+          <label><?php echo t('contactComment');?>:</label>
+          <textarea name="person[comment]" rows="3" cols="35" required>
+          <?php echo $comment;?>
+          </textarea>
+          <mark><?php echo $errComment;?></mark></p>
+        </div>
+        <div class="flex-item-7 content">
+          <p><input type="submit" value="<?php echo t('submit')?>"/></p>
+        </div>
+      </Form>
+    </div>
+
 <?php
   }
 ?>
