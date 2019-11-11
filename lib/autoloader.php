@@ -3,9 +3,9 @@
     // Directories to look in
     // (relative to the current file)
     $dirs = [
-    'lib/',
-    'lib/generators/',
-    'lib/models/'
+    './',
+    './generators/',
+    './models/'
     ];
     // Try to load class
     foreach($dirs as $dir) {
