@@ -1,5 +1,5 @@
 <?php
-require_once("./lib/models/Page.php");
+require_once("./lib/models/Page.class.php");
 // Returns a certain GET parameter or $default if the parameter
 // does not exist.
 

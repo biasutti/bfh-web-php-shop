@@ -95,6 +95,11 @@ label {
     text-align: right;
 }
 
+.error-message {
+    min-height: 100px;
+    background-color: darkred;
+}
+
 .content {
     padding: 20px;
 }
