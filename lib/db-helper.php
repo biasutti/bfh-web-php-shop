@@ -58,7 +58,7 @@ function addBeer($name, $type, $brandId, $price, $imgSrc, $alcPercent,$energy){
 
 function addTypeOfBeers($name){
   global $_MOCK_SWITCH;
-  global $_PRODUCTS_GENERATOR;
+  global $_TYPE_GENERATOR;
 
   if ($_MOCK_SWITCH) {
       return $_TYPE_GENERATOR->addType($name);

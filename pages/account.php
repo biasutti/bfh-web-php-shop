@@ -46,7 +46,7 @@ if (!isset($_SESSION['uid'])) {
                         <h2><?php echo t('logindata') ?></h2>
                     </div>
                     <div class="flex-item-1 flex-size-1 form-row">
-                        <label for="email"><?php echo t('email') ?></label>
+                        <label for="email">Email</label>
                         <input type="email" name="user[email]" required>
                         <mark><?php echo $errEmail;?></mark>
                     </div>
@@ -63,12 +63,12 @@ if (!isset($_SESSION['uid'])) {
                         <h2><?php echo t('userdata') ?></h2>
                     </div>
                     <div class="flex-item-1 flex-size-1 form-row">
-                        <label for="firstname"><?php echo t('firstname') ?></label>
+                        <label for="firstname"><?php echo t('firstName') ?></label>
                         <input type="text" name="user[firstname]" required/>
                         <mark><?php echo $errFirstName;?></mark>
                     </div>
                     <div class="flex-item-2 flex-size-1 form-row">
-                        <label for="lastname"><?php echo t('lastname') ?></label>
+                        <label for="lastname"><?php echo t('lastName') ?></label>
                         <input type="text" name="user[lastname]" required/>
                         <mark><?php echo $errLastName;?></mark>
                     </div>

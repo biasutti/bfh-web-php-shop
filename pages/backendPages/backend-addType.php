@@ -3,7 +3,7 @@
   // Form validation
   $errArray = array(); // An array holding the form errArray
   // Validate form
-  if (count($_POST) > 0) {
+  if (count($_POST) > 0 && isset($_POST['addTypeButton'])) {
       // Validate email
       if (!isset($_POST['typeName'])|| $_POST['typeName'] == '') {
           $errArray['typeName'] = t('FormTypeName');
@@ -11,11 +11,11 @@
 
   }
 
-  if (count($_POST) > 0 && count($errArray) == 0) {
+  if (count($_POST) > 0 && count($errArray) == 0 && isset($_POST['addTypeButton'])) {
 
-    addType($_POST['typeName']);
+    addTypeOfBeers($_POST['typeName']);
     echo "<pre>";
-    print_r(getAllTypesOfBeer());
+    print_r($_POST);
     echo "</pre>";
 
   }
@@ -33,6 +33,6 @@
         </div>
         <div class="flex-item-2 flex-size-1 form-row">
           <p></p>
-          <input type="submit" value="<?php echo t('submit')?>"/>
+          <input name="addTypeButton" type="submit" value="<?php echo t('addTypeOfBeer')?>"/>
         </div>
       </form>

@@ -8,7 +8,7 @@
   // Form validation
   $errArray = array(); // An array holding the form errArray
   // Validate form
-  if (count($_POST) > 0) {
+  if (count($_POST) > 0 && isset($_POST['addBeerButton'])) {
       // Validate email
       if (!isset($_POST['beerName'])|| $_POST['beerName'] == '') {
           $errArray['beerName'] = t('FormBeerName');
@@ -28,12 +28,11 @@
 
   }
 
-  if (count($_POST) > 0 && count($errArray) == 0) {
-
-    addBeer($_POST['beerName'],$_POST['typeOfBeer'],$_POST['brand'],$_POST['price'],$_POST['imgSrc'],$_POST['alcPercent'],$_POST['energy']);
-    echo "<pre>";
-    print_r(getAllProducts());
-    echo "</pre>";
+  if (count($_POST) > 0 && count($errArray) == 0 && isset($_POST['addBeerButton'])) {
+      addBeer($_POST['beerName'],$_POST['typeOfBeer'],$_POST['brand'],$_POST['price'],$_POST['imgSrc'],$_POST['alcPercent'],$_POST['energy']);
+      echo "<pre>";
+      print_r(getAllProducts());
+      echo "</pre>";
 
   }
 
@@ -74,7 +73,7 @@
         </div>
         <div class="flex-item-4 flex-size-1 form-row">
           <label for="price"><?php echo t('beerPrice') ?></label>
-          <input type="number"  name="price" style="width: 5em;"required>
+          <input type="number" step="0.01" name="price" style="width: 5em;"required>
           <mark><?php echo $errPrice;?></mark>
         </div>
         <div class="flex-item-5 flex-size-1 form-row">
@@ -94,6 +93,6 @@
         </div>
         <div class="flex-item-7 flex-size-1 form-row">
           <p></p>
-          <input type="submit" value="<?php echo t('submit')?>"/>
+          <input name="addBeerButton" type="submit" value="<?php echo t('addBeer')?>"/>
         </div>
       </form>
