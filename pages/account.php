@@ -53,7 +53,7 @@ if (!isset($_SESSION['uid'])) {
                     <div class="flex-item-2 flex-size-1 form-row">
                         <label for="password"><?php echo t('password') ?></label>
                         <input type="hidden" name="user[password]" readonly />
-                        <a href="<?php echo get_localizedPagePath('changePassword'); ?>"><?php echo t('changePassword'); ?></a>
+                        <a href="<?php echo get_pagePath('changePassword'); ?>"><?php echo t('changePassword'); ?></a>
                     </div>
                 </div>
             </div>

@@ -39,7 +39,7 @@ function getAllProducts()
     global $_PRODUCTS_GENERATOR;
 
     if ($_MOCK_SWITCH) {
-        return $_PRODUCTS_GENERATOR->getProducts();
+        return $_PRODUCTS_GENERATOR->getProducts()->getAllProducts();
     } else {
         // TODO: Implement DB getProducts
     }

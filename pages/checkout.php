@@ -27,16 +27,16 @@
             // Get product information
             $product = Products::getProduct($item);
             if ($product == null) continue;
-            $price = $product['price'];
+            $price = $product->price;
             $total += $price * $num;
-            echo "<tr><td>{$product['name']}</td><td>$num</td><td>{$price}</td><td>".($price*$num)."</td></tr>";
+            echo "<tr><td>{$product->name}</td><td>$num</td><td>{$price}</td><td>".($price*$num)."</td></tr>";
         }
         echo "<tr><td rowspan=\"3\"></td><td>$total</td></tr>";
         echo "</table></div>";
     }
     ?>
 <h4>Add an Item:</h4>
-<form action="checkout.php" method="post">
+<form action="<?php get_pagePath('checkout') ?>" method="post">
     <label>Article-Id</label><input name="item[id]"><br>
     <label>Number</label><input name="item[num]" value="1"><br>
     <input type="submit" value="Add">
