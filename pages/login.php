@@ -1,6 +1,6 @@
 <?php
 require_once("lib/db-helper.php");
-require_once("lib/models/ErrorMessage.class.php");
+require_once("lib/models/ErrorMessage.php");
 
 if (!empty($_POST)) {
     if (isset($_POST['email']) && isset($_POST['password'])) {

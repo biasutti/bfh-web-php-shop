@@ -1,5 +1,6 @@
 <?php
-require_once("./lib/models/Page.class.php");
+require_once("autoloader.php");
+//require_once("./lib/models/Page.php");
 // Returns a certain GET parameter or $default if the parameter
 // does not exist.
 
@@ -99,6 +100,21 @@ function render_generic_navigation($pages)
             echo "<li class=\"$class\"><a href=\"$url\">" . t($page->getBezeichnung()) . "</a></li>";
         }
 
+    }
+}
+
+//create a link with a page object
+function render_basicLink($page){
+  $urlBase = $_SERVER['PHP_SELF'];
+    $url = $urlBase;
+    $url .= get_localizedPagePath($page->getBezeichnung());
+
+    if($page->isProtected()) {
+        if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
+            echo "<a href=\"$url\">" . t($page->getBezeichnung()) . "</a>";
+        }
+    } else {
+        echo "<a href=\"$url\">" . t($page->getBezeichnung()) . "</a>";
     }
 }
 

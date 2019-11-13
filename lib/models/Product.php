@@ -21,7 +21,7 @@ class Product {
         $this->price = $price;
         $this->imgSrc = "./img/products/".$imgSrc;
         $this->alcPercent = $alcPercent;
-        $this->energy = $energy;
+        $this->energy = $energy . " kcal";
     }
 
 }

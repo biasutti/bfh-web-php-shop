@@ -73,11 +73,11 @@ session_start();
         <ul class="navigation flex-container">
             <?php
             $pages_navigation = array(
-                new Page('home'),
-                new Page('products'),
-                new Page('account'),
-                new Page('login'),
-                new Page('admin', true)
+                    new Page('home'),
+                    new Page('products'),
+                    new Page('account'),
+                    new Page('login'),
+                    new Page('backend', true)
             );
             render_generic_navigation($pages_navigation);
             ?>

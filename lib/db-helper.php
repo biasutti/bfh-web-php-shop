@@ -1,8 +1,9 @@
 <?php
-require_once "./lib/generators/ProductsGenerator.php";
+/*require_once "./lib/generators/ProductsGenerator.php";
 require_once "./lib/generators/UserGenerator.php";
 require_once "./lib/generators/BrandGenerator.php";
-require_once "./lib/generators/TypeGenerator.php";
+require_once "./lib/generators/TypeGenerator.php";*/
+require_once("autoloader.php");
 
 $_MOCK_SWITCH = true;
 
@@ -38,10 +39,32 @@ function getAllProducts()
     global $_PRODUCTS_GENERATOR;
 
     if ($_MOCK_SWITCH) {
-        return $_PRODUCTS_GENERATOR->generate();
+        return $_PRODUCTS_GENERATOR->getProducts();
     } else {
         // TODO: Implement DB getProducts
     }
+}
+
+function addBeer($name, $type, $brandId, $price, $imgSrc, $alcPercent,$energy){
+  global $_MOCK_SWITCH;
+  global $_PRODUCTS_GENERATOR;
+
+  if ($_MOCK_SWITCH) {
+      return $_PRODUCTS_GENERATOR->addBeer($name, $type, $brandId, $price, $imgSrc, $alcPercent,$energy);
+  } else {
+      // TODO: Implement DB getProducts
+  }
+}
+
+function addTypeOfBeers($name){
+  global $_MOCK_SWITCH;
+  global $_TYPE_GENERATOR;
+
+  if ($_MOCK_SWITCH) {
+      return $_TYPE_GENERATOR->addType($name);
+  } else {
+      // TODO: Implement DB getProducts
+  }
 }
 
 function getAllBrands()
@@ -62,7 +85,7 @@ function getAllTypesOfBeer()
     global $_TYPE_GENERATOR;
 
     if ($_MOCK_SWITCH) {
-        return $_TYPE_GENERATOR->generate();
+        return $_TYPE_GENERATOR->getTypeOfBeersArray();
     } else {
         // TODO: Implement DB getProducts
     }
