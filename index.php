@@ -1,4 +1,5 @@
 <?php
+require_once("./autoloader.php");
 require_once("./lib/helper.php");
 require_once("./lib/globals.php");
 session_start();
@@ -77,7 +78,8 @@ session_start();
                     new Page('products'),
                     new Page('account'),
                     new Page('login'),
-                    new Page('backend', true)
+                    new Page('backend', true),
+                    new Page('checkout')
             );
             render_generic_navigation($pages_navigation);
             ?>

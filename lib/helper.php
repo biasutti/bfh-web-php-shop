@@ -1,8 +1,4 @@
 <?php
-require_once("autoloader.php");
-//require_once("./lib/models/Page.php");
-// Returns a certain GET parameter or $default if the parameter
-// does not exist.
 
 function get_param($name, $default)
 {
