@@ -14,7 +14,7 @@ class ErrorMessage
 
     public function render()
     {
-        echo "<div class='flex-item flex-size-1 error-message'><p>$this->message<span class=\"ui-icon ui-icon-closethick\"></span></p></div>";
+        echo "<div class='flex-item flex-size-1 error-message'><p>$this->message<a href='#'><span class=\"ui-icon ui-icon-closethick\"></span></a></p></div>";
     }
 
     public function getMessage()

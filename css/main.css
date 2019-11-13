@@ -110,6 +110,12 @@ label {
     font-weight: bold;
 }
 
+.error-message p span {
+    float: right;
+    margin-right: 10px;
+    font-size: 2.5em;
+}
+
 .content {
     padding: 20px;
 }
