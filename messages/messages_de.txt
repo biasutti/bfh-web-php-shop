@@ -34,3 +34,4 @@ password=Passwort
 changePassword=Passwort ändern
 street=Strasse
 city=Stadt
+error_1=Benutzername und Passwort stimmen nicht überein!
