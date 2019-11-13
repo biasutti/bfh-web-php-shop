@@ -83,19 +83,37 @@ session_start();
             ?>
         </ul>
     </nav>
-    <main class="flex-container">
+    <main class="flex-container-column-reverse">
+        <div class="content-container flex-item flex-size-1 flex-container">
+            <?php
+            $fn = "pages/$pageId.php";
+            if(is_file($fn)) {
+                include($fn);
+            } else {
+                echo "<h2>Not yet implemented.... coming soon... sorry!</h2>";
+            }
+            ?>
+        </div>
         <?php
-        $fn = "pages/$pageId.php";
-        if(is_file($fn)) {
-            include($fn);
-        } else {
-            echo "<h2>Not yet implemented.... coming soon... sorry!</h2>";
+        if(isset($error)) {
+            echo $error->render();
         }
         ?>
     </main>
     <?php
-        include("./pages/cookie-message.php");
-    ?>
+    if(!isset($_COOKIE['eucookie']))
+    { ?>
+    <div class="my-cookie-container">
+        <div class="my-cookie-law flex-container">
+            <div class="flex-item-1 flex-size-4">
+                By browsing our site you agree to our use of cookies. You will only see this message once. <a href="#" id="more">Find out more</a>
+            </div>
+            <div class="flex-item-2 flex-size-1">
+                <button class="flex-item-2"><?php echo t('acceptCookie'); ?></button>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
     <footer>
         <ul class="navigation-footer flex-container">
             <?php
