@@ -17,11 +17,7 @@ if (!empty($_POST)) {
     echo "<p>Sie sind bereits eingeloggt</p>";
 }
 
-if(!isset($_SESSION['uid']))
-    if(isset($error)) {
-        $error->render();
-    }
-    ?>
+if(!isset($_SESSION['uid'])) { ?>
     <div id="login" class="content flex-item flex-size-1">
         <div class="flex-container-center flex-container-login">
             <div class="login-form flex-item flex-size-1">
@@ -38,3 +34,4 @@ if(!isset($_SESSION['uid']))
         </div>
     </div>
     <?php
+}

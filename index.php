@@ -73,23 +73,30 @@ session_start();
         <ul class="navigation flex-container">
             <?php
             $pages_navigation = array(
-                    new Page('home'),
-                    new Page('products'),
-                    new Page('account'),
-                    new Page('login'),
-                    new Page('admin', true)
+                new Page('home'),
+                new Page('products'),
+                new Page('account'),
+                new Page('login'),
+                new Page('admin', true)
             );
             render_generic_navigation($pages_navigation);
             ?>
         </ul>
     </nav>
-    <main class="flex-container-column">
+    <main class="flex-container-column-reverse">
+        <div class="content-container flex-item flex-size-1 flex-container">
+            <?php
+            $fn = "pages/$pageId.php";
+            if(is_file($fn)) {
+                include($fn);
+            } else {
+                echo "<h2>Not yet implemented.... coming soon... sorry!</h2>";
+            }
+            ?>
+        </div>
         <?php
-        $fn = "pages/$pageId.php";
-        if(is_file($fn)) {
-            include($fn);
-        } else {
-            echo "<h2>Not yet implemented.... coming soon... sorry!</h2>";
+        if(isset($error)) {
+            echo $error->render();
         }
         ?>
     </main>

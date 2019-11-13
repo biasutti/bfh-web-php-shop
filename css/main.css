@@ -8,7 +8,7 @@ header {
     height: 200px;
 }
 
-main {
+main .content-container {
     min-height: 150px;
 }
 
@@ -244,7 +244,7 @@ footer {
         display: none;
     }
 
-    .navigation, main {
+    .navigation, main .content-container {
         -webkit-flex-flow: column wrap;
         flex-flow: column wrap;
         padding: 0;
