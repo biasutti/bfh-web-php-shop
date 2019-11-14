@@ -27,16 +27,22 @@ $(function () {
         $itemSelected = $(this);
         var $prod = $(this).next();
         if ($prod.is(":hidden")) {
+            $prod.addClass("activatedProduct");
+
             $(this).parent().removeClass("flex-container");
             $(".productDetail").hide();
             $(this).hide();
             $prod.slideDown(500);
+            //scroll animation
+            $("html, body").animate({scrollTop: $prod.offset().top},750);
         }
     });
     $(".closeImg").click(function () {
         $itemSelected.parent().addClass("flex-container");
         $(".productDetail").hide();
         $itemSelected.slideDown(500);
+        //scroll animation
+        $("html, body").animate({scrollTop: $itemSelected.offset().top},1000);
     });
 
     $("#dropDownArrow").click(function(){

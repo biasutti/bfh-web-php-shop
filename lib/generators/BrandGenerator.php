@@ -1,4 +1,5 @@
 <?php
+
 require_once "./lib/models/Brand.php";
 
 class BrandGenerator

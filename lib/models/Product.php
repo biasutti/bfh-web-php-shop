@@ -24,4 +24,5 @@ class Product {
         $this->energy = $energy . " kcal";
     }
 
+
 }

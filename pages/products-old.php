@@ -12,7 +12,7 @@ require_once("lib/db-helper.php");
                 <?php
                 //filter settings type of beers
                 if (get_param("TypeOfBeer", "") === "") {
-                    foreach (TypeDB::renderTypes() as $types) {
+                    foreach (getAllTypesOfBeer() as $types) {
                         echo '<a href="' . renderProductFilterType($types->name) . '" class="typeFilter" value="' . $types->name . '"><li>' . $types->name . "</li></a>";
                     }
                 } else {
@@ -27,7 +27,7 @@ require_once("lib/db-helper.php");
                 <?php
                 //filter settings brand
                 if (get_param("Brand", "") === "") {
-                    foreach (BrandDB::renderBrands() as $brand) {
+                    foreach (getAllBrands() as $brand) {
                         echo '<a href="' . renderProductFilterBrand($brand->name) . '" class="brandFilter"><li>' . $brand->name . "</li></a>";
                     }
                 } else {
@@ -38,42 +38,31 @@ require_once("lib/db-helper.php");
         </div>
     </div>
 </div>
-<?php
-//echo "<pre>";
-//echo ProductTest::getProductById(56)->name_de;
-//print_r(ProductTest::getProductsTest());
-//echo BrandDB::getBrandById(1)->name;
-//print_r(BrandDB::renderBrands());
-//echo TypeDB::getTypeById(2)->name;
-//echo "</pre>";
-
- ?>
 <div class="flex-item-2 flex-size-5">
     <div class="flex-container flex-wrap" id="productContainer">
         <?php
         $order = 1;
-        foreach (ProductDB::getAllProductsRender() as $prod) {
+        foreach (getAllProducts() as $prod) {
             //check filter with the dbhelper.php filterbeer() function.
-            if (filterBeers(TypeDB::getTypeById($prod->FK_type_Id)->name, BrandDB::getBrandById($prod->FK_brand_Id)->name)) {
+            if (filterBeers($prod->type, $prod->brandId)) {
                 echo '<div class="products" style="order:' . $order . ';"><ul class="prodList">' .
-                    '<li><img class="prodImg" height="140px" src="./img/products/' . $prod->imgSrc . '" alt="product image"></li>' .
-                    '<li><b>' . $prod->name_de . '</b></li>' .
+                    '<li><img class="prodImg" height="140px" src="' . $prod->imgSrc . '" alt="product image"></li>' .
+                    '<li><b>' . $prod->name . '</b></li>' .
                     '<li>' . $prod->price . ' CHF</li>' .
-                    '<li><button type="button" class="buy" name="' . $prod->Id_prod . '">' . t('productBuy') . '</button></li>' .
+                    '<li><button type="button" class="buy" name="' . $prod->pid . '">' . t('productBuy') . '</button></li>' .
                     "</ul></div>";
                 $order++;
 
-
                 echo '<div class="productDetail flex-size-1" style="order:' . $order . ';""><ul class="prodList">' .
                     '<img class="closeImg" height="30px" src="./img/ui/close.png" alt="product image">' .
-                    '<li><img class="prodImg" height="140px" src="./img/products/' . $prod->imgSrc . '" alt="product image"></li>' .
-                    '<li><b>' . $prod->name_de . '</b></li>' .
-                    '<li>' . TypeDB::getTypeById($prod->FK_type_Id)->name  . '</li>' .
-                    '<li>' . BrandDB::getBrandById($prod->FK_brand_Id)->name . '</li>' .
-                    '<li>' . $prod->alcPercent . '%</li>' .
-                    '<li>' . $prod->energy . ' kcal</li>' .
+                    '<li><img class="prodImg" height="140px" src="' . $prod->imgSrc . '" alt="product image"></li>' .
+                    '<li><b>' . $prod->name . '</b></li>' .
+                    '<li>' . $prod->type . '</li>' .
+                    '<li>' . $prod->brandId . '</li>' .
+                    '<li>' . $prod->alcPercent . '</li>' .
+                    '<li>' . $prod->energy . '</li>' .
                     '<li>' . $prod->price . ' CHF</li>' .
-                    '<li><button type="button" class="buy" name="' . $prod->Id_prod . '">' . t('productBuy') . '</button></li>' .
+                    '<li><button type="button" onclick="">' . t('productBuy') . '</button></li>' .
                     '</ul></div>';
                 $order++;
             }
