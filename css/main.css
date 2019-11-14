@@ -96,8 +96,24 @@ label {
 }
 
 .error-message {
-    min-height: 100px;
-    background-color: darkred;
+    background-color: #BB0000;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: solid black 2px;
+    margin: 10px;
+    color: white;
+}
+
+.error-message p {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.error-message p span {
+    float: right;
+    margin-right: 10px;
+    font-size: 2.5em;
 }
 
 .content {

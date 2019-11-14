@@ -1,4 +1,5 @@
 <?php
+require_once("./autoloader.php");
 require_once("./lib/helper.php");
 require_once("./lib/globals.php");
 session_start();
@@ -44,7 +45,7 @@ session_start();
         <div class="header-content">
             <div class="flex-container">
                 <div class="header-logo flex-item flex-size-2">
-                    <a href="<?php echo get_localizedPagePath('home') ?>"><img src="./img/logo.png" alt="Drinkshop Logo"/></a>
+                    <a href="<?php echo get_pagePath('home') ?>"><img src="./img/logo.png" alt="Drinkshop Logo"/></a>
                 </div>
                 <div class="flex-item flex-size-1">
                     <ul class="header-navigation flex-container-reverse">
@@ -54,9 +55,9 @@ session_start();
                         <li class="">
                             <?php
                             if ( isset( $_SESSION['uid'] ) ) {
-                                echo "<a href=" . get_localizedPagePath('logout') . ">Logout</a>";
+                                echo "<a href=" . get_pagePath('logout') . ">Logout</a>";
                             } else {
-                                echo "<a href=" . get_localizedPagePath('login') .">Login</a>";
+                                echo "<a href=" . get_pagePath('login') .">Login</a>";
                             }
                             ?>
 
@@ -77,7 +78,8 @@ session_start();
                     new Page('products'),
                     new Page('account'),
                     new Page('login'),
-                    new Page('backend', true)
+                    new Page('backend', true),
+                    new Page('checkout')
             );
             render_generic_navigation($pages_navigation);
             ?>

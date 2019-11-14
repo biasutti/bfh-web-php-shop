@@ -50,6 +50,10 @@ $(function () {
         $(".my-cookie-container").hide();
     });
 
+    $(".error-message span").click(function () {
+        $(".error-message").hide();
+    })
+
 });
 
 //copied from https://stackoverflow.com/questions/15191058/css-rotation-cross-browser-with-jquery-animate

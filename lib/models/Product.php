@@ -12,7 +12,7 @@ class Product {
     public $alcPercent;
     public $energy;
 
-    public function __construct($pid, $name, $type, $brandId, $price, $imgSrc, $alcPercent,$energy)
+    public function __construct($pid, $name, $type, $brandId, $price, $imgSrc, $alcPercent, $energy)
     {
         $this->pid = $pid;
         $this->name = $name;

@@ -1,8 +1,4 @@
 <?php
-require_once("autoloader.php");
-//require_once("./lib/models/Page.php");
-// Returns a certain GET parameter or $default if the parameter
-// does not exist.
 
 function get_param($name, $default)
 {
@@ -31,7 +27,7 @@ function add_param(&$url, $name, $value)
 
 // remove the parameter of the url for product filter
 function removeFilterParam($name){
-  $url = get_localizedPagePath('products');
+  $url = get_pagePath('products');
   if($name === "TypeOfBeer"){
     if(get_param("Brand","") !== ""){
         add_param($url,"Brand",get_param("Brand",""));
@@ -44,18 +40,16 @@ function removeFilterParam($name){
   return $url;
 }
 
-function get_localizedPagePath($name)
+function get_pagePath($name)
 {
-    global $language;
     $url = "";
-    // add_param($url, 'lang', $language);
     add_param($url, 'id', $name);
     return $url;
 }
 
 //renders the link to use for the filter with the brands
 function renderProductFilterBrand($value){
-    $url = get_localizedPagePath('products');
+    $url = get_pagePath('products');
     add_param($url,"Brand" , $value);
     if(get_param("TypeOfBeer","") !== ""){
         add_param($url,"TypeOfBeer",get_param("TypeOfBeer",""));
@@ -65,7 +59,7 @@ function renderProductFilterBrand($value){
 
 //renders the link to use for the filter with the type of beers
 function renderProductFilterType($value){
-    $url = get_localizedPagePath('products');
+    $url = get_pagePath('products');
     if(get_param("Brand","") !== ""){
         add_param($url,"Brand",get_param("Brand",""));
     }
@@ -85,7 +79,7 @@ function render_generic_navigation($pages)
     $urlBase = $_SERVER['PHP_SELF'];
     foreach ($pages as $page) {
         $url = $urlBase;
-        $url .= get_localizedPagePath($page->getBezeichnung());
+        $url .= get_pagePath($page->getBezeichnung());
         $class = "";
 
         if ($page->getBezeichnung() == 'login') {
@@ -107,7 +101,7 @@ function render_generic_navigation($pages)
 function render_basicLink($page){
   $urlBase = $_SERVER['PHP_SELF'];
     $url = $urlBase;
-    $url .= get_localizedPagePath($page->getBezeichnung());
+    $url .= get_pagePath($page->getBezeichnung());
 
     if($page->isProtected()) {
         if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
