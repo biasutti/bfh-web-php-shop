@@ -1,4 +1,6 @@
 <?php
+require_once("lib/db-helper.php");
+
 	// Create cart on first request
 	if (!isset($_SESSION["cart"])) {
 		$_SESSION["cart"] = new Cart();
@@ -14,30 +16,45 @@
 	}
 ?>
 
-<h4>Your Shopping Cart:</h4>
-<?php
+<div class="flex-item-1 flex-size-1">
+    <h4>Your Shopping Cart:</h4>
+    <?php
     // Render cart explicitly to enhence it
     if ($cart->isEmpty()) {
         echo "<div class=\"cart empty\">[Empty Cart]</div>";
     } else {
-        echo "<div class=\"cart\"><table>";
-        echo "<tr><th>Article</th><th>#</th><th>Price</th><th>Total</th></tr>";
+    ?>
+    <div class="cart">
+        <table>
+            <tr>
+                <th>Article</th>
+                <th>#</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        <?php
         $total = 0;
+        $allProducts = new Products(getAllProducts());
         foreach ($cart->getItems() as $item => $num) {
-            // Get product information
-            $product = Products::getProduct($item);
+            $product = $allProducts->getProduct($item);
             if ($product == null) continue;
             $price = $product->price;
             $total += $price * $num;
             echo "<tr><td>{$product->name}</td><td>$num</td><td>{$price}</td><td>".($price*$num)."</td></tr>";
         }
         echo "<tr><td rowspan=\"3\"></td><td>$total</td></tr>";
-        echo "</table></div>";
+        ?>
+        </table>
+    </div>
+        <?php
     }
     ?>
-<h4>Add an Item:</h4>
-<form action="<?php get_pagePath('checkout') ?>" method="post">
-    <label>Article-Id</label><input name="item[id]"><br>
-    <label>Number</label><input name="item[num]" value="1"><br>
-    <input type="submit" value="Add">
-</form>
+</div>
+<div class="flex-item-1 flex-size-1">
+    <h4>Add an Item:</h4>
+    <form action="<?php get_pagePath('checkout') ?>" method="post">
+        <label>Article-Id</label><input name="item[id]"><br>
+        <label>Number</label><input name="item[num]" value="1"><br>
+        <input type="submit" value="Add">
+    </form>
+</div>

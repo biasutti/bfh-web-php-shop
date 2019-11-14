@@ -3,10 +3,11 @@
 
 class Products
 {
-    private $products = [];
+    private $products;
 
-    function getAllProducts() {
-        return $this->products;
+    public function __construct($products)
+    {
+        $this->products = $products;
     }
 
     function addProduct($product) {
@@ -14,6 +15,6 @@ class Products
     }
 
     function getProduct($pid) {
-        echo $pid;
+        return $this->products[$pid];
     }
 }
