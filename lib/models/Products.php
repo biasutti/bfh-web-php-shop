@@ -1,6 +1,5 @@
 <?php
 
-
 class Products
 {
     private $products;
@@ -17,4 +16,5 @@ class Products
     function getProduct($pid) {
         return $this->products[$pid];
     }
+
 }
