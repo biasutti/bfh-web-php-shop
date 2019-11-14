@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 14 nov. 2019 à 14:52
+-- Généré le :  jeu. 14 nov. 2019 à 19:10
 -- Version du serveur :  10.4.6-MariaDB
 -- Version de PHP :  7.3.9
 
@@ -39,7 +39,8 @@ CREATE TABLE `brands` (
 
 INSERT INTO `brands` (`Id_brand`, `name`) VALUES
 (1, 'Feldschlöschen'),
-(2, 'Heineken');
+(2, 'Heineken'),
+(3, 'BLZ');
 
 -- --------------------------------------------------------
 
@@ -53,7 +54,7 @@ CREATE TABLE `products` (
   `name_fr` varchar(50) DEFAULT NULL,
   `FK_type_Id` int(11) NOT NULL,
   `FK_brand_Id` int(11) NOT NULL,
-  `price` double DEFAULT NULL,
+  `price` decimal(9,2) DEFAULT NULL,
   `imgSrc` varchar(30) DEFAULT NULL,
   `alcPercent` double DEFAULT NULL,
   `energy` double DEFAULT NULL
@@ -64,13 +65,14 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`Id_prod`, `name_de`, `name_fr`, `FK_type_Id`, `FK_brand_Id`, `price`, `imgSrc`, `alcPercent`, `energy`) VALUES
-(1, 'Original', 'Original', 1, 1, 1.2, 'FeldOriginal.png', 5, 41),
-(2, 'Hopfenperle', 'Hopfenperle', 2, 1, 2.2, 'hofpenperle.png', 6, 44),
-(3, 'Braufrisch', 'Braufrisch', 1, 1, 1.7, 'braufrisch.png', 2, 500),
-(4, 'Ice', 'Ice', 1, 1, 2.5, 'ice.png', 6.5, 456),
-(5, 'Dunkel', 'Brune', 3, 1, 3.5, 'dunkel.png', 4.6, 48),
-(6, 'Pale Ale', 'Pale Ale', 4, 1, 2.6, 'paleale.png', 5.2, 40),
-(7, 'Original', 'Original', 1, 2, 2.3, 'heinOriginal.png', 5.2, 39);
+(1, 'Original', 'Original', 1, 1, '1.20', 'FeldOriginal.png', 5, 41),
+(2, 'Hopfenperle', 'Hopfenperle', 2, 1, '2.20', 'hofpenperle.png', 6, 44),
+(3, 'Braufrisch', 'Braufrisch', 1, 1, '1.70', 'braufrisch.png', 2, 500),
+(4, 'Ice', 'Ice', 1, 1, '2.50', 'ice.png', 6.5, 456),
+(5, 'Dunkel', 'Brune', 3, 1, '3.00', 'dunkel.png', 4.6, 48),
+(6, 'Pale Ale', 'Pale Ale', 5, 1, '2.60', 'paleale.png', 5.2, 40),
+(7, 'Original', 'Original', 1, 2, '2.30', 'heinOriginal.png', 5.2, 39),
+(8, 'West Coast Ale', 'West Coast Ale', 5, 3, '4.95', 'blz-west-coast.png', 5.2, 600);
 
 -- --------------------------------------------------------
 
@@ -91,7 +93,7 @@ INSERT INTO `types` (`Id_type`, `name`) VALUES
 (1, 'Lager'),
 (2, 'Amber'),
 (3, 'Dark Lager'),
-(4, 'Triple Hopped');
+(5, 'Pale Ale');
 
 --
 -- Index pour les tables déchargées
@@ -125,19 +127,19 @@ ALTER TABLE `types`
 -- AUTO_INCREMENT pour la table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `Id_brand` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_brand` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
-  MODIFY `Id_prod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id_prod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `types`
 --
 ALTER TABLE `types`
-  MODIFY `Id_type` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id_type` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
