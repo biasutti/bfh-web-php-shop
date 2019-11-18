@@ -1,8 +1,5 @@
 <?php
-/*require_once "./lib/generators/ProductsGenerator.php";
-require_once "./lib/generators/UserGenerator.php";
-require_once "./lib/generators/BrandGenerator.php";
-require_once "./lib/generators/TypeGenerator.php";*/
+
 require_once("autoloader.php");
 
 $_MOCK_SWITCH = true;
