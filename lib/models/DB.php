@@ -9,8 +9,12 @@ class DB extends mysqli{
     static private $instance;
 
     public function __construct() {
+        global $_ENV;
+        $db_user = $_ENV['DB_USER'];
+        echo $db_user;
+
         parent::__construct(
-            self::HOST, "root", "",self::DB_NAME);
+            self::HOST, $db_user, "wasd",self::DB_NAME);
     }
 
 
