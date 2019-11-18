@@ -138,7 +138,7 @@ function loadEnv($customFile = null)
 
     foreach ($file as $line) {
         list($key, $val) = explode('=', $line);
-        $val = str_replace("\n", "", $val);
+        $val = trim(preg_replace('/\s+/', ' ', $val));
         $_ENV[$key] = $val;
     }
 }
