@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * Errorcodes:
+ * 1: Login -> Credentials dont match
+ *
+ * 11: Register -> Passwords dont match
+ *
+ */
 
 class ErrorMessage
 {
