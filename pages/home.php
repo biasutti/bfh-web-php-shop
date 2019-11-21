@@ -7,9 +7,10 @@
     render_basicLink(new Page("products"));
 
     $db = DB::getInstance();
-    foreach ($db->query("SELECT * FROM products;") as $product) {
+    $db->query('SET NAMES utf8');
+    /*foreach ($db->query("SELECT * FROM products;") as $product) {
         echo "<p>" . $product["name_de"] . "</p>";
-    }
+    }*/
 
     ?>
     </p>
