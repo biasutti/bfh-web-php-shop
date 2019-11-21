@@ -52,7 +52,7 @@ require_once("lib/db-helper.php");
     <div class="flex-container flex-wrap" id="productContainer">
         <?php
         $order = 1;
-        foreach (ProductDB::getAllProductsRender() as $prod) {
+        foreach (Product::getAllProducts() as $prod) {
             //check filter with the dbhelper.php filterbeer() function.
             if (filterBeers(TypeDB::getTypeById($prod->FK_type_Id)->name, BrandDB::getBrandById($prod->FK_brand_Id)->name)) {
                 echo '<div class="products" style="order:' . $order . ';"><ul class="prodList">' .

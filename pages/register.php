@@ -16,10 +16,14 @@ if (isset($_SESSION['uid'])) {
             $error = new ErrorMessage(11);
         }
 
+        if(!isset($error)) {
+            $_POST = array();
+            $success = new SuccessMessage(1);
+        }
+
     }
 
     if(empty($_POST) || isset($error)) {
-
         ?>
         <div class="content flex-item flex-size-1">
             <form class="flex-size-1 flex-container" id="register" name="register" method="post">

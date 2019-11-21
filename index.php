@@ -100,6 +100,9 @@ session_start();
         if(isset($error)) {
             echo $error->render();
         }
+        if(isset($success)) {
+            echo $success->render();
+        }
         ?>
     </main>
     <?php

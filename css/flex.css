@@ -87,7 +87,7 @@
         flex-basis: 100%;
     }
 
-    #account.flex-container {
+    form.flex-container {
         display: -webkit-box;
         display: -moz-box;
         display: -ms-flexbox;

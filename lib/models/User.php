@@ -14,4 +14,18 @@ class User {
         $this->passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $this->isAdmin = true;
     }
+
+    public static function getUserByEMail($email) {
+        $res = DB::doQuery("SELECT * FROM users WHERE email = $email");
+        if ($res) {
+            if ($user = $res->fetch_object(get_class())) {
+                return $user;
+            }
+        }
+        return null;
+    }
+
+    public static function saveUser($user) {
+
+    }
 }
