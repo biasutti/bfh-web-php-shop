@@ -12,12 +12,13 @@
   }
 
   if (count($_POST) > 0 && count($errArray) == 0 && isset($_POST['addTypeButton'])) {
-    //TODO insert sql implement
-    //addTypeOfBeers($_POST['typeName']);
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
+    //insert sql implement
+    Type::insertType($_POST['typeName']);
+    echo "Category added sucessfully !";
+    /*foreach (Type::renderTypes() as $ty) {
 
+      echo "id: ". $ty->Id_type ." name: " .$ty->name."<br>";
+    }*/
   }
 
     $errTypeName = isset($errArray['typeName']) ? $errArray['typeName'] : '';
@@ -25,7 +26,7 @@
 
 
   ?>
-      <form class="flex-size-1 flex-container" id="backend" method="post">
+      <form class="flex-size-1 flex-container displNone" method="post">
         <div class="flex-item-1 flex-size-1 form-row">
           <label for="typeName"><?php echo t('typeName') ?></label>
           <input type="text" name="typeName" size="15" required>

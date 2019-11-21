@@ -225,6 +225,17 @@ ul.side-navigation {
     padding: 1em 2em 1em 1em;
 }
 
+.backendTable, .backendTable>tbody>tr>th, .backendTable>tbody>tr>td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 5px;
+  text-align: center;
+}
+
+.displNone{
+  display: none;
+}
+
 footer {
     background-color: darkgrey;
     height: 50px;

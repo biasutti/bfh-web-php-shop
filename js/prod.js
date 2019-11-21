@@ -62,6 +62,13 @@ $(function () {
         $(".success-message").hide();
     })
 
+    //Backend show divs or not
+    $(".onClickBackend").click(function (e) {
+      e.preventDefault();
+      var divAfter = $(this).next();
+      divAfter.toggle();
+    });
+
 });
 
 //copied from https://stackoverflow.com/questions/15191058/css-rotation-cross-browser-with-jquery-animate

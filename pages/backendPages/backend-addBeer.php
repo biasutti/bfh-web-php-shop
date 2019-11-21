@@ -10,31 +10,37 @@
       if (!isset($_POST['beerName'])|| $_POST['beerName'] == '') {
           $errArray['beerName'] = t('FormBeerName');
       }
-      if (!isset($_POST['price'])|| $_POST['price'] == '') {
+      if (!isset($_POST['beerNameFR'])|| $_POST['beerNameFR'] == '') {
+          $errArray['beerNameFR'] = t('FormBeerNameFR');
+      }
+      if (!isset($_POST['price'])|| $_POST['price'] == '' || $_POST['price']<=0 ) {
           $errArray['price'] = t('FormPrice');
       }
       if (!isset($_POST['imgSrc'])|| $_POST['imgSrc'] == '') {
           $errArray['imgSrc'] = t('FormImgSrc');
       }
-      if (!isset($_POST['alcPercent'])|| $_POST['alcPercent'] == '') {
+      if (!isset($_POST['alcPercent'])|| $_POST['alcPercent'] == '' || $_POST['alcPercent']<=0) {
           $errArray['alcPercent'] = t('FormAlcPercent');
       }
-      if (!isset($_POST['energy'])|| $_POST['energy'] == '') {
+      if (!isset($_POST['energy'])|| $_POST['energy'] == '' || $_POST['energy']<=0) {
           $errArray['energy'] = t('FormEnergy');
       }
 
   }
 
   if (count($_POST) > 0 && count($errArray) == 0 && isset($_POST['addBeerButton'])) {
-      //TODO implement sql insert
-      //addBeer($_POST['beerName'],$_POST['typeOfBeer'],$_POST['brand'],$_POST['price'],$_POST['imgSrc'],$_POST['alcPercent'],$_POST['energy']);
+      /*Product::insertBeer($_POST['beerName'],$_POST['beerNameFR'],$_POST['typeOfBeer'],$_POST['brand'],
+      $_POST['price'],$_POST['imgSrc'],$_POST['alcPercent'],$_POST['energy']); */
       echo "<pre>";
-      //print_r(getAllProducts());
+      print_r($_POST);
+      //print_r(Product::getAllProducts());
       echo "</pre>";
+
 
   }
 
     $errBeerName = isset($errArray['beerName']) ? $errArray['beerName'] : '';
+    $errBeerNameFR = isset($errArray['beerNameFR']) ? $errArray['beerNameFR'] : '';
     $errPrice = isset($errArray['price']) ? $errArray['price'] : '';
     $errImgSrc = isset($errArray['imgSrc']) ? $errArray['imgSrc'] : '';
     $errAlcPercent = isset($errArray['alcPercent']) ? $errArray['alcPercent'] : '';
@@ -43,11 +49,16 @@
 
 
   ?>
-      <form class="flex-size-1 flex-container" id="backend" method="post">
+      <form class="flex-size-1 flex-container " method="post">
         <div class="flex-item-1 flex-size-1 form-row">
           <label for="name"><?php echo t('beerName') ?></label>
           <input type="text" name="beerName" size="15" required>
           <mark><?php echo $errBeerName;?></mark>
+        </div>
+        <div class="flex-item-1 flex-size-1 form-row">
+          <label for="name"><?php echo t('beerNameFR') ?></label>
+          <input type="text" name="beerNameFR" size="15" required>
+          <mark><?php echo $errBeerNameFR;?></mark>
         </div>
         <div class="flex-item-2 flex-size-1 form-row">
           <label for="type"><?php echo t('typeOfBeer') ?></label>
@@ -76,7 +87,8 @@
         </div>
         <div class="flex-item-5 flex-size-1 form-row">
           <label for="imgSrc"><?php echo t('imgSrc') ?></label>
-          <input type="text"  name="imgSrc" required>
+          <!-- <input type="text"  name="imgSrc" required> -->
+          <input type="file" name="imgSrc" accept="image/x-png">
           <mark><?php echo $errImgSrc;?></mark>
         </div>
         <div class="flex-item-6 flex-size-1 form-row">

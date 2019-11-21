@@ -13,18 +13,6 @@ class Product {
     public $alcPercent;
     public $energy;
 
-    /*public function __construct($Id_prod, $name_de,$name_fr, $FK_type_Id, $FK_brand_Id, $price, $imgSrc, $alcPercent, $energy)
-    {
-        $this->Id_prod = $Id_prod;
-        $this->name_de = $name_de;
-        $this->name_fr = $name_fr;
-        $this->FK_type_Id = $FK_type_Id;
-        $this->FK_brand_Id = $FK_brand_Id;
-        $this->price = $price;
-        $this->imgSrc = "./img/products/".$imgSrc;
-        $this->alcPercent = $alcPercent;
-        $this->energy = $energy . " kcal";
-    }*/
 
     static public function getAllProducts() {
       $products = array();
@@ -53,6 +41,11 @@ class Product {
         global $language;
         if($language == "fr") return $this->name_fr;
         return $this->name_de;
+     }
+
+     static public function insertBeer($name,$nameFR,$typeId,$brandId,$price,$img,$alc,$energy){
+       DB::doQuery("INSERT INTO products (name_de, name_fr, FK_type_Id, FK_brand_Id, price, imgSrc, alcPercent, energy)
+       VALUES ('$name' , '$nameFR','$typeId','$brandId','$price','$img','$alc','$energy')");
      }
 
 }

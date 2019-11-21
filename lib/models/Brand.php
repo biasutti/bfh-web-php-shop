@@ -27,4 +27,13 @@ class Brand {
     }
     return null;
   }
+
+  static public function insertBrand($name){
+    DB::doQuery("INSERT INTO brands (name) VALUES ('$name') ");
+  }
+
+  static public function removeBrandById($id){
+    DB::doQuery("DELETE FROM brands WHERE brands.Id_brand = $id ");
+  }
+
 }

@@ -28,4 +28,12 @@ class Type {
     return null;
   }
 
+  static public function insertType($name){
+    DB::doQuery("INSERT INTO types (name) VALUES ('$name') ");
+  }
+
+  static public function removeTypeById($id){
+    DB::doQuery("DELETE FROM types WHERE types.Id_type = $id ");
+  }
+
 }
