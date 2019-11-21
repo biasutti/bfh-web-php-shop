@@ -284,7 +284,7 @@ footer {
     }
 
     .navigation li.navigation-mobile {
-        display: revert;
+        display: block;
     }
 
     #login div .flex-item {
