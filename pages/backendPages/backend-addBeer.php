@@ -1,7 +1,4 @@
 <?php
-  $products = getAllProducts();
-  $typesOfBeers = getAllTypesOfBeer();
-  $brands = getAllBrands();
 
 
 
@@ -29,9 +26,10 @@
   }
 
   if (count($_POST) > 0 && count($errArray) == 0 && isset($_POST['addBeerButton'])) {
-      addBeer($_POST['beerName'],$_POST['typeOfBeer'],$_POST['brand'],$_POST['price'],$_POST['imgSrc'],$_POST['alcPercent'],$_POST['energy']);
+      //TODO implement sql insert
+      //addBeer($_POST['beerName'],$_POST['typeOfBeer'],$_POST['brand'],$_POST['price'],$_POST['imgSrc'],$_POST['alcPercent'],$_POST['energy']);
       echo "<pre>";
-      print_r(getAllProducts());
+      //print_r(getAllProducts());
       echo "</pre>";
 
   }
@@ -55,8 +53,8 @@
           <label for="type"><?php echo t('typeOfBeer') ?></label>
           <select name="typeOfBeer">
             <?php
-            foreach ($typesOfBeers as $type) {
-              echo '<option value="'.$type->tid.'">'.$type->name.'</option>';
+            foreach (Type::renderTypes() as $type) {
+              echo '<option value="'.$type->Id_type.'">'.$type->name.'</option>';
             }
             ?>
           </select>
@@ -65,8 +63,8 @@
           <label for="brand"><?php echo t('brand') ?></label>
           <select name="brand">
             <?php
-            foreach ($brands as $brand) {
-              echo '<option value="'.$brand->bid.'">'.$brand->name.'</option>';
+            foreach (Brand::renderBrands() as $brand) {
+              echo '<option value="'.$brand->Id_brand.'">'.$brand->name.'</option>';
             }
             ?>
           </select>

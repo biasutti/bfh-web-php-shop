@@ -1,7 +1,7 @@
 <?php
 
 
-class TypeDB {
+class Type {
   public $Id_type;
   public $name;
 

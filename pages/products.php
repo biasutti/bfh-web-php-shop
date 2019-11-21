@@ -12,7 +12,7 @@ require_once("lib/db-helper.php");
                 <?php
                 //filter settings type of beers
                 if (get_param("TypeOfBeer", "") === "") {
-                    foreach (TypeDB::renderTypes() as $types) {
+                    foreach (Type::renderTypes() as $types) {
                         echo '<a href="' . renderProductFilterType($types->name) . '" class="typeFilter" value="' . $types->name . '"><li>' . $types->name . "</li></a>";
                     }
                 } else {
@@ -27,7 +27,7 @@ require_once("lib/db-helper.php");
                 <?php
                 //filter settings brand
                 if (get_param("Brand", "") === "") {
-                    foreach (BrandDB::renderBrands() as $brand) {
+                    foreach (Brand::renderBrands() as $brand) {
                         echo '<a href="' . renderProductFilterBrand($brand->name) . '" class="brandFilter"><li>' . $brand->name . "</li></a>";
                     }
                 } else {
@@ -42,7 +42,7 @@ require_once("lib/db-helper.php");
 //echo "<pre>";
 //echo ProductTest::getProductById(56)->name_de;
 //print_r(ProductTest::getProductsTest());
-//echo BrandDB::getBrandById(1)->name;
+//echo Brand::getBrandById(1)->name;
 //print_r(BrandDB::renderBrands());
 //echo TypeDB::getTypeById(2)->name;
 //echo "</pre>";
@@ -54,7 +54,7 @@ require_once("lib/db-helper.php");
         $order = 1;
         foreach (Product::getAllProducts() as $prod) {
             //check filter with the dbhelper.php filterbeer() function.
-            if (filterBeers(TypeDB::getTypeById($prod->FK_type_Id)->name, BrandDB::getBrandById($prod->FK_brand_Id)->name)) {
+            if (filterBeers(Type::getTypeById($prod->FK_type_Id)->name, Brand::getBrandById($prod->FK_brand_Id)->name)) {
                 echo '<div class="products" style="order:' . $order . ';"><ul class="prodList">' .
                     '<li><img class="prodImg" height="140px" src="./img/products/' . $prod->imgSrc . '" alt="product image"></li>' .
                     '<li><b>' . $prod->name_de . '</b></li>' .
@@ -68,8 +68,8 @@ require_once("lib/db-helper.php");
                     '<img class="closeImg" height="30px" src="./img/ui/close.png" alt="product image">' .
                     '<li><img class="prodImg" height="140px" src="./img/products/' . $prod->imgSrc . '" alt="product image"></li>' .
                     '<li><b>' . $prod->name_de . '</b></li>' .
-                    '<li>' . TypeDB::getTypeById($prod->FK_type_Id)->name  . '</li>' .
-                    '<li>' . BrandDB::getBrandById($prod->FK_brand_Id)->name . '</li>' .
+                    '<li>' . Type::getTypeById($prod->FK_type_Id)->name  . '</li>' .
+                    '<li>' . Brand::getBrandById($prod->FK_brand_Id)->name . '</li>' .
                     '<li>' . $prod->alcPercent . '%</li>' .
                     '<li>' . $prod->energy . ' kcal</li>' .
                     '<li>' . $prod->price . ' CHF</li>' .

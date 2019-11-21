@@ -5,8 +5,6 @@ require_once("autoloader.php");
 $_MOCK_SWITCH = true;
 
 $_USER_GENERATOR = new UserGenerator();
-$_BRAND_GENERATOR = new BrandGenerator();
-$_TYPE_GENERATOR = new TypeGenerator();
 
 function getUserByEMail($email)
 {
@@ -29,51 +27,7 @@ function checkPassword($uid, $password)
     }
 }
 
-function addBeer($name, $type, $brandId, $price, $imgSrc, $alcPercent,$energy){
-  global $_MOCK_SWITCH;
-  global $_PRODUCTS_GENERATOR;
 
-  if ($_MOCK_SWITCH) {
-      return $_PRODUCTS_GENERATOR->addBeer($name, $type, $brandId, $price, $imgSrc, $alcPercent,$energy);
-  } else {
-      // TODO: Implement DB getProducts
-  }
-}
-
-function addTypeOfBeers($name){
-  global $_MOCK_SWITCH;
-  global $_TYPE_GENERATOR;
-
-  if ($_MOCK_SWITCH) {
-      return $_TYPE_GENERATOR->addType($name);
-  } else {
-      // TODO: Implement DB getProducts
-  }
-}
-
-function getAllBrands()
-{
-    global $_MOCK_SWITCH;
-    global $_BRAND_GENERATOR;
-
-    if ($_MOCK_SWITCH) {
-        return $_BRAND_GENERATOR->generate();
-    } else {
-        // TODO: Implement DB getProducts
-    }
-}
-
-function getAllTypesOfBeer()
-{
-    global $_MOCK_SWITCH;
-    global $_TYPE_GENERATOR;
-
-    if ($_MOCK_SWITCH) {
-        return $_TYPE_GENERATOR->getTypeOfBeersArray();
-    } else {
-        // TODO: Implement DB getProducts
-    }
-}
 
 function filterBeers($type, $brand){
   global $_MOCK_SWITCH;

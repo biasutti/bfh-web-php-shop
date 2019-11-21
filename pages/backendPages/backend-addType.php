@@ -12,8 +12,8 @@
   }
 
   if (count($_POST) > 0 && count($errArray) == 0 && isset($_POST['addTypeButton'])) {
-
-    addTypeOfBeers($_POST['typeName']);
+    //TODO insert sql implement
+    //addTypeOfBeers($_POST['typeName']);
     echo "<pre>";
     print_r($_POST);
     echo "</pre>";
