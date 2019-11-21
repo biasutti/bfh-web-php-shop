@@ -34,13 +34,12 @@ require_once("lib/db-helper.php");
             </tr>
         <?php
         $total = 0;
-        $allProducts = new Products(getAllProducts());
         foreach ($cart->getItems() as $item => $num) {
-            $product = $allProducts->getProduct($item);
+            $product = Product::getProductById($item);
             if ($product == null) continue;
             $price = $product->price;
             $total += $price * $num;
-            echo "<tr><td>{$product->name}</td><td>$num</td><td>{$price}</td><td>".($price*$num)."</td></tr>";
+            echo "<tr><td>{$product->getName()}</td><td>$num</td><td>{$price}</td><td>".($price*$num)."</td></tr>";
         }
         echo "<tr><td rowspan=\"3\"></td><td>$total</td></tr>";
         ?>
@@ -51,12 +50,10 @@ require_once("lib/db-helper.php");
     ?>
 </div>
 <div class="flex-item-1 flex-size-1">
-    <!--
     <h4>Add an Item:</h4>
     <form action="<?php get_pagePath('checkout') ?>" method="post">
         <label>Article-Id</label><input name="item[id]"><br>
         <label>Number</label><input name="item[num]" value="1"><br>
         <input type="submit" value="Add">
     </form>
-    -->
 </div>

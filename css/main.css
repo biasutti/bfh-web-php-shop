@@ -105,15 +105,25 @@ label {
     color: white;
 }
 
-.error-message p {
+.error-message p, .success-message p {
     margin-left: 20px;
     font-weight: bold;
 }
 
-.error-message p span {
+.error-message p span, .success-message p span {
     float: right;
     margin-right: 10px;
     font-size: 2.5em;
+}
+
+.success-message {
+    background-color: green;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: solid black 2px;
+    margin: 10px;
+    color: white;
 }
 
 .content {

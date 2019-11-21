@@ -166,6 +166,15 @@ function loadLang() {
     return $language;
 }
 
+function clear($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    $data = htmlentities($data);
+    return $data;
+}
+
 $_ENV;
 loadEnv();
 $language = loadLang();

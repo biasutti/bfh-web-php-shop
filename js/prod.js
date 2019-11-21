@@ -1,9 +1,7 @@
 var itemSelected;
 $(function () {
 
-    $(document).ready(function() {
-        SetCookie('eucookie','eucookie',365*10);
-    });
+    SetCookie('eucookie','eucookie',365*10);
 
     $(".buy").click(function () {
         alert($(this).attr("name"));
@@ -58,6 +56,10 @@ $(function () {
 
     $(".error-message span").click(function () {
         $(".error-message").hide();
+    })
+
+    $(".success-message span").click(function () {
+        $(".success-message").hide();
     })
 
 });

@@ -4,7 +4,6 @@ require_once("autoloader.php");
 
 $_MOCK_SWITCH = true;
 
-$_PRODUCTS_GENERATOR = new ProductsGenerator();
 $_USER_GENERATOR = new UserGenerator();
 $_BRAND_GENERATOR = new BrandGenerator();
 $_TYPE_GENERATOR = new TypeGenerator();
@@ -27,18 +26,6 @@ function checkPassword($uid, $password)
         return true;
     } else {
         // TODO: Implement DB checkPassword
-    }
-}
-
-function getAllProducts()
-{
-    global $_MOCK_SWITCH;
-    global $_PRODUCTS_GENERATOR;
-
-    if ($_MOCK_SWITCH) {
-        return $_PRODUCTS_GENERATOR->getProducts();
-    } else {
-        // TODO: Implement DB getProducts
     }
 }
 
