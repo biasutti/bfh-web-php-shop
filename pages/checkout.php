@@ -49,6 +49,7 @@ require_once("lib/db-helper.php");
     }
     ?>
 </div>
+<!--
 <div class="flex-item-1 flex-size-1">
     <h4>Add an Item:</h4>
     <form action="<?php get_pagePath('checkout') ?>" method="post">
@@ -57,3 +58,4 @@ require_once("lib/db-helper.php");
         <input type="submit" value="Add">
     </form>
 </div>
+-->

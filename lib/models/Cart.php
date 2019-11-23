@@ -1,6 +1,5 @@
 <?php
 
-
 class Cart {
     // Holds the items: id => num
     private $items = [];
@@ -40,5 +39,11 @@ class Cart {
             }
             echo "</table></div>";
         }
+    }
+
+    public function renderPreview(){      
+      foreach ($this->items as $item => $num) {
+          echo "<tr><td>$item</td><td>$num</td></tr>";
+      }
     }
 }

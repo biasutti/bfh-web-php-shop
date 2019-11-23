@@ -5,7 +5,8 @@
     $dirs = [
     './',
     './lib/generators/',
-    './lib/models/'
+    './lib/models/',
+    './lib/'
     ];
     // Try to load class
   foreach($dirs as $dir) {

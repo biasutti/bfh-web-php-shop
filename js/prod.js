@@ -1,10 +1,25 @@
 var itemSelected;
+var buyClicked;
 $(function () {
 
     SetCookie('eucookie','eucookie',365*10);
 
-    $(".buy").click(function () {
-        alert($(this).attr("name"));
+    $(".buy").click(function (e) {
+      buyClicked = true;
+      var prodId = $(this).attr("name");
+      $.ajax({
+          url: "cartPreview.php",
+          type : "POST",
+          data : {prodId : prodId},
+          success: function(response) {
+							//alert("Hello World " + response);
+              $(".cartPreview").fadeIn(500).empty().append(response);
+              //$(".cartPreview").css("position","fixed");
+          },
+          error : function() {
+							console.log("wrong data transmited, could not send data over ajax");
+					}
+      });
     });
 
     $(".filterMenu").click(function () {
@@ -16,23 +31,28 @@ $(function () {
         $("nav ul").slideToggle(500);
     });
 
-    $(".products").click(function () {
-        //if there is any previous selected show it again
-        if (typeof ($itemSelected) != "undefined" && $itemSelected !== null) {
-            $itemSelected.show();
-        }
-        //put the selected item into a variable
-        $itemSelected = $(this);
-        var $prod = $(this).next();
-        if ($prod.is(":hidden")) {
-            $prod.addClass("activatedProduct");
 
-            $(this).parent().removeClass("flex-container");
-            $(".productDetail").hide();
-            $(this).hide();
-            $prod.slideDown(500);
-            //scroll animation
-            $("html, body").animate({scrollTop: $prod.offset().top},750);
+    $(".products").click(function () {
+        if(!buyClicked){
+          //if there is any previous selected show it again
+          if (typeof ($itemSelected) != "undefined" && $itemSelected !== null) {
+              $itemSelected.show();
+          }
+          //put the selected item into a variable
+          $itemSelected = $(this);
+          var $prod = $(this).next();
+          if ($prod.is(":hidden")) {
+              $prod.addClass("activatedProduct");
+
+              $(this).parent().removeClass("flex-container");
+              $(".productDetail").hide();
+              $(this).hide();
+              $prod.slideDown(500);
+              //scroll animation
+              $("html, body").animate({scrollTop: $prod.offset().top},750);
+          }
+        }else{
+          buyClicked = false;
         }
     });
     $(".closeImg").click(function () {
@@ -68,6 +88,8 @@ $(function () {
       var divAfter = $(this).next();
       divAfter.toggle();
     });
+
+
 
 });
 

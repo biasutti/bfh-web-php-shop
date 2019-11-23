@@ -81,3 +81,11 @@ require_once("lib/db-helper.php");
         ?>
     </div>
 </div>
+<div class="flex-item-3 flex-size-1 side-navigation-background">
+  <div class="flex-container-column">
+    <div class="flex-item-1">
+      <div class="cartPreview">
+      </div>
+    </div>
+  </div>
+</div>
