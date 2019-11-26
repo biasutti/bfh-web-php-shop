@@ -28,7 +28,8 @@ $(function () {
 
     $("#burger").click(function () {
         //$("nav ul").css("display", $("nav ul").css("display") == "none" ? "flex" : "none");
-        $("nav ul").slideToggle(500);
+        //$("nav ul").slideToggle(500);
+        $("nav ul").toggleClass('toggled');
     });
 
 

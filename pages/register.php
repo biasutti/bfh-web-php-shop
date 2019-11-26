@@ -20,7 +20,7 @@ if (isset($_SESSION['uid'])) {
             $user = new User($formdata['email'], $login_password, $formdata['firstname'], $formdata['lastname'], "", "1", "1", true);
             $success = $user->saveUser();
             $_POST = array();
-
+            unset($formdata);
         }
 
     }
@@ -62,21 +62,25 @@ if (isset($_SESSION['uid'])) {
                             <input type="text" name="register[lastname]" required/>
                         </div>
                         <div class="flex-item-3 flex-size-1 form-row">
-                            <h3><?php echo t('address') ?></h3>
+                            <label for="birthdate"><?php echo t('birthdate') ?>*</label>
+                            <input type="date" name="register[birthdate]" value="<?php if(isset($formdata['birthdate'])) echo $formdata['birthdate'] ?>" required/>
                         </div>
                         <div class="flex-item-4 flex-size-1 form-row">
+                            <h3><?php echo t('address') ?></h3>
+                        </div>
+                        <div class="flex-item-5 flex-size-1 form-row">
                             <label for="register[street]"><?php echo t('street') ?></label>
                             <input type="text" name="register[street]"/>
                         </div>
-                        <div class="flex-item-5 flex-size-1 form-row">
+                        <div class="flex-item-6 flex-size-1 form-row">
                             <label for="register[plz]"><?php echo t('plz') ?></label>
                             <input type="text" name="register[plz]"/>
                         </div>
-                        <div class="flex-item-6 flex-size-1 form-row">
+                        <div class="flex-item-7 flex-size-1 form-row">
                             <label for="register[city]"><?php echo t('city') ?></label>
                             <input type="text" name="register[city]"/>
                         </div>
-                        <div class="flex-item-7 flex-size-1 form-row-button">
+                        <div class="flex-item-8 flex-size-1 form-row-button">
                             <button class="ui-button ui-corner-all" type="submit"><?php echo t('register'); ?></button>
                         </div>
                     </div>

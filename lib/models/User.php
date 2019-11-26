@@ -40,8 +40,8 @@ class User {
     }
 
     public function saveUser() {
-        $res = DB::doQuery("INSERT INTO users (email, firstname, lastname, password, birthdate, FK_address_Id, FK_bill_adress_Id, isAdmin)" .
-                                "VALUES($this->email, $this->firstname, $this->lastname, $this->passwordHash, $this->birthdate, 1, 1, $this->isAdmin");
+        $res = DB::doQuery("INSERT INTO users (email, firstname, lastname, password, birthdate, FK_address_Id, FK_bill_address_Id, isAdmin) " .
+            "VALUES('$this->email', '$this->firstname', '$this->lastname', '$this->passwordHash', '$this->birthdate', '1', '1', '$this->isAdmin')");
         if($res) {
             return new SuccessMessage(1);
         } else {
