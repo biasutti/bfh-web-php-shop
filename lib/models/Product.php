@@ -48,4 +48,8 @@ class Product {
        VALUES ('$name' , '$nameFR','$typeId','$brandId','$price','$img','$alc','$energy')");
      }
 
+     public static function removeBeer($id){
+       DB::doQuery("DELETE FROM products WHERE products.Id_prod = $id ");
+     }
+
 }

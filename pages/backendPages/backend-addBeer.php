@@ -49,7 +49,7 @@
 
 
   ?>
-      <form class="flex-size-1 flex-container " method="post">
+      <form class="flex-size-1 flex-container displNone" method="post">
         <div class="flex-item-1 flex-size-1 form-row">
           <label for="name"><?php echo t('beerName') ?></label>
           <input type="text" name="beerName" size="15" required>
