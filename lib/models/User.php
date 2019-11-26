@@ -2,17 +2,31 @@
 
 
 class User {
+
     public $uid;
-    public $email;
-    public $passwordHash;
+
+    private $email;
+    private $firstname;
+    private $lastname;
+    private $birthdate;
+    private $passwordHash;
+    private $address;
+    private $bill_address;
+
     public $isAdmin;
 
-    function __construct($uid, $email, $password)
+    function __construct($email, $password, $firstname, $lastname, $birthdate, $FK_address_Id, $FK_bill_address_Id, $isAdmin)
     {
-        $this->uid = $uid;
         $this->email = $email;
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
+        $this->birthdate = $birthdate;
+        $this->address = 1;
+        //$this->address = Address::getAddressById($FK_address_Id);
+        $this->bill_address = 1;
+        //$this->bill_address = Address::getAddressById($FK_bill_address_Id);
         $this->passwordHash = password_hash($password, PASSWORD_DEFAULT);
-        $this->isAdmin = true;
+        $this->isAdmin = $isAdmin;
     }
 
     public static function getUserByEMail($email) {
@@ -25,7 +39,21 @@ class User {
         return null;
     }
 
-    public static function saveUser($user) {
+    public function saveUser() {
+        $res = DB::doQuery("INSERT INTO users (email, firstname, lastname, password, birthdate, FK_address_Id, FK_bill_adress_Id, isAdmin)" .
+                                "VALUES($this->email, $this->firstname, $this->lastname, $this->passwordHash, $this->birthdate, 1, 1, $this->isAdmin");
+        if($res) {
+            return new SuccessMessage(1);
+        } else {
+            echo "ERROR";
+        }
+    }
 
+    /**
+     * @return false|string
+     */
+    public function getPasswordHash()
+    {
+        return $this->passwordHash;
     }
 }

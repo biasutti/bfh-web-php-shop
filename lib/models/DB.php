@@ -31,7 +31,11 @@ class DB extends mysqli
 
     static public function doQuery($sql)
     {
-        // May do some exception handling right here
-        return self::getInstance()->query($sql);
+        $res = self::getInstance()->query($sql);
+        if($res) {
+            return $res;
+        } else {
+            echo self::getInstance()->error;
+        }
     }
 }

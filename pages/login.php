@@ -5,7 +5,7 @@ require_once("lib/models/ErrorMessage.php");
 if (!empty($_POST)) {
     if (isset($_POST['email']) && isset($_POST['password'])) {
         $user = getUserByEMail($_POST['email']);
-        if (password_verify($_POST['password'], $user->passwordHash)) {
+        if (password_verify($_POST['password'], $user->getPasswordHash())) {
             $_SESSION['uid'] = $user->uid;
             $_SESSION['isAdmin'] = $user->isAdmin;
             header("Location: index.php");

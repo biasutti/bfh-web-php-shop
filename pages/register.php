@@ -17,8 +17,10 @@ if (isset($_SESSION['uid'])) {
         }
 
         if(!isset($error)) {
+            $user = new User($formdata['email'], $login_password, $formdata['firstname'], $formdata['lastname'], "", "1", "1", true);
+            $success = $user->saveUser();
             $_POST = array();
-            $success = new SuccessMessage(1);
+
         }
 
     }
