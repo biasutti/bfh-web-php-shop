@@ -12,9 +12,13 @@ $(function () {
           type : "POST",
           data : {prodId : prodId},
           success: function(response) {
-							//alert("Hello World " + response);
+              //show left menu when clicked on buy
+              cartDiv = $(".cartPreview").parent().parent().parent();
+              cartDiv.fadeIn(500);
+              //$(".cartPreview").parent().parent().css("display","table").css("position","fixed");
+              //$(".cartPreview").parent().parent().;
+              //$(".cartPreview").parent().parent().css('top', $(this).scrollTop());
               $(".cartPreview").fadeIn(500).empty().append(response);
-              //$(".cartPreview").css("position","fixed");
           },
           error : function() {
 							console.log("wrong data transmited, could not send data over ajax");
@@ -89,6 +93,27 @@ $(function () {
       divAfter.toggle();
     });
 
+
+    /*
+      product cart scroll down with page inspired by
+      https://css-tricks.com/examples/ScrollingSidebar/
+    */
+    //TODO Disable on phone navigation
+    var $sidebar   = $(".cartPreview"),
+        $window    = $(window),
+        offset     = $sidebar.offset();
+
+    $window.scroll(function() {
+        if ($window.scrollTop() > offset.top) {
+            $sidebar.stop().css({
+                marginTop: $window.scrollTop() - offset.top
+            },0);
+        } else {
+            $sidebar.stop().animate({
+                marginTop: 0
+            });
+        }
+    });
 
 
 });

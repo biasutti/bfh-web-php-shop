@@ -14,9 +14,14 @@
           <?php
             foreach(Brand::renderBrands() as $brand){
               echo "<tr><td>".$brand->Id_brand."</td>
-              <td>".$brand->name."</td>".
-              "<td><button type='submit' name='rmBrandId' value='$brand->Id_brand' src='./img/ui/close.png'>".
-              "<img src='./img/ui/close.png' width=20px/></button></td></tr>";
+              <td>".$brand->name."</td><td>";
+              if(Brand::isBrandLinked($brand->Id_brand)){
+                echo "Linked";
+              }else{
+                echo "<button type='submit' name='rmBrandId' value='$brand->Id_brand' src='./img/ui/close.png'>".
+                "<img src='./img/ui/close.png' width=20px/></button>";
+              }
+              "<td></tr>";
             }
             ?>
         </tr>

@@ -29,8 +29,8 @@
   }
 
   if (count($_POST) > 0 && count($errArray) == 0 && isset($_POST['addBeerButton'])) {
-      /*Product::insertBeer($_POST['beerName'],$_POST['beerNameFR'],$_POST['typeOfBeer'],$_POST['brand'],
-      $_POST['price'],$_POST['imgSrc'],$_POST['alcPercent'],$_POST['energy']); */
+      Product::insertBeer($_POST['beerName'],$_POST['beerNameFR'],$_POST['typeOfBeer'],$_POST['brand'],
+      $_POST['price'],$_POST['imgSrc'],$_POST['alcPercent'],$_POST['energy']);
       echo "<pre>";
       print_r($_POST);
       //print_r(Product::getAllProducts());
@@ -87,8 +87,8 @@
         </div>
         <div class="flex-item-5 flex-size-1 form-row">
           <label for="imgSrc"><?php echo t('imgSrc') ?></label>
-          <!-- <input type="text"  name="imgSrc" required> -->
-          <input type="file" name="imgSrc" accept="image/x-png">
+          <input type="text"  name="imgSrc" required>
+          <!-- <input type="file" name="imgSrc" accept="image/x-png"> -->
           <mark><?php echo $errImgSrc;?></mark>
         </div>
         <div class="flex-item-6 flex-size-1 form-row">

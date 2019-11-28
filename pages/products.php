@@ -1,7 +1,7 @@
 <?php
 require_once("lib/db-helper.php");
 ?>
-<div class="flex-item-1 flex-size-1 side-navigation-background">
+<div class="flex-item-1 side-navigation-background">
     <div class="flex-container-column">
         <div class="flex-item-1">
             <a href="#" id="dropDownArrow"><img alt="drop down arrow button" src="./img/ui/arrow-left.png"/></a>
@@ -57,7 +57,7 @@ require_once("lib/db-helper.php");
             if (filterBeers(Type::getTypeById($prod->FK_type_Id)->name, Brand::getBrandById($prod->FK_brand_Id)->name)) {
                 echo '<div class="products" style="order:' . $order . ';"><ul class="prodList">' .
                     '<li><img class="prodImg" height="140px" src="./img/products/' . $prod->imgSrc . '" alt="product image"></li>' .
-                    '<li><b>' . $prod->name_de . '</b></li>' .
+                    '<li><b>' . $prod->getName() . '</b></li>' .
                     '<li>' . $prod->price . ' CHF</li>' .
                     '<li><button type="button" class="buy" name="' . $prod->Id_prod . '">' . t('productBuy') . '</button></li>' .
                     "</ul></div>";
@@ -67,7 +67,7 @@ require_once("lib/db-helper.php");
                 echo '<div class="productDetail flex-size-1" style="order:' . $order . ';""><ul class="prodList">' .
                     '<img class="closeImg" height="30px" src="./img/ui/close.png" alt="product image">' .
                     '<li><img class="prodImg" height="140px" src="./img/products/' . $prod->imgSrc . '" alt="product image"></li>' .
-                    '<li><b>' . $prod->name_de . '</b></li>' .
+                    '<li><b>' . $prod->getName() . '</b></li>' .
                     '<li>' . Type::getTypeById($prod->FK_type_Id)->name  . '</li>' .
                     '<li>' . Brand::getBrandById($prod->FK_brand_Id)->name . '</li>' .
                     '<li>' . $prod->alcPercent . '%</li>' .
@@ -81,7 +81,7 @@ require_once("lib/db-helper.php");
         ?>
     </div>
 </div>
-<div class="flex-item-3 flex-size-1 side-navigation-background">
+<div class="flex-item-3 side-navigation-background <?php echo isset($_SESSION["cart"])?"":"displNone"; ?>">
   <div class="flex-container-column">
     <div class="flex-item-1">
       <div class="cartPreview">

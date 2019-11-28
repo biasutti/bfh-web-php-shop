@@ -14,9 +14,14 @@
           <?php
             foreach(Type::renderTypes() as $type){
               echo "<tr><td>".$type->Id_type."</td>
-              <td>".$type->name."</td>".
-              "<td><button type='submit' name='rmTypeId' value='$type->Id_type' src='./img/ui/close.png'>".
-              "<img src='./img/ui/close.png' width=20px/></button></td></tr>";
+              <td>".$type->name."</td><td>";
+              if(Type::isTypeLinked($type->Id_type)){
+                echo "Linked";
+              }else{
+                echo "<button type='submit' name='rmTypeId' value='$type->Id_type' src='./img/ui/close.png'>".
+                "<img src='./img/ui/close.png' width=20px/></button>";
+              }
+              echo "</td></tr>";
             }
             ?>
         </tr>

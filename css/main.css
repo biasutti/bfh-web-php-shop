@@ -201,6 +201,10 @@ ul.side-navigation {
     padding: 0;
 }
 
+.cartPreview{
+  float: right;
+}
+
 #dropDownArrow{
   margin-top: 5px;
   display:none;
