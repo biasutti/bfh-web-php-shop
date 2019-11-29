@@ -15,7 +15,7 @@ class User {
 
     public $isAdmin;
 
-    function __construct($email, $password, $firstname, $lastname, $birthdate, $FK_address_Id, $FK_bill_address_Id, $isAdmin)
+    function __construct($email, $password, $firstname, $lastname, $birthdate, $FK_address_Id = null, $FK_bill_address_Id = null, $isAdmin = false)
     {
         $this->email = $email;
         $this->firstname = $firstname;

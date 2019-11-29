@@ -7,25 +7,41 @@ if (isset($_SESSION['uid'])) {
 
     if (!empty($_POST)) {
 
-        $formdata = $_POST['register'];
+        $errorFields = array();
+        $clean_formdata = array();
 
-        $login_password = $_POST['password'];
-        $login_retype_password = $_POST['passwordretype'];
-
-        if($login_password != $login_retype_password) {
-            $error = new ErrorMessage(11);
+        foreach ($_POST['register'] as $property => $value) {
+            $clean_formdata[$property] = clear($value);
         }
 
-        if(!isset($error)) {
-            $user = new User($formdata['email'], $login_password, $formdata['firstname'], $formdata['lastname'], "", "1", "1", true);
+        if (!isset($clean_formdata['email']) || !filter_var($clean_formdata['email'], FILTER_VALIDATE_EMAIL)) {
+            $errorFields['email'] = true;
+        }
+
+        if (!isset($clean_formdata['password']) || $clean_formdata['password'] != $clean_formdata['passwordretype']) {
+            $errorFields['password'] = true;
+        }
+
+        if (!isset($clean_formdata['firstname']) || !validLenght($clean_formdata['firstname'])) {
+            $errorFields['firstname'] = true;
+        }
+
+        if (!isset($clean_formdata['lastname']) || !validLenght($clean_formdata['lastname'])) {
+            $errorFields['lastname'] = true;
+        }
+
+        if (empty($errorFields)) {
+            $user = new User($clean_formdata['email'], $clean_formdata['password'], $clean_formdata['firstname'], $clean_formdata['lastname'], $clean_formdata['birthdate']);
             $success = $user->saveUser();
             $_POST = array();
-            unset($formdata);
+            unset($clean_formdata);
+        } else {
+            $error = new ErrorMessage(11); // Bitte ueberpruefen Sie Ihres Eingaben.
         }
 
     }
 
-    if(empty($_POST) || isset($error)) {
+    if (empty($_POST) || isset($error)) {
         ?>
         <div class="content flex-item flex-size-1">
             <form class="flex-size-1 flex-container" id="register" name="register" method="post">
@@ -36,15 +52,28 @@ if (isset($_SESSION['uid'])) {
                         </div>
                         <div class="flex-item-1 flex-size-1 form-row">
                             <label for="register[email]"><?php echo t('email') ?>*</label>
-                            <input type="text" name="register[email]" value="<?php if(isset($formdata['email'])) echo $formdata['email'] ?>" required/>
+                            <input type="text" name="register[email]"
+                                   value="<?php if (isset($clean_formdata['email'])) echo $clean_formdata['email'] ?>"
+                                   max="50"
+                                   required/>
+                            <?php
+                            if(isset($errorFields['email'])) {
+                                echo "<mark>". t('FormEmailError') . "</mark>";
+                            }
+                            ?>
                         </div>
                         <div class="flex-item-2 flex-size-1 form-row">
                             <label for="password"><?php echo t('password') ?>*</label>
-                            <input type="password" name="password" required/>
+                            <input type="password" name="register[password]" required/>
+                            <?php
+                            if(isset($errorFields['password'])) {
+                                echo "<mark>". t('FormPasswordError') . "</mark>";
+                            }
+                            ?>
                         </div>
                         <div class="flex-item-3 flex-size-1 form-row">
                             <label for="passwordretype"><?php echo t('password_retype') ?>*</label>
-                            <input type="password" name="passwordretype" required/>
+                            <input type="password" name="register[passwordretype]" required/>
                         </div>
                     </div>
                 </div>
@@ -55,15 +84,33 @@ if (isset($_SESSION['uid'])) {
                         </div>
                         <div class="flex-item-1 flex-size-1 form-row">
                             <label for="register[firstname]"><?php echo t('firstName') ?>*</label>
-                            <input type="text" name="register[firstname]" required/>
+                            <input type="text" name="register[firstname]"
+                                   value="<?php if (isset($clean_formdata['firstname'])) echo $clean_formdata['firstname'] ?>"
+                                   max="50"
+                                   required/>
+                            <?php
+                            if(isset($errorFields['firstname'])) {
+                                echo "<mark>". t('FormFirstnameError') . "</mark>";
+                            }
+                            ?>
                         </div>
                         <div class="flex-item-2 flex-size-1 form-row">
                             <label for="register[lastname]"><?php echo t('lastName') ?>*</label>
-                            <input type="text" name="register[lastname]" required/>
+                            <input type="text" name="register[lastname]"
+                                   value="<?php if (isset($clean_formdata['lastname'])) echo $clean_formdata['lastname'] ?>"
+                                   max="50"
+                                   required/>
+                            <?php
+                            if(isset($errorFields['lastname'])) {
+                                echo "<mark>". t('FormLastnameError') . "</mark>";
+                            }
+                            ?>
                         </div>
                         <div class="flex-item-3 flex-size-1 form-row">
                             <label for="birthdate"><?php echo t('birthdate') ?>*</label>
-                            <input type="date" name="register[birthdate]" value="<?php if(isset($formdata['birthdate'])) echo $formdata['birthdate'] ?>" required/>
+                            <input type="date" name="register[birthdate]"
+                                   value="<?php if (isset($clean_formdata['birthdate'])) echo $clean_formdata['birthdate'] ?>"
+                                   required/>
                         </div>
                         <div class="flex-item-4 flex-size-1 form-row">
                             <h3><?php echo t('address') ?></h3>
@@ -81,7 +128,8 @@ if (isset($_SESSION['uid'])) {
                             <input type="text" name="register[city]"/>
                         </div>
                         <div class="flex-item-8 flex-size-1 form-row-button">
-                            <button class="ui-button ui-corner-all" type="submit"><?php echo t('register'); ?></button>
+                            <button class="ui-button ui-corner-all"
+                                    type="submit"><?php echo t('register'); ?></button>
                         </div>
                     </div>
                 </div>

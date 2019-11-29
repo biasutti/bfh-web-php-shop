@@ -46,8 +46,7 @@ require_once("lib/db-helper.php");
 //print_r(BrandDB::renderBrands());
 //echo TypeDB::getTypeById(2)->name;
 //echo "</pre>";
-
- ?>
+?>
 <div class="flex-item-2 flex-size-5">
     <div class="flex-container flex-wrap" id="productContainer">
         <?php
@@ -62,8 +61,6 @@ require_once("lib/db-helper.php");
                     '<li><button type="button" class="buy" name="' . $prod->Id_prod . '">' . t('productBuy') . '</button></li>' .
                     "</ul></div>";
                 $order++;
-
-
                 echo '<div class="productDetail flex-size-1" style="order:' . $order . ';""><ul class="prodList">' .
                     '<img class="closeImg" height="30px" src="./img/ui/close.png" alt="product image">' .
                     '<li><img class="prodImg" height="140px" src="./img/products/' . $prod->imgSrc . '" alt="product image"></li>' .
@@ -82,10 +79,10 @@ require_once("lib/db-helper.php");
     </div>
 </div>
 <div class="flex-item-3 side-navigation-background <?php echo isset($_SESSION["cart"])?"":"displNone"; ?>">
-  <div class="flex-container-column">
-    <div class="flex-item-1">
-      <div class="cartPreview">
-      </div>
+    <div class="flex-container-column">
+        <div class="flex-item-1">
+            <div class="cartPreview">
+            </div>
+        </div>
     </div>
-  </div>
 </div>

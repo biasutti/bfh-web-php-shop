@@ -175,6 +175,11 @@ function clear($data)
     return $data;
 }
 
+function validLenght($value, $lenght = 50) {
+    return strlen($value < $lenght);
+}
+
+
 $_ENV;
 loadEnv();
 $language = loadLang();
