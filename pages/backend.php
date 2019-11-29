@@ -9,7 +9,7 @@
     ?>
   </div>
   <div class="content flex-item-2 flex-size-1">
-    <a href="#" class="onClickBackend"><h2>Remove Type</h2></a>
+    <a href="#" class="onClickBackend"><h2><?php echo t("removeType")?></h2></a>
     <?php
       include("./pages/backendPages/backend-rmType.php");
     ?>
@@ -21,24 +21,25 @@
     ?>
   </div>
   <div class="content flex-item-4 flex-size-1">
-    <a href="#" class="onClickBackend"><h2>Remove Brand</h2></a>
+    <a href="#" class="onClickBackend"><h2><?php echo t("removeBrand")?></h2></a>
     <?php
       include("./pages/backendPages/backend-rmBrand.php");
     ?>
   </div>
   <div class="content flex-item-5 flex-size-1">
-    <a href="#" class="onClickBackend"><h2>Remove Product</h2></a>
-
-    <?php
-      include("./pages/backendPages/backend-rmProduct.php");
-    ?>
-  </div>
-  </div>
-  <div class="content flex-item-6 flex-size-1">
     <a href="#" class="onClickBackend"><h2><?php echo t("addBeer")?></h2></a>
 
     <?php
       include("./pages/backendPages/backend-addBeer.php");
     ?>
   </div>
+  <div class="content flex-item-6 flex-size-1">
+    <a href="#" class="onClickBackend"><h2><?php echo t("removeProduct")?></h2></a>
+
+    <?php
+      include("./pages/backendPages/backend-rmProduct.php");
+    ?>
+  </div>
+  </div>
+
 </div>

@@ -2,7 +2,9 @@
 require_once("lib/db-helper.php");
 
 if (!isset($_SESSION['uid'])) {
-    echo "<p>".t('accNeeded')."</p>";
+    echo "<p>".t('accNeeded')."</p><br><p>";
+    render_basicLink(new Page("login"));
+    echo "</p>";
 } else {
 
     // Form validation

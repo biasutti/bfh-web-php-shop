@@ -36,4 +36,10 @@ class Type {
     DB::doQuery("DELETE FROM types WHERE types.Id_type = $id ");
   }
 
+  static public function isTypeLinked($id){
+    $res = DB::doQuery("SELECT * FROM types RIGHT JOIN products ON types.Id_type = products.FK_type_Id WHERE types.Id_type = $id");
+    //return false if no rows affected on the selcet
+    return $res->num_rows != 0;
+  }
+
 }

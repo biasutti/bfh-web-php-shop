@@ -36,4 +36,10 @@ class Brand {
     DB::doQuery("DELETE FROM brands WHERE brands.Id_brand = $id ");
   }
 
+  static public function isBrandLinked($id){
+    $res = DB::doQuery("SELECT * FROM brands RIGHT JOIN products ON brands.Id_brand = products.FK_brand_Id WHERE brands.Id_brand = $id ");
+    //return false if no rows affected on the selcet
+    return $res->num_rows != 0;
+  }
+
 }
