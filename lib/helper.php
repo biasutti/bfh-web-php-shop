@@ -80,9 +80,9 @@ function render_generic_navigation($pages)
     foreach ($pages as $page) {
         $url = $urlBase;
         $url .= get_pagePath($page->getBezeichnung());
-        $class = "";
 
-        if ($page->getBezeichnung() == 'login') {
+        $class = "";
+        if ($page->isOnlyMobile()) {
             $class = 'navigation-mobile';
         }
 

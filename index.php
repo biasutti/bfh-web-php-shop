@@ -81,7 +81,7 @@ if(isset($_GET['login'])) {
                     new Page('home'),
                     new Page('products'),
                     new Page('account'),
-                    new Page('login'),
+                    new Page('login', false, true),
                     new Page('backend', true),
                     new Page('checkout')
             );

@@ -1,1 +1,0 @@
-<p><?php echo "TODO: Implement publishing details" ?> </p>
