@@ -281,9 +281,9 @@ footer {
         display: block;
     }
 
-    .navigation {
+    /*.navigation {
         display: none;
-    }
+    }*/
 
     .navigation, main .content-container {
         -webkit-flex-flow: column wrap;
@@ -300,6 +300,11 @@ footer {
 
     .navigation li.navigation-mobile {
         display: block;
+    }
+
+    .toggled {
+        overflow: hidden;
+        height: 0;
     }
 
     #login div .flex-item {

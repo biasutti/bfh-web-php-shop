@@ -1,14 +1,14 @@
 <?php
-require_once("lib/db-helper.php");
-require_once("lib/models/ErrorMessage.php");
 
 if (!empty($_POST)) {
     if (isset($_POST['email']) && isset($_POST['password'])) {
-        $user = getUserByEMail($_POST['email']);
-        if (password_verify($_POST['password'], $user->passwordHash)) {
+        $email = clear($_POST['email']);
+        $password = clear($_POST['password']);
+        $user = User::getUserByEMail($_POST['email']);
+        if (password_verify($password , $user->getPasswordHash())) {
             $_SESSION['uid'] = $user->uid;
             $_SESSION['isAdmin'] = $user->isAdmin;
-            header("Location: index.php");
+            header("Location: index.php?login=true");
         } else {
             $error = new ErrorMessage(1);
         }

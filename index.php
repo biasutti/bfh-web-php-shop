@@ -3,6 +3,10 @@ require_once("./autoloader.php");
 require_once("./lib/helper.php");
 require_once("./lib/globals.php");
 session_start();
+
+if(isset($_GET['login'])) {
+    $success = new SuccessMessage(2);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +81,7 @@ session_start();
                     new Page('home'),
                     new Page('products'),
                     new Page('account'),
-                    new Page('login'),
+                    new Page('login', false, true),
                     new Page('backend', true),
                     new Page('checkout')
             );

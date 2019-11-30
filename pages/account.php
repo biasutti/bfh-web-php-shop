@@ -7,6 +7,8 @@ if (!isset($_SESSION['uid'])) {
     echo "</p>";
 } else {
 
+    $user = User::getUserByUid($_SESSION['uid']);
+
     // Form validation
     $errArray = array(); // An array holding the form errArray
     // Validate form
@@ -49,7 +51,9 @@ if (!isset($_SESSION['uid'])) {
                     </div>
                     <div class="flex-item-1 flex-size-1 form-row">
                         <label for="email">Email</label>
-                        <input type="email" name="user[email]" required>
+                        <input type="email" name="user[email]"
+                               value="<?php echo $user->getEmail() ?>"
+                               required>
                         <mark><?php echo $errEmail;?></mark>
                     </div>
                     <div class="flex-item-2 flex-size-1 form-row">
@@ -66,12 +70,16 @@ if (!isset($_SESSION['uid'])) {
                     </div>
                     <div class="flex-item-1 flex-size-1 form-row">
                         <label for="firstname"><?php echo t('firstName') ?></label>
-                        <input type="text" name="user[firstname]" required/>
+                        <input type="text" name="user[firstname]"
+                               value="<?php echo $user->getFirstname() ?>"
+                               required/>
                         <mark><?php echo $errFirstName;?></mark>
                     </div>
                     <div class="flex-item-2 flex-size-1 form-row">
                         <label for="lastname"><?php echo t('lastName') ?></label>
-                        <input type="text" name="user[lastname]" required/>
+                        <input type="text" name="user[lastname]"
+                               value="<?php echo $user->getLastname() ?>"
+                               required/>
                         <mark><?php echo $errLastName;?></mark>
                     </div>
                     <div class="flex-item-3 flex-size-1 form-row">

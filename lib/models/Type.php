@@ -5,7 +5,7 @@ class Type {
   public $Id_type;
   public $name;
 
-  static public function renderTypes() {
+  static public function getAllTypes() {
     $types = array();
     $res = DB::doQuery("SELECT * FROM types");
     if ($res) {

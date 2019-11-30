@@ -80,9 +80,9 @@ function render_generic_navigation($pages)
     foreach ($pages as $page) {
         $url = $urlBase;
         $url .= get_pagePath($page->getBezeichnung());
-        $class = "";
 
-        if ($page->getBezeichnung() == 'login') {
+        $class = "";
+        if ($page->isOnlyMobile()) {
             $class = 'navigation-mobile';
         }
 
@@ -174,6 +174,17 @@ function clear($data)
     $data = htmlentities($data);
     return $data;
 }
+
+function validLenght($value, $lenght = 50) {
+    return strlen($value < $lenght);
+}
+
+function validDate($value) {
+    $form_date = new DateTime($value);
+    $current_date = new DateTime();
+    return $form_date < $current_date;
+}
+
 
 $_ENV;
 loadEnv();
