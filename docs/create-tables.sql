@@ -33,7 +33,7 @@ CREATE TABLE users
     email               varchar(50)     DEFAULT NULL,
     firstname           varchar(50)     DEFAULT NULL,
     lastname            varchar(50)     DEFAULT NULL,
-    password            CHAR(32)        DEFAULT NULL,
+    password            varchar(255)    DEFAULT NULL,
     birthdate           DATE            DEFAULT NULL,
     FK_address_Id       int(11)         NOT NULL,
     FK_bill_address_Id  int(11)         NOT NULL,

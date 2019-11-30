@@ -12,6 +12,7 @@ if (isset($_SESSION['uid'])) {
 
         foreach ($_POST['register'] as $property => $value) {
             $clean_formdata[$property] = clear($value);
+            echo $property;
         }
 
         if (!isset($clean_formdata['email']) || !filter_var($clean_formdata['email'], FILTER_VALIDATE_EMAIL)) {
@@ -30,9 +31,13 @@ if (isset($_SESSION['uid'])) {
             $errorFields['lastname'] = true;
         }
 
+        if (!isset($clean_formdata['birthdate']) || !validDate($clean_formdata['birthdate'])) {
+            $errorFields['birthdate'] = true;
+        }
+
         if (empty($errorFields)) {
             $user = new User($clean_formdata['email'], $clean_formdata['password'], $clean_formdata['firstname'], $clean_formdata['lastname'], $clean_formdata['birthdate']);
-            $success = $user->saveUser();
+            $success = $user->createUser();
             $_POST = array();
             unset($clean_formdata);
         } else {
@@ -108,11 +113,16 @@ if (isset($_SESSION['uid'])) {
                         </div>
                         <div class="flex-item-3 flex-size-1 form-row">
                             <label for="birthdate"><?php echo t('birthdate') ?>*</label>
-                            <input type="date" name="register[birthdate]"
+                            <input type="date" name="register[birthdate]" id="register-date"
                                    value="<?php if (isset($clean_formdata['birthdate'])) echo $clean_formdata['birthdate'] ?>"
                                    required/>
+                            <?php
+                            if(isset($errorFields['birthdate'])) {
+                                echo "<mark>". t('FormBirtdateError') . "</mark>";
+                            }
+                            ?>
                         </div>
-                        <div class="flex-item-4 flex-size-1 form-row">
+                        <!--<div class="flex-item-4 flex-size-1 form-row">
                             <h3><?php echo t('address') ?></h3>
                         </div>
                         <div class="flex-item-5 flex-size-1 form-row">
@@ -126,7 +136,7 @@ if (isset($_SESSION['uid'])) {
                         <div class="flex-item-7 flex-size-1 form-row">
                             <label for="register[city]"><?php echo t('city') ?></label>
                             <input type="text" name="register[city]"/>
-                        </div>
+                        </div>-->
                         <div class="flex-item-8 flex-size-1 form-row-button">
                             <button class="ui-button ui-corner-all"
                                     type="submit"><?php echo t('register'); ?></button>

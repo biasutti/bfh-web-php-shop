@@ -64,7 +64,7 @@
           <label for="type"><?php echo t('typeOfBeer') ?></label>
           <select name="typeOfBeer">
             <?php
-            foreach (Type::renderTypes() as $type) {
+            foreach (Type::getAllTypes() as $type) {
               echo '<option value="'.$type->Id_type.'">'.$type->name.'</option>';
             }
             ?>

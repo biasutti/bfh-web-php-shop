@@ -48,3 +48,4 @@ brandName=Marken Name
 beerNameFR=Bier Name [FR]
 login=Login
 error_11=Bitte pruefen Sie Ihre Eingaben.
+success_2=Sie haben sich erfolgreich eingeloggt.

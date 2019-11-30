@@ -179,6 +179,12 @@ function validLenght($value, $lenght = 50) {
     return strlen($value < $lenght);
 }
 
+function validDate($value) {
+    $form_date = new DateTime($value);
+    $current_date = new DateTime();
+    return $form_date < $current_date;
+}
+
 
 $_ENV;
 loadEnv();

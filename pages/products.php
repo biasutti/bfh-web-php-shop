@@ -12,7 +12,7 @@ require_once("lib/db-helper.php");
                 <?php
                 //filter settings type of beers
                 if (get_param("TypeOfBeer", "") === "") {
-                    foreach (Type::renderTypes() as $types) {
+                    foreach (Type::getAllTypes() as $types) {
                         echo '<a href="' . renderProductFilterType($types->name) . '" class="typeFilter" value="' . $types->name . '"><li>' . $types->name . "</li></a>";
                     }
                 } else {

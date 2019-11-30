@@ -12,7 +12,7 @@
           <th>name</th>
           <th>remove</th>
           <?php
-            foreach(Type::renderTypes() as $type){
+            foreach(Type::getAllTypes() as $type){
               echo "<tr><td>".$type->Id_type."</td>
               <td>".$type->name."</td><td>";
               if(Type::isTypeLinked($type->Id_type)){

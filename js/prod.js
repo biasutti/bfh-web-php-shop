@@ -94,6 +94,7 @@ $(function () {
       divAfter.toggle();
     });
 
+    setDateToday();
 
     /*
       product cart scroll down with page inspired by
@@ -152,4 +153,21 @@ function SetCookie(c_name, value, expiredays) {
     var exdate = new Date();
     exdate.setDate(exdate.getDate()+expiredays);
     document.cookie=c_name+ "=" +escape(value)+";path=/"+((expiredays==null) ? "" : ";expires="+exdate.toUTCString());
+}
+
+function setDateToday() {
+    var dtToday = new Date();
+
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+
+    var maxDate = year + '-' + month + '-' + day;
+
+    $('#register-date').attr('max', maxDate);
 }
