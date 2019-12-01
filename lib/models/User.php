@@ -42,6 +42,14 @@ class User {
         return null;
     }
 
+    public static function userExistsByEMail($email) {
+        $email = (string)$email;
+        $res = DB::doQuery("SELECT * FROM users WHERE email = '$email'");
+        if($res) {
+            return $res->num_rows > 0;
+        }
+    }
+
     public static function getUserByUid($uid) {
         $uid = (int)$uid;
         $res = DB::doQuery("SELECT * FROM users WHERE Id_user = '$uid'");
