@@ -12,8 +12,7 @@ class User {
     private $password;
     private $address;
     private $bill_address;
-
-    public $isAdmin;
+    private $isAdmin;
 
     function __construct($email, $password, $firstname, $lastname, $birthdate, $FK_address_Id = null, $FK_bill_address_Id = null, $isAdmin = false)
     {
@@ -40,6 +39,14 @@ class User {
             }
         }
         return null;
+    }
+
+    public static function userExistsByEMail($email) {
+        $email = (string)$email;
+        $res = DB::doQuery("SELECT * FROM users WHERE email = '$email'");
+        if($res) {
+            return $res->num_rows > 0;
+        }
     }
 
     public static function getUserByUid($uid) {
@@ -104,6 +111,14 @@ class User {
     public function getBirthdate()
     {
         return $this->birthdate;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->isAdmin;
     }
 
 

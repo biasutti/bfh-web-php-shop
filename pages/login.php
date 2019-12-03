@@ -5,13 +5,14 @@ if (!empty($_POST)) {
         $email = clear($_POST['email']);
         $password = clear($_POST['password']);
         $user = User::getUserByEMail($_POST['email']);
-        if (password_verify($password , $user->getPasswordHash())) {
+        if ($user != null && password_verify($password , $user->getPasswordHash())) {
             $_SESSION['uid'] = $user->uid;
-            $_SESSION['isAdmin'] = $user->isAdmin;
+            $_SESSION['isAdmin'] = $user->isAdmin();
             header("Location: index.php?login=true");
         } else {
             $error = new ErrorMessage(1);
         }
+
     }
 } else if (isset($_SESSION['uid'])) {
     echo "<p>Sie sind bereits eingeloggt</p>";

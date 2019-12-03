@@ -80,10 +80,11 @@ if(isset($_GET['login'])) {
             $pages_navigation = array(
                     new Page('home'),
                     new Page('products'),
-                    new Page('account'),
-                    new Page('login', false, true),
-                    new Page('backend', true),
-                    new Page('checkout')
+                    new Page('account', true),
+                    new Page('login', false, true, true),
+                    new Page('register', false, true),
+                    new Page('backend', true, false, false, true),
+                    new Page('checkout', true)
             );
             render_generic_navigation($pages_navigation);
             ?>
