@@ -1,5 +1,4 @@
 <?php
-require_once("lib/db-helper.php");
 
 if (!isset($_SESSION['uid'])) {
     echo "<p>".t('accNeeded')."</p><br><p>";
@@ -70,19 +69,41 @@ if (!isset($_SESSION['uid'])) {
                     </div>
                     <div class="flex-item-1 flex-size-1 form-row">
                         <label for="firstname"><?php echo t('firstName') ?></label>
-                        <input type="text" name="user[firstname]"
+                        <input type="text" name="account[firstname]"
                                value="<?php echo $user->getFirstname() ?>"
                                required/>
                         <mark><?php echo $errFirstName;?></mark>
                     </div>
                     <div class="flex-item-2 flex-size-1 form-row">
                         <label for="lastname"><?php echo t('lastName') ?></label>
-                        <input type="text" name="user[lastname]"
+                        <input type="text" name="account[lastname]"
                                value="<?php echo $user->getLastname() ?>"
                                required/>
                         <mark><?php echo $errLastName;?></mark>
                     </div>
                     <div class="flex-item-3 flex-size-1 form-row">
+                        <label for="birthdate"><?php echo t('birthdate') ?>*</label>
+                        <input type="date" name="account[birthdate]" id="register-date"
+                               value="<?php echo $user->getBirthdate() ?>"
+                               required/>
+                        <?php
+                        if (isset($errorFields['birthdate'])) {
+                            echo "<mark>" . t('FormBirtdateError') . "</mark>";
+                        }
+                        ?>
+                    </div>
+                    <div class="flex-item-4 flex-size-1 form-row">
+                        <h3><?php echo t('address') ?></h3>
+                    </div>
+                    <div class="flex-item-5 flex-size-1 form-row">
+                        <label for="address"><?php echo t('address') ?></label>
+                        <a href="<?php echo get_pagePath('addAddress'); ?>"><?php echo t('addAddress'); ?></a>
+                    </div>
+                    <div class="flex-item-5 flex-size-1 form-row">
+                        <label for="bill_address"><?php echo t('bill_address') ?></label>
+                        <a href="<?php echo get_pagePath('addBillAddress'); ?>"><?php echo t('addBillAddress'); ?></a>
+                    </div>
+                    <!--<div class="flex-item-3 flex-size-1 form-row">
                         <label for="street"><?php echo t('street') ?></label>
                         <input type="text" name="user[street]" required/>
                         <mark><?php echo $errStreet;?></mark>
@@ -91,7 +112,7 @@ if (!isset($_SESSION['uid'])) {
                         <label for="city"><?php echo t('city') ?></label>
                         <input type="text" name="user[city]" required/>
                         <mark><?php echo $errCity;?></mark>
-                    </div>
+                    </div>-->
                     <div class="flex-item-5 flex-size-1 form-row-button">
                         <button class="ui-button ui-corner-all" type="submit"><?php echo t('save'); ?></button>
                     </div>

@@ -17,6 +17,7 @@ FormCommentError=Schreiben sie doch ein kommentar
 successMail=Das Email wurde erfolgreich gesendet
 productBuy=Kaufen
 accNeeded=Sie müssen eingeloggt sein.
+adminAccNeeded=Für diesen Bereich benötigen Sie Adminrechte.
 allReadyLogged=Sie sind bereits eingeloggt.
 account=Account
 backend=Verwaltung

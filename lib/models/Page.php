@@ -4,14 +4,18 @@
 class Page
 {
     private $bezeichnung;
-    private $onlyMobile;
-    private $protected;
+    private $mobile;
+    private $login;
+    private $logout;
+    private $admin;
 
-    function __construct($bezeichnung, $protected = false, $onlyMobile = false)
+    function __construct($bezeichnung, $onlyLogin = false, $onlyLogout = false, $onlyMobile = false, $onlyAdmin = false)
     {
         $this->bezeichnung = $bezeichnung;
-        $this->onlyMobile = $onlyMobile;
-        $this->protected = $protected;
+        $this->login = $onlyLogin;
+        $this->logout = $onlyLogout;
+        $this->mobile = $onlyMobile;
+        $this->admin = $onlyAdmin;
     }
 
     public function getBezeichnung()
@@ -19,17 +23,37 @@ class Page
         return $this->bezeichnung;
     }
 
-    public function isProtected()
+    public function isLogin()
     {
-        return $this->protected;
+        return $this->login;
     }
 
     /**
      * @return bool
      */
-    public function isOnlyMobile()
+    public function isMobile()
     {
-        return $this->onlyMobile;
+        return $this->mobile;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->admin;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isLogout()
+    {
+        return $this->logout;
+    }
+
+    public function renderNavigationEntry($class, $url) {
+        echo "<li class=\"$class\"><a href=\"$url\">" . t($this->getBezeichnung()) . "</a></li>";
     }
 
 

@@ -14,7 +14,7 @@ function get_cookieValue($name, $default)
         return $_COOKIE[$name];
     else
         setcookie($name, $default);
-        return $default;
+    return $default;
 }
 
 // Adds a GET parameter to the url. The url is passed by reference.
@@ -26,18 +26,19 @@ function add_param(&$url, $name, $value)
 }
 
 // remove the parameter of the url for product filter
-function removeFilterParam($name){
-  $url = get_pagePath('products');
-  if($name === "TypeOfBeer"){
-    if(get_param("Brand","") !== ""){
-        add_param($url,"Brand",get_param("Brand",""));
+function removeFilterParam($name)
+{
+    $url = get_pagePath('products');
+    if ($name === "TypeOfBeer") {
+        if (get_param("Brand", "") !== "") {
+            add_param($url, "Brand", get_param("Brand", ""));
+        }
+    } else if ($name === "Brand") {
+        if (get_param("TypeOfBeer", "") !== "") {
+            add_param($url, "TypeOfBeer", get_param("TypeOfBeer", ""));
+        }
     }
-  }else if($name === "Brand"){
-    if(get_param("TypeOfBeer","") !== ""){
-        add_param($url,"TypeOfBeer",get_param("TypeOfBeer",""));
-    }
-  }
-  return $url;
+    return $url;
 }
 
 function get_pagePath($name)
@@ -48,22 +49,24 @@ function get_pagePath($name)
 }
 
 //renders the link to use for the filter with the brands
-function renderProductFilterBrand($value){
+function renderProductFilterBrand($value)
+{
     $url = get_pagePath('products');
-    add_param($url,"Brand" , $value);
-    if(get_param("TypeOfBeer","") !== ""){
-        add_param($url,"TypeOfBeer",get_param("TypeOfBeer",""));
+    add_param($url, "Brand", $value);
+    if (get_param("TypeOfBeer", "") !== "") {
+        add_param($url, "TypeOfBeer", get_param("TypeOfBeer", ""));
     }
     return $url;
 }
 
 //renders the link to use for the filter with the type of beers
-function renderProductFilterType($value){
+function renderProductFilterType($value)
+{
     $url = get_pagePath('products');
-    if(get_param("Brand","") !== ""){
-        add_param($url,"Brand",get_param("Brand",""));
+    if (get_param("Brand", "") !== "") {
+        add_param($url, "Brand", get_param("Brand", ""));
     }
-    add_param($url,"TypeOfBeer" , $value);
+    add_param($url, "TypeOfBeer", $value);
     return $url;
 }
 
@@ -78,33 +81,44 @@ function render_generic_navigation($pages)
 {
     $urlBase = $_SERVER['PHP_SELF'];
     foreach ($pages as $page) {
+
         $url = $urlBase;
         $url .= get_pagePath($page->getBezeichnung());
-
         $class = "";
-        if ($page->isOnlyMobile()) {
+
+        if ($page->isMobile()) {
             $class = 'navigation-mobile';
         }
-
-        if($page->isProtected()) {
-            if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
-                echo "<li class=\"$class\"><a href=\"$url\">" . t($page->getBezeichnung()) . "</a></li>";
+        if ($page->isLogin()) {
+            if (isset($_SESSION['uid'])) {
+                if ($page->isAdmin()) {
+                    if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
+                        $page->renderNavigationEntry($class, $url);
+                    }
+                } else {
+                    $page->renderNavigationEntry($class, $url);
+                }
+            }
+        } else if($page->isLogout()) {
+            if (!isset($_SESSION['uid'])) {
+                $page->renderNavigationEntry($class, $url);
             }
         } else {
-            echo "<li class=\"$class\"><a href=\"$url\">" . t($page->getBezeichnung()) . "</a></li>";
+            $page->renderNavigationEntry($class, $url);
         }
 
     }
 }
 
 //create a link with a page object
-function render_basicLink($page){
-  $urlBase = $_SERVER['PHP_SELF'];
+function render_basicLink($page)
+{
+    $urlBase = $_SERVER['PHP_SELF'];
     $url = $urlBase;
     $url .= get_pagePath($page->getBezeichnung());
 
-    if($page->isProtected()) {
-        if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
+    if ($page->isAdmin()) {
+        if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
             echo "<a href=\"$url\">" . t($page->getBezeichnung()) . "</a>";
         }
     } else {
@@ -154,13 +168,13 @@ function t($key)
     }
 }
 
-function loadLang() {
+function loadLang()
+{
     $language = "de";
     if (isset($_GET["lang"])) {
         $language = $_GET["lang"];
         setcookie('lang', $language);
-    }
-    else {
+    } else {
         $language = get_cookieValue('lang', 'de');
     }
     return $language;
@@ -175,11 +189,13 @@ function clear($data)
     return $data;
 }
 
-function validLenght($value, $lenght = 50) {
+function validLenght($value, $lenght = 50)
+{
     return strlen($value < $lenght);
 }
 
-function validDate($value) {
+function validDate($value)
+{
     $form_date = new DateTime($value);
     $current_date = new DateTime();
     return $form_date < $current_date;

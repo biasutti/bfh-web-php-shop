@@ -12,8 +12,7 @@ class User {
     private $password;
     private $address;
     private $bill_address;
-
-    public $isAdmin;
+    private $isAdmin;
 
     function __construct($email, $password, $firstname, $lastname, $birthdate, $FK_address_Id = null, $FK_bill_address_Id = null, $isAdmin = false)
     {
@@ -112,6 +111,14 @@ class User {
     public function getBirthdate()
     {
         return $this->birthdate;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->isAdmin;
     }
 
 
