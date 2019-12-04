@@ -108,6 +108,9 @@ if(isset($_GET['login'])) {
         if(isset($success)) {
             echo $success->render();
         }
+        if(isset($message)) {
+            echo $message->render();
+        }
         ?>
     </main>
     <?php

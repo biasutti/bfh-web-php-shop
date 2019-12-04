@@ -6,6 +6,7 @@ if (!empty($_POST)) {
         $password = clear($_POST['password']);
         $user = User::getUserByEMail($_POST['email']);
         if ($user != null && password_verify($password , $user->getPasswordHash())) {
+            $_SESSION['user'] = $user;
             $_SESSION['uid'] = $user->uid;
             $_SESSION['isAdmin'] = $user->isAdmin();
             header("Location: index.php?login=true");
