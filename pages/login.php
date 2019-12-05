@@ -11,7 +11,7 @@ if (!empty($_POST)) {
             $_SESSION['isAdmin'] = $user->isAdmin();
             header("Location: index.php?login=true");
         } else {
-            $error = new ErrorMessage(1);
+            $message = new ErrorMessage(1);
         }
 
     }

@@ -4,9 +4,9 @@ INSERT INTO `products` (`name_de`, `name_fr`, `FK_type_Id`, `FK_brand_Id`, `pric
 ('Braufrisch', 'Braufrisch', 1, 1, '1.70', 'braufrisch.png', 2, 500),
 ('Ice', 'Ice', 1, 1, '2.50', 'ice.png', 6.5, 456),
 ('Dunkel', 'Brune', 3, 1, '3.00', 'dunkel.png', 4.6, 48),
-('Pale Ale', 'Pale Ale', 5, 1, '2.60', 'paleale.png', 5.2, 40),
+('Pale Ale', 'Pale Ale', 4, 1, '2.60', 'paleale.png', 5.2, 40),
 ('Original', 'Original', 1, 2, '2.30', 'heinOriginal.png', 5.2, 39),
-('West Coast Ale', 'West Coast Ale', 5, 3, '4.95', 'blz-west-coast.png', 5.2, 600);
+('West Coast Ale', 'West Coast Ale', 4, 3, '4.95', 'blz-west-coast.png', 5.2, 600);
 
 INSERT INTO `types` (`name`) VALUES
 ('Lager'),
