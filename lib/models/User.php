@@ -1,7 +1,8 @@
 <?php
 
 
-class User {
+class User
+{
 
     public $uid;
 
@@ -28,7 +29,8 @@ class User {
         $this->isAdmin = $isAdmin;
     }
 
-    public static function getUserByEMail($email) {
+    public static function getUserByEMail($email)
+    {
         $email = (string)$email;
         $res = DB::doQuery("SELECT * FROM users WHERE email = '$email'");
         if ($res) {
@@ -41,15 +43,8 @@ class User {
         return null;
     }
 
-    public static function userExistsByEMail($email) {
-        $email = (string)$email;
-        $res = DB::doQuery("SELECT * FROM users WHERE email = '$email'");
-        if($res) {
-            return $res->num_rows > 0;
-        }
-    }
-
-    public static function getUserByUid($uid) {
+    public static function getUserByUid($uid)
+    {
         $uid = (int)$uid;
         $res = DB::doQuery("SELECT * FROM users WHERE Id_user = '$uid'");
         if ($res) {
@@ -62,18 +57,45 @@ class User {
         return null;
     }
 
-    public function createUser() {
-        $password = password_hash($this->password, PASSWORD_DEFAULT);
-        $res = DB::doQuery("INSERT INTO users (email, firstname, lastname, password, birthdate, isAdmin) " .
-            "VALUES('$this->email', '$this->firstname', '$this->lastname', '$password', '$this->birthdate', '$this->isAdmin')");
-        if($res) {
-            return new SuccessMessage(1);
-        } else {
-            echo "ERROR";
+    public static function userExistsByEMail($email)
+    {
+        $email = (string)$email;
+        $res = DB::doQuery("SELECT * FROM users WHERE email = '$email'");
+        if ($res) {
+            return $res->num_rows > 0;
         }
     }
 
-    public function addAddress($address) {
+    public function createUser()
+    {
+        $password = password_hash($this->password, PASSWORD_DEFAULT);
+        $res = DB::doQuery("INSERT INTO users (email, firstname, lastname, password, birthdate, isAdmin) " .
+            "VALUES('$this->email', '$this->firstname', '$this->lastname', '$password', '$this->birthdate', '$this->isAdmin')");
+        if ($res) {
+            return new SuccessMessage(1);
+        } else {
+            return new ErrorMessage(13); // TODO: Check DB error
+        }
+    }
+
+    public function updateUser()
+    {
+        $uid = (int)$this->uid;
+        $res = DB::doQuery("UPDATE users SET " .
+                                "email = '" . $this->email . "'," .
+                                "firstname = '" . $this->firstname . "'," .
+                                "lastname = '" . $this->lastname . "'," .
+                                "birthdate = '" . $this->birthdate . "'" .
+                                "WHERE Id_user = '" . $uid . "';");
+        if($res) {
+            return new SuccessMessage(1);
+        } else {
+            return new ErrorMessage(13); // TODO: Check DB error
+        }
+    }
+
+    public function addAddress($address)
+    {
         $res = DB::doQuery();
     }
 
@@ -85,7 +107,8 @@ class User {
         return $this->password;
     }
 
-    public function getFirstname() {
+    public function getFirstname()
+    {
         return $this->firstname;
     }
 
@@ -119,6 +142,38 @@ class User {
     public function isAdmin()
     {
         return $this->isAdmin;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @param mixed $firstname
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+    }
+
+    /**
+     * @param mixed $lastname
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+    }
+
+    /**
+     * @param mixed $birthdate
+     */
+    public function setBirthdate($birthdate)
+    {
+        $this->birthdate = $birthdate;
     }
 
 

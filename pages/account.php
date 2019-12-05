@@ -1,45 +1,63 @@
 <?php
 
-if (!isset($_SESSION['uid'])) {
-    echo "<p>".t('accNeeded')."</p><br><p>";
+if (!isset($_SESSION['user'])) {
+    echo "<p>" . t('accNeeded') . "</p><br><p>";
     render_basicLink(new Page("login"));
     echo "</p>";
 } else {
+    $user = $_SESSION['user'];
 
-    $user = User::getUserByUid($_SESSION['uid']);
+    if (!empty($_POST)) {
+        $clean_formdata = array();
+        $errorFields = array();
 
-    // Form validation
-    $errArray = array(); // An array holding the form errArray
-    // Validate form
-    if (count($_POST) > 0) {
-        // Validate email
-        if (!isset($_POST['user']['email']) || !filter_var($_POST['user']['email'], FILTER_VALIDATE_EMAIL)) {
-            $errArray['email'] = t('FormEmailError');
+        foreach ($_POST['account'] as $property => $value) {
+            $clean_formdata[$property] = clear($value);
         }
-        // Validate firstname
-        if (!isset($_POST['user']['firstname']) || $_POST['user']['firstname'] == '') {
-            $errArray['firstname'] = t('FormFirstNameError');
+
+        if (isset($clean_formdata['email']) && filter_var($clean_formdata['email'], FILTER_VALIDATE_EMAIL)) {
+            $user->setEmail($clean_formdata['email']);
+        } else {
+            $errorFields['email'] = t('FormEmailError');
         }
-        //validate lastname
-        if (!isset($_POST['user']['lastname']) || $_POST['user']['lastname'] == '') {
-            $errArray['lastname'] = t('FormLastNameError');
+
+        if (isset($clean_formdata['firstname']) && validLenght($clean_formdata['firstname'])) {
+            $user->setFirstname($clean_formdata['firstname']);
+        } else {
+            $errorFields['firstname'] = t('FormFirstNameError');
+        }
+
+        if (isset($clean_formdata['lastname']) && validLenght($clean_formdata['lastname'])) {
+            $user->setLastname($clean_formdata['lastname']);
+        } else {
+            $errorFields['lastname'] = t('FormLastNameError');
+        }
+
+        if (isset($clean_formdata['birthdate']) && validDate($clean_formdata['birthdate'])) {
+            $user->setBirthdate($clean_formdata['birthdate']);
+        } else {
+            $errorFields['birthdate'] = t('FormBirthdateError');
+        }
+
+        /*if (!isset($clean_formdata['street']) || $clean_formdata['street'] == '') {
+            $errorFields['street'] = t('FormStreetError');
         }
         //validate street
-        if (!isset($_POST['user']['street']) || $_POST['user']['street'] == '') {
-            $errArray['street'] = t('FormStreetError');
+        if (!isset($clean_formdata['city']) || $clean_formdata['city'] == '') {
+            $errorFields['city'] = t('FormCityError');
+        }*/
+
+        if (empty($errorFields)) {
+            $message = $user->updateUser();
+            $_SESSION['user'] = $user;
+            $_POST = array();
+            unset($clean_formdata);
+        } else {
+            $message = new ErrorMessage(11); // Bitte ueberpruefen Sie Ihres Eingaben.
         }
-        //validate street
-        if (!isset($_POST['user']['city']) || $_POST['user']['city'] == '') {
-            $errArray['city'] = t('FormCityError');
-        }
+
+
     }
-
-    $errFirstName = isset($errArray['firstname']) ? $errArray['firstname'] : '';
-    $errLastName = isset($errArray['lastname']) ? $errArray['lastname'] : '';
-    $errEmail = isset($errArray['email']) ? $errArray['email'] :'';
-    $errStreet = isset($errArray['street']) ? $errArray['street'] :'';
-    $errCity = isset($errArray['city']) ? $errArray['city'] :'';
-
     ?>
     <div class="content flex-item flex-size-1">
         <form class="flex-size-1 flex-container" id="account" name="account" method="post">
@@ -50,14 +68,18 @@ if (!isset($_SESSION['uid'])) {
                     </div>
                     <div class="flex-item-1 flex-size-1 form-row">
                         <label for="email">Email</label>
-                        <input type="email" name="user[email]"
+                        <input type="email" name="account[email]"
                                value="<?php echo $user->getEmail() ?>"
                                required>
-                        <mark><?php echo $errEmail;?></mark>
+                        <?php
+                        if (isset($errorFields['email'])) {
+                            echo "<mark>" . t('FormEmailError') . "</mark>";
+                        }
+                        ?>
                     </div>
                     <div class="flex-item-2 flex-size-1 form-row">
                         <label for="password"><?php echo t('password') ?></label>
-                        <input type="hidden" name="user[password]" readonly />
+                        <input type="hidden" name="account[password]" readonly/>
                         <a href="<?php echo get_pagePath('changePassword'); ?>"><?php echo t('changePassword'); ?></a>
                     </div>
                 </div>
@@ -72,14 +94,22 @@ if (!isset($_SESSION['uid'])) {
                         <input type="text" name="account[firstname]"
                                value="<?php echo $user->getFirstname() ?>"
                                required/>
-                        <mark><?php echo $errFirstName;?></mark>
+                        <?php
+                        if (isset($errorFields['firstname'])) {
+                            echo "<mark>" . t('FormFirstnameError') . "</mark>";
+                        }
+                        ?>
                     </div>
                     <div class="flex-item-2 flex-size-1 form-row">
                         <label for="lastname"><?php echo t('lastName') ?></label>
                         <input type="text" name="account[lastname]"
                                value="<?php echo $user->getLastname() ?>"
                                required/>
-                        <mark><?php echo $errLastName;?></mark>
+                        <?php
+                        if (isset($errorFields['lastname'])) {
+                            echo "<mark>" . t('FormLastnameError') . "</mark>";
+                        }
+                        ?>
                     </div>
                     <div class="flex-item-3 flex-size-1 form-row">
                         <label for="birthdate"><?php echo t('birthdate') ?>*</label>
@@ -88,7 +118,7 @@ if (!isset($_SESSION['uid'])) {
                                required/>
                         <?php
                         if (isset($errorFields['birthdate'])) {
-                            echo "<mark>" . t('FormBirtdateError') . "</mark>";
+                            echo "<mark>" . t('FormBirthdateError') . "</mark>";
                         }
                         ?>
                     </div>
@@ -106,12 +136,12 @@ if (!isset($_SESSION['uid'])) {
                     <!--<div class="flex-item-3 flex-size-1 form-row">
                         <label for="street"><?php echo t('street') ?></label>
                         <input type="text" name="user[street]" required/>
-                        <mark><?php echo $errStreet;?></mark>
+                        <mark><?php echo $errStreet; ?></mark>
                     </div>
                     <div class="flex-item-4 flex-size-1 form-row">
                         <label for="city"><?php echo t('city') ?></label>
                         <input type="text" name="user[city]" required/>
-                        <mark><?php echo $errCity;?></mark>
+                        <mark><?php echo $errCity; ?></mark>
                     </div>-->
                     <div class="flex-item-5 flex-size-1 form-row-button">
                         <button class="ui-button ui-corner-all" type="submit"><?php echo t('save'); ?></button>
