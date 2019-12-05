@@ -15,7 +15,7 @@ if (isset($_SESSION['uid'])) {
         }
 
         if (User::userExistsByEMail($clean_formdata['email'])) {
-            $error = new ErrorMessage(12); // E-Mail Addresse wird bereits verwendet
+            $message = new ErrorMessage(12); // E-Mail Addresse wird bereits verwendet
         } else {
             if (!isset($clean_formdata['email']) || !filter_var($clean_formdata['email'], FILTER_VALIDATE_EMAIL)) {
                 $errorFields['email'] = true;
@@ -39,11 +39,11 @@ if (isset($_SESSION['uid'])) {
 
             if (empty($errorFields)) {
                 $user = new User($clean_formdata['email'], $clean_formdata['password'], $clean_formdata['firstname'], $clean_formdata['lastname'], $clean_formdata['birthdate']);
-                $success = $user->createUser();
+                $message = $user->createUser();
                 $_POST = array();
                 unset($clean_formdata);
             } else {
-                $error = new ErrorMessage(11); // Bitte ueberpruefen Sie Ihres Eingaben.
+                $message = new ErrorMessage(11); // Bitte ueberpruefen Sie Ihres Eingaben.
             }
         }
     }
@@ -51,7 +51,7 @@ if (isset($_SESSION['uid'])) {
 
 }
 
-if (empty($_POST) || isset($error)) {
+if (empty($_POST) || !empty($errorFields)) {
     ?>
     <div class="content flex-item flex-size-1">
         <form class="flex-size-1 flex-container" id="register" name="register" method="post">
@@ -97,7 +97,7 @@ if (empty($_POST) || isset($error)) {
                         <input type="text" name="register[firstname]"
                                value="<?php if (isset($clean_formdata['firstname'])) echo $clean_formdata['firstname'] ?>"
                                max="50"
-                               required/>
+                               />
                         <?php
                         if (isset($errorFields['firstname'])) {
                             echo "<mark>" . t('FormFirstnameError') . "</mark>";

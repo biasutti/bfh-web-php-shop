@@ -5,7 +5,7 @@ require_once("./lib/globals.php");
 session_start();
 
 if(isset($_GET['login'])) {
-    $success = new SuccessMessage(2);
+    $message = new SuccessMessage(2);
 }
 ?>
 <!DOCTYPE html>
@@ -54,7 +54,7 @@ if(isset($_GET['login'])) {
                 <div class="flex-item flex-size-1">
                     <ul class="header-navigation flex-container-reverse">
                         <li>
-                            <a href="#" id="burger""><img src="./img/burger.svg"/></a>
+                            <a href="#" id="burger"><img alt="Toggle mobile navigation" src="./img/burger.svg"/></a>
                         </li>
                         <li class="">
                             <?php
@@ -102,12 +102,6 @@ if(isset($_GET['login'])) {
             ?>
         </div>
         <?php
-        if(isset($error)) {
-            echo $error->render();
-        }
-        if(isset($success)) {
-            echo $success->render();
-        }
         if(isset($message)) {
             echo $message->render();
         }

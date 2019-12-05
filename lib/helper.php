@@ -191,7 +191,7 @@ function clear($data)
 
 function validLenght($value, $lenght = 50)
 {
-    return strlen($value < $lenght);
+    return strlen($value) < $lenght && strlen($value)  > 0;
 }
 
 function validDate($value)
