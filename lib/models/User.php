@@ -57,6 +57,16 @@ class User
         return null;
     }
 
+    /*public static function isUserAdmin($uid){
+      $res = DB::doQuery("SELECT * FROM users WHERE Id_user = '$uid'");
+      if ($res) {
+        if ($u = $res->fetch_object(get_class())) {
+          return $u->isAdmin;
+        }
+      }
+      return false;
+    }*/
+
     public static function userExistsByEMail($email)
     {
         $email = (string)$email;
