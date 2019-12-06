@@ -57,15 +57,18 @@ class User
         return null;
     }
 
-    /*public static function isUserAdmin($uid){
-      $res = DB::doQuery("SELECT * FROM users WHERE Id_user = '$uid'");
+    public static function getAllUsers(){
+      $users = array();
+      $res = DB::doQuery("SELECT * FROM users");
       if ($res) {
-        if ($u = $res->fetch_object(get_class())) {
-          return $u->isAdmin;
-        }
+        while($u = $res->fetch_array(MYSQLI_ASSOC)){
+          $user = new User($u['email'], $u['password'], $u['firstname'], $u['lastname'], $u['birthdate'], $u['FK_address_Id'], $u['FK_bill_address_Id'], $u['isAdmin']);
+          $user->uid = $u['Id_user'];          
+          $users[] = $user;
+          }
       }
-      return false;
-    }*/
+      return $users;
+    }
 
     public static function userExistsByEMail($email)
     {

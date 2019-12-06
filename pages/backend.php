@@ -40,6 +40,13 @@ if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
             include("./pages/backendPages/backend-rmProduct.php");
             ?>
         </div>
+        <div class="content flex-item-7 flex-size-1">
+            <a href="#" class="onClickBackend"><h2><?php echo t("showUsers") ?></h2></a>
+
+            <?php
+            include("./pages/backendPages/backend-setAdmin.php");
+            ?>
+        </div>
     </div>
 
     </div>
