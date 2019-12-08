@@ -63,11 +63,19 @@ class User
       if ($res) {
         while($u = $res->fetch_array(MYSQLI_ASSOC)){
           $user = new User($u['email'], $u['password'], $u['firstname'], $u['lastname'], $u['birthdate'], $u['FK_address_Id'], $u['FK_bill_address_Id'], $u['isAdmin']);
-          $user->uid = $u['Id_user'];          
+          $user->uid = $u['Id_user'];
           $users[] = $user;
           }
       }
       return $users;
+    }
+
+    public static function toggleAdminById($id){
+      if(User::getUserByUid($id)->isAdmin()){
+        DB::doQuery("UPDATE users SET isAdmin = 0 WHERE Id_user = $id");
+      }else{
+        DB::doQuery("UPDATE users SET isAdmin = 1 WHERE Id_user = $id");
+      }
     }
 
     public static function userExistsByEMail($email)

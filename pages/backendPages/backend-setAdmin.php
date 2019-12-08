@@ -1,7 +1,7 @@
-  <div class="flex-item-1 flex-size-1">
+  <div class="flex-item-1 flex-size-1 displNone">
     <?php
     if (count($_POST) > 0 && isset($_POST['changeAdmin'])) {
-      //Type::removeTypeById($_POST['rmTypeId']);
+      User::toggleAdminById($_POST['changeAdmin']);
       echo "<mark>Removed sucessfully!</mark>";
     }
      ?>
@@ -13,30 +13,23 @@
           <th>lastname</th>
           <th>birthdate</th>
           <th>isAdmin</th>
-          <th>change Admin Flag</th>
+          <th>cahnge Admin</th>
           <?php
-          foreach(User::getAllUsers() as $u){            
+          foreach(User::getAllUsers() as $u){
             echo "<tr><td>".$u->uid."</td>
             <td>".$u->getFirstname()."</td>".
             "<td>".$u->getLastname()."</td>".
             "<td>".$u->getBirthdate()."</td>".
             "<td>".$u->isAdmin()."</td>";
-            echo "<td><button type='submit' name='changeAdmin' value='$u->uid'><img src='./img/ui/close.png' width=20px/></button></td>";
+            if($u->isAdmin()){
+              echo "<td><button type='submit' name='changeAdmin' value='$u->uid'>unset Admin</button></td>";
+            }else{
+              echo "<td><button type='submit' name='changeAdmin' value='$u->uid'>set Admin</button></td>";
+            }
+
 
             echo "</tr>";
           }
-            /*foreach(Type::getAllTypes() as $type){
-              echo "<tr><td>".$type->Id_type."</td>
-              <td>".$type->name."</td><td>";
-              if(Type::isTypeLinked($type->Id_type)){
-                echo "Linked";
-              }else{
-                echo "<button type='submit' name='rmTypeId' value='$type->Id_type' src='./img/ui/close.png'>".
-                "<img src='./img/ui/close.png' width=20px/></button>";
-              }
-              echo "</td></tr>";
-            }*/
-
             ?>
         </tr>
       </table>
