@@ -39,6 +39,25 @@ if (!isset($_SESSION['user'])) {
             $errorFields['birthdate'] = t('FormBirthdateError');
         }
 
+        if(isset($clean_formdata['street']) && validLenght(($clean_formdata['street']))) {
+            $user->getAddress()->setStreet($clean_formdata['street']);
+            echo $user->getAddress();
+        } else {
+            $errorFields['street'] = t('FormStreetError');
+        }
+
+        if(isset($clean_formdata['zipcode']) && validLenght(($clean_formdata['zipcode']))) {
+            $user->getAddress()->setZip($clean_formdata['zipcode']);
+        } else {
+            $errorFields['zipcode'] = t('FormZipCodeError');
+        }
+
+        if(isset($clean_formdata['town']) && validLenght(($clean_formdata['town']))) {
+            $user->getAddress()->setTown($clean_formdata['town']);
+        } else {
+            $errorFields['town'] = t('FormTownError');
+        }
+
         /*if (!isset($clean_formdata['street']) || $clean_formdata['street'] == '') {
             $errorFields['street'] = t('FormStreetError');
         }
@@ -125,14 +144,67 @@ if (!isset($_SESSION['user'])) {
                     <div class="flex-item-4 flex-size-1 form-row">
                         <h3><?php echo t('address') ?></h3>
                     </div>
-                    <div class="flex-item-5 flex-size-1 form-row">
-                        <label for="address"><?php echo t('address') ?></label>
-                        <a href="<?php echo get_pagePath('addAddress'); ?>"><?php echo t('addAddress'); ?></a>
-                    </div>
-                    <div class="flex-item-5 flex-size-1 form-row">
+                        <?php
+                            //if($user->getAddress()->Id_address == 0) {
+                            if($user->getAddress()->Id_address == 1) {
+                                ?>
+                                <div class="flex-item-5 flex-size-1 form-row">
+                                <label for="address"><?php echo t('address'); ?></label>
+                                <a href="<?php echo get_pagePath('addAddress'); ?>"><?php echo t('addAddress'); ?></a>
+                                </div>
+                            <?php
+                            } else {
+                                ?>
+                                <div class="flex-item-5 flex-size-1 form-row">
+                                    <label for="street"> <?php echo t('street') ?></label>
+                                    <input type="text" name="account[street]"
+                                           value=""/>
+                                    <?php
+                                    if (isset($errorFields['street'])) {
+                                        echo "<mark>" . t('FormStreetError') . "</mark>";
+                                    }
+                                    ?>
+                                </div>
+                                <div class="flex-item-6 flex-size-1 form-row">
+                                    <label for="zipcode"> <?php echo t('zipcode') ?></label>
+                                    <input type="text" name="account[zipcode]"
+                                           value=""/>
+                                    <?php
+                                    if (isset($errorFields['zipcode'])) {
+                                        echo "<mark>" . t('FormZipcodeError') . "</mark>";
+                                    }
+                                    ?>
+                                </div>
+                                <div class="flex-item-7 flex-size-1 form-row">
+                                    <label for="town"> <?php echo t('town') ?></label>
+                                    <input type="text" name="account[town]"
+                                           value=""/>
+                                    <?php
+                                    if (isset($errorFields['town'])) {
+                                        echo "<mark>" . t('FormTownError') . "</mark>";
+                                    }
+                                    ?>
+                                </div>
+                                <div class="flex-item-8 flex-size-1 form-row-button">
+                                    <button class="ui-button ui-corner-all" type="submit"><?php echo t('save'); ?></button>
+                                </div>
+                                <?php
+                            }
+                        ?>
+                    <!--<div class="flex-item-5 flex-size-1 form-row">
                         <label for="bill_address"><?php echo t('bill_address') ?></label>
-                        <a href="<?php echo get_pagePath('addBillAddress'); ?>"><?php echo t('addBillAddress'); ?></a>
-                    </div>
+                        <?php
+                        if($user->getBillAddress() == 0) {
+                            echo "<a href=\"" . get_pagePath('addBillAddress') . "\">" . t('addBillAddress') . "</a>";
+                        } else {
+                            if ($user->getBillAddress() == $user->getAddress()) {
+
+                            } else {
+
+                            }
+                        }
+                        ?>
+                    </div>-->
                     <!--<div class="flex-item-3 flex-size-1 form-row">
                         <label for="street"><?php echo t('street') ?></label>
                         <input type="text" name="user[street]" required/>
@@ -143,9 +215,6 @@ if (!isset($_SESSION['user'])) {
                         <input type="text" name="user[city]" required/>
                         <mark><?php echo $errCity; ?></mark>
                     </div>-->
-                    <div class="flex-item-5 flex-size-1 form-row-button">
-                        <button class="ui-button ui-corner-all" type="submit"><?php echo t('save'); ?></button>
-                    </div>
                 </div>
             </div>
         </form>

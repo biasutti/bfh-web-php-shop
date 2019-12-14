@@ -21,8 +21,8 @@ class User
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->birthdate = $birthdate;
-        $this->address = $FK_address_Id;
-        //$this->address = Address::getAddressById($FK_address_Id);
+        //$this->address = $FK_address_Id;
+        $this->address = Address::getAddressById($FK_address_Id);
         $this->bill_address = $FK_bill_address_Id;
         //$this->bill_address = Address::getAddressById($FK_bill_address_Id);
         $this->password = $password;
@@ -101,13 +101,16 @@ class User
 
     public function updateUser()
     {
+        $this->setAddress($this->address->saveAddress());
         $uid = (int)$this->uid;
         $res = DB::doQuery("UPDATE users SET " .
                                 "email = '" . $this->email . "'," .
                                 "firstname = '" . $this->firstname . "'," .
                                 "lastname = '" . $this->lastname . "'," .
-                                "birthdate = '" . $this->birthdate . "'" .
+                                "birthdate = '" . $this->birthdate . "'," .
+                                "FK_address_Id = '" . $this->address->Id_address . "'" .
                                 "WHERE Id_user = '" . $uid . "';");
+
         if($res) {
             return new SuccessMessage(1);
         } else {
@@ -195,6 +198,30 @@ class User
     public function setBirthdate($birthdate)
     {
         $this->birthdate = $birthdate;
+    }
+
+    /**
+     * @return null
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @return null
+     */
+    public function getBillAddress()
+    {
+        return $this->bill_address;
+    }
+
+    /**
+     * @param Address|null $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
     }
 
 
