@@ -37,8 +37,23 @@ if (isset($_SESSION['uid'])) {
                 $errorFields['birthdate'] = true;
             }
 
+            if (!isset($clean_formdata['street']) || !validLenght($clean_formdata['street'])) {
+                $errorFields['street'] = true;
+            }
+
+            if (!isset($clean_formdata['plz']) || !validLenght($clean_formdata['plz'])) {
+                $errorFields['plz'] = true;
+            }
+
+            if (!isset($clean_formdata['city']) || !validLenght($clean_formdata['city'])) {
+                $errorFields['city'] = true;
+            }
+
+
             if (empty($errorFields)) {
-                $user = new User($clean_formdata['email'], $clean_formdata['password'], $clean_formdata['firstname'], $clean_formdata['lastname'], $clean_formdata['birthdate']);
+                $address = new Address($clean_formdata['street'], $clean_formdata['city'], $clean_formdata['plz']);
+                $address_id = $address->saveAddress();
+                $user = new User($clean_formdata['email'], $clean_formdata['password'], $clean_formdata['firstname'], $clean_formdata['lastname'], $clean_formdata['birthdate'], $address_id);
                 $message = $user->createUser();
                 $_POST = array();
                 unset($clean_formdata);
@@ -97,7 +112,7 @@ if (empty($_POST) || !empty($errorFields)) {
                         <input type="text" name="register[firstname]"
                                value="<?php if (isset($clean_formdata['firstname'])) echo $clean_formdata['firstname'] ?>"
                                max="50"
-                               />
+                        />
                         <?php
                         if (isset($errorFields['firstname'])) {
                             echo "<mark>" . t('FormFirstnameError') . "</mark>";
@@ -127,21 +142,26 @@ if (empty($_POST) || !empty($errorFields)) {
                         }
                         ?>
                     </div>
-                    <!--<div class="flex-item-4 flex-size-1 form-row">
-                            <h3><?php echo t('address') ?></h3>
-                        </div>
-                        <div class="flex-item-5 flex-size-1 form-row">
-                            <label for="register[street]"><?php echo t('street') ?></label>
-                            <input type="text" name="register[street]"/>
-                        </div>
-                        <div class="flex-item-6 flex-size-1 form-row">
-                            <label for="register[plz]"><?php echo t('plz') ?></label>
-                            <input type="text" name="register[plz]"/>
-                        </div>
-                        <div class="flex-item-7 flex-size-1 form-row">
-                            <label for="register[city]"><?php echo t('city') ?></label>
-                            <input type="text" name="register[city]"/>
-                        </div>-->
+                    <div class="flex-item-4 flex-size-1 form-row">
+                        <h3><?php echo t('address') ?></h3>
+                    </div>
+                    <div class="flex-item-5 flex-size-1 form-row">
+                        <label for="register[street]"><?php echo t('street') ?></label>
+                        <input type="text" name="register[street]"
+                               value="<?php if (isset($clean_formdata['street'])) echo $clean_formdata['street'] ?>"
+                               required/>
+                    </div>
+                    <div class="flex-item-6 flex-size-1 form-row">
+                        <label for="register[plz]"><?php echo t('plz') ?></label>
+                        <input type="text" name="register[plz]"
+                               value="<?php if (isset($clean_formdata['plz'])) echo $clean_formdata['plz'] ?>"
+                               required/>
+                    </div>
+                    <div class="flex-item-7 flex-size-1 form-row">
+                        <label for="register[city]"><?php echo t('city') ?></label>
+                        <input type="text" name="register[city]"
+                               value="<?php if (isset($clean_formdata['city'])) echo $clean_formdata['city'] ?>"/>
+                    </div>
                     <div class="flex-item-8 flex-size-1 form-row-button">
                         <button class="ui-button ui-corner-all"
                                 type="submit"><?php echo t('register'); ?></button>

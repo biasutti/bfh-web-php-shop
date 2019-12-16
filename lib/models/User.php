@@ -21,10 +21,8 @@ class User
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->birthdate = $birthdate;
-        //$this->address = $FK_address_Id;
         $this->address = Address::getAddressById($FK_address_Id);
         $this->bill_address = $FK_bill_address_Id;
-        //$this->bill_address = Address::getAddressById($FK_bill_address_Id);
         $this->password = $password;
         $this->isAdmin = $isAdmin;
     }
@@ -57,25 +55,27 @@ class User
         return null;
     }
 
-    public static function getAllUsers(){
-      $users = array();
-      $res = DB::doQuery("SELECT * FROM users");
-      if ($res) {
-        while($u = $res->fetch_array(MYSQLI_ASSOC)){
-          $user = new User($u['email'], $u['password'], $u['firstname'], $u['lastname'], $u['birthdate'], $u['FK_address_Id'], $u['FK_bill_address_Id'], $u['isAdmin']);
-          $user->uid = $u['Id_user'];
-          $users[] = $user;
-          }
-      }
-      return $users;
+    public static function getAllUsers()
+    {
+        $users = array();
+        $res = DB::doQuery("SELECT * FROM users");
+        if ($res) {
+            while ($u = $res->fetch_array(MYSQLI_ASSOC)) {
+                $user = new User($u['email'], $u['password'], $u['firstname'], $u['lastname'], $u['birthdate'], $u['FK_address_Id'], $u['FK_bill_address_Id'], $u['isAdmin']);
+                $user->uid = $u['Id_user'];
+                $users[] = $user;
+            }
+        }
+        return $users;
     }
 
-    public static function toggleAdminById($id){
-      if(User::getUserByUid($id)->isAdmin()){
-        DB::doQuery("UPDATE users SET isAdmin = 0 WHERE Id_user = $id");
-      }else{
-        DB::doQuery("UPDATE users SET isAdmin = 1 WHERE Id_user = $id");
-      }
+    public static function toggleAdminById($id)
+    {
+        if (User::getUserByUid($id)->isAdmin()) {
+            DB::doQuery("UPDATE users SET isAdmin = 0 WHERE Id_user = $id");
+        } else {
+            DB::doQuery("UPDATE users SET isAdmin = 1 WHERE Id_user = $id");
+        }
     }
 
     public static function userExistsByEMail($email)
@@ -90,8 +90,9 @@ class User
     public function createUser()
     {
         $password = password_hash($this->password, PASSWORD_DEFAULT);
-        $res = DB::doQuery("INSERT INTO users (email, firstname, lastname, password, birthdate, isAdmin) " .
-            "VALUES('$this->email', '$this->firstname', '$this->lastname', '$password', '$this->birthdate', '$this->isAdmin')");
+        $fk_address = $this->address->Id_address;
+        $res = DB::doQuery("INSERT INTO users (email, firstname, lastname, password, birthdate, FK_address_Id, isAdmin) " .
+            "VALUES('$this->email', '$this->firstname', '$this->lastname', '$password', '$this->birthdate', '$fk_address', '$this->isAdmin')");
         if ($res) {
             return new SuccessMessage(1);
         } else {
@@ -101,17 +102,16 @@ class User
 
     public function updateUser()
     {
-        $this->setAddress($this->address->saveAddress());
         $uid = (int)$this->uid;
         $res = DB::doQuery("UPDATE users SET " .
-                                "email = '" . $this->email . "'," .
-                                "firstname = '" . $this->firstname . "'," .
-                                "lastname = '" . $this->lastname . "'," .
-                                "birthdate = '" . $this->birthdate . "'," .
-                                "FK_address_Id = '" . $this->address->Id_address . "'" .
-                                "WHERE Id_user = '" . $uid . "';");
+            "email = '" . $this->email . "'," .
+            "firstname = '" . $this->firstname . "'," .
+            "lastname = '" . $this->lastname . "'," .
+            "birthdate = '" . $this->birthdate . "'," .
+            "FK_address_Id = '" . $this->address->saveAddress() . "'" .
+            "WHERE Id_user = '" . $uid . "';");
 
-        if($res) {
+        if ($res) {
             return new SuccessMessage(1);
         } else {
             return new ErrorMessage(13); // TODO: Check DB error

@@ -65,7 +65,7 @@ require_once("lib/db-helper.php");
                     '<img class="closeImg" height="30px" src="./img/ui/close.png" alt="product image">' .
                     '<li><img class="prodImg" height="140px" src="./img/products/' . $prod->imgSrc . '" alt="product image"></li>' .
                     '<li><b>' . $prod->getName() . '</b></li>' .
-                    '<li>' . Type::getTypeById($prod->FK_type_Id)->name  . '</li>' .
+                    '<li>' . Type::getTypeById($prod->FK_type_Id)->name . '</li>' .
                     '<li>' . Brand::getBrandById($prod->FK_brand_Id)->name . '</li>' .
                     '<li>' . $prod->alcPercent . '%</li>' .
                     '<li>' . $prod->energy . ' kcal</li>' .
@@ -78,7 +78,7 @@ require_once("lib/db-helper.php");
         ?>
     </div>
 </div>
-<div class="flex-item-3 side-navigation-background <?php echo isset($_SESSION["cart"])?"":"displNone"; ?>">
+<div class="flex-item-3 side-navigation-background <?php echo isset($_SESSION["cart"]) ? "" : "displNone"; ?>">
     <div class="flex-container-column">
         <div class="flex-item-1">
             <div class="cartPreview">
