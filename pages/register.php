@@ -146,19 +146,19 @@ if (empty($_POST) || !empty($errorFields)) {
                         <h3><?php echo t('address') ?></h3>
                     </div>
                     <div class="flex-item-5 flex-size-1 form-row">
-                        <label for="register[street]"><?php echo t('street') ?></label>
+                        <label for="register[street]"><?php echo t('street') ?>*</label>
                         <input type="text" name="register[street]"
                                value="<?php if (isset($clean_formdata['street'])) echo $clean_formdata['street'] ?>"
                                required/>
                     </div>
                     <div class="flex-item-6 flex-size-1 form-row">
-                        <label for="register[plz]"><?php echo t('plz') ?></label>
+                        <label for="register[plz]"><?php echo t('plz') ?>*</label>
                         <input type="text" name="register[plz]"
                                value="<?php if (isset($clean_formdata['plz'])) echo $clean_formdata['plz'] ?>"
                                required/>
                     </div>
                     <div class="flex-item-7 flex-size-1 form-row">
-                        <label for="register[city]"><?php echo t('city') ?></label>
+                        <label for="register[city]"><?php echo t('city') ?>*</label>
                         <input type="text" name="register[city]"
                                value="<?php if (isset($clean_formdata['city'])) echo $clean_formdata['city'] ?>"/>
                     </div>

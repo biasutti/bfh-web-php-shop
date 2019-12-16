@@ -57,14 +57,6 @@ if (!isset($_SESSION['uid'])) {
             $errorFields['town'] = t('FormTownError');
         }
 
-        /*if (!isset($clean_formdata['street']) || $clean_formdata['street'] == '') {
-            $errorFields['street'] = t('FormStreetError');
-        }
-        //validate street
-        if (!isset($clean_formdata['city']) || $clean_formdata['city'] == '') {
-            $errorFields['city'] = t('FormCityError');
-        }*/
-
         if (empty($errorFields)) {
             $message = $user->updateUser();
             $_SESSION['user'] = $user;
@@ -108,7 +100,7 @@ if (!isset($_SESSION['uid'])) {
                         <h2><?php echo t('userdata') ?></h2>
                     </div>
                     <div class="flex-item-1 flex-size-1 form-row">
-                        <label for="firstname"><?php echo t('firstName') ?></label>
+                        <label for="firstname"><?php echo t('firstName') ?>*</label>
                         <input type="text" name="account[firstname]"
                                value="<?php echo $user->getFirstname() ?>"
                                required/>
@@ -119,7 +111,7 @@ if (!isset($_SESSION['uid'])) {
                         ?>
                     </div>
                     <div class="flex-item-2 flex-size-1 form-row">
-                        <label for="lastname"><?php echo t('lastName') ?></label>
+                        <label for="lastname"><?php echo t('lastName') ?>*</label>
                         <input type="text" name="account[lastname]"
                                value="<?php echo $user->getLastname() ?>"
                                required/>
@@ -144,7 +136,7 @@ if (!isset($_SESSION['uid'])) {
                         <h3><?php echo t('address') ?></h3>
                     </div>
                     <div class="flex-item-5 flex-size-1 form-row">
-                        <label for="street"> <?php echo t('street') ?></label>
+                        <label for="street"> <?php echo t('street') ?>*</label>
                         <input type="text" name="account[street]"
                                value="<?php echo $user->getAddress()->getStreet(); ?>"/>
                         <?php
@@ -154,7 +146,7 @@ if (!isset($_SESSION['uid'])) {
                         ?>
                     </div>
                     <div class="flex-item-6 flex-size-1 form-row">
-                        <label for="zipcode"> <?php echo t('zipcode') ?></label>
+                        <label for="zipcode"> <?php echo t('zipcode') ?>*</label>
                         <input type="text" name="account[zipcode]"
                                value="<?php echo $user->getAddress()->getZip(); ?>"/>
                         <?php
@@ -164,7 +156,7 @@ if (!isset($_SESSION['uid'])) {
                         ?>
                     </div>
                     <div class="flex-item-7 flex-size-1 form-row">
-                        <label for="town"> <?php echo t('town') ?></label>
+                        <label for="town"> <?php echo t('town') ?>*</label>
                         <input type="text" name="account[town]"
                                value="<?php echo $user->getAddress()->getTown(); ?>"/>
                         <?php
