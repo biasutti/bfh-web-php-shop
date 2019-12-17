@@ -1,6 +1,3 @@
-<?php
-require_once("lib/db-helper.php");
-?>
 <div class="flex-item-1 side-navigation-background">
     <div class="flex-container-column">
         <div class="flex-item-1">

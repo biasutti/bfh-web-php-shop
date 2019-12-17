@@ -41,6 +41,21 @@ function removeFilterParam($name)
     return $url;
 }
 
+function filterBeers($type, $brand)
+{
+      if (get_param("TypeOfBeer", "") === "" && get_param("Brand", "") === "")
+          return true;
+
+      if (get_param("TypeOfBeer", "") == $type && get_param("Brand", "") == $brand)
+          return true;
+
+      if (get_param("TypeOfBeer", "") == $type && get_param("Brand", "") === "")
+          return true;
+
+      if (get_param("TypeOfBeer", "") === "" && get_param("Brand", "") == $brand)
+          return true;
+}
+
 function get_pagePath($name)
 {
     $url = "";
