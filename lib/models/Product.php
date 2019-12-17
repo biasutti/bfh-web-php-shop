@@ -51,5 +51,4 @@ class Product {
      public static function removeBeer($id){
        DB::doQuery("DELETE FROM products WHERE products.Id_prod = $id ");
      }
-
 }
