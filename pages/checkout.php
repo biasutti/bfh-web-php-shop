@@ -1,18 +1,14 @@
 <?php
 
-
 if (!isset($_SESSION['uid'])) {
     echo "<p>" . t('accNeeded') . "</p><p>";
     render_basicLink(new Page("login"));
     echo "</p>";
 } else {
 
-    // Create cart on first request
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = new Cart();
     }
-
-    // Get cart from session
     $cart = $_SESSION['cart'];
 
     // Add item on post
@@ -22,8 +18,8 @@ if (!isset($_SESSION['uid'])) {
     }
     ?>
 
-    <div class="flex-item-1 flex-size-1">
-        <h4>Your Shopping Cart:</h4>
+    <div class="content flex-item-1 flex-size-1">
+        <h4><?php echo t('checkout'); ?></h4>
         <?php
         // Render cart explicitly to enhence it
         if ($cart->isEmpty()) {
@@ -31,39 +27,44 @@ if (!isset($_SESSION['uid'])) {
         } else {
             ?>
             <div class="cart">
-                <table>
-                    <tr>
-                        <th>Article</th>
-                        <th>#</th>
-                        <th>Price</th>
-                        <th>Total</th>
-                    </tr>
-                    <?php
-                    $total = 0;
-                    foreach ($cart->getItems() as $item => $num) {
-                        $product = Product::getProductById($item);
-                        if ($product == null) continue;
-                        $price = $product->price;
-                        $total += $price * $num;
-                        echo "<tr><td>{$product->getName()}</td><td>$num</td><td>{$price}</td><td>" . ($price * $num) . "</td></tr>";
-                    }
-                    echo "<tr><td rowspan=\"3\"></td><td>$total</td></tr>";
+                <div class="table-container" role="table">
+                    <div class="flex-table header" role="rowgroup">
+                        <div class="flex-row "role="columnheader">Article</div>
+                        <div class="flex-row" role="columnheader">Quantity</div>
+                        <div class="flex-row" role="columnheader">Price</div>
+                        <div class="flex-row" role="columnheader">Total</div>
+                        <div class="flex-row" role="columnheader"></div>
+                    </div>
+                <?php
+                $total = 0;
+                foreach ($cart->getItems() as $item => $num) {
+                    $product = Product::getProductById($item);
+                    if ($product == null) continue;
+                    $price = $product->price;
+                    $total += $price * $num;
                     ?>
-                </table>
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first" role="cell"><span><?php echo $product->getName(); ?></span></div>
+                            <div class="flex-row" role="cell"><!--<input type="text" value="<?php echo $num; ?>" />--><?php echo $num; ?></div>
+                            <div class="flex-row" role="cell"><span><?php echo $price; ?></span></div>
+                            <div class="flex-row" role="cell"><span><?php echo ($price * $num); ?></span></div>
+                            <div class="flex-row" role="cell"><button>Remove</button></div>
+                        </div>
+                    <?php
+                }
+                ?>
+                    <div class="flex-table row" role="rowgroup">
+                        <div class="flex-row" role="cell"></div>
+                        <div class="flex-row" role="cell"></div>
+                        <div class="flex-row" role="cell"><span class="hidden"><?php echo t('totalpreis'); ?></span></div>
+                        <div class="flex-row cart-total" role="cell"><?php echo $total; ?> CHF</div>
+                        <div class="flex-row" role="cell"><button>Kaufen</button></div>
+                    </div>
+                </div>
             </div>
             <?php
         }
         ?>
     </div>
-    <!--
-<div class="flex-item-1 flex-size-1">
-    <h4>Add an Item:</h4>
-    <form action="<?php get_pagePath('checkout') ?>" method="post">
-        <label>Article-Id</label><input name="item[id]"><br>
-        <label>Number</label><input name="item[num]" value="1"><br>
-        <input type="submit" value="Add">
-    </form>
-</div>
--->
     <?php
 }

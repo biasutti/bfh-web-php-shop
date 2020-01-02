@@ -54,23 +54,69 @@
     flex-direction: row-reverse;
 }
 
-.flex-item { order: 0;}
-.flex-item-1 { order: 1; }
-.flex-item-2 { order: 2; }
-.flex-item-3 { order: 3; }
-.flex-item-4 { order: 4; }
-.flex-item-5 { order: 5; }
-.flex-item-6 { order: 6; }
-.flex-item-7 { order: 7; }
-.flex-item-8 { order: 8; }
-.flex-item-9 { order: 9; }
-.flex-item-10 { order: 10; }
+.flex-item {
+    order: 0;
+}
 
-.flex-size-1 { flex-grow: 1; }
-.flex-size-2 { flex-grow: 2; }
-.flex-size-3 { flex-grow: 3; }
-.flex-size-4 { flex-grow: 4; }
-.flex-size-5 { flex-grow: 5; }
+.flex-item-1 {
+    order: 1;
+}
+
+.flex-item-2 {
+    order: 2;
+}
+
+.flex-item-3 {
+    order: 3;
+}
+
+.flex-item-4 {
+    order: 4;
+}
+
+.flex-item-5 {
+    order: 5;
+}
+
+.flex-item-6 {
+    order: 6;
+}
+
+.flex-item-7 {
+    order: 7;
+}
+
+.flex-item-8 {
+    order: 8;
+}
+
+.flex-item-9 {
+    order: 9;
+}
+
+.flex-item-10 {
+    order: 10;
+}
+
+.flex-size-1 {
+    flex-grow: 1;
+}
+
+.flex-size-2 {
+    flex-grow: 2;
+}
+
+.flex-size-3 {
+    flex-grow: 3;
+}
+
+.flex-size-4 {
+    flex-grow: 4;
+}
+
+.flex-size-5 {
+    flex-grow: 5;
+}
 
 .flex-half {
     flex-basis: 50%;
@@ -81,9 +127,46 @@
 }
 
 .flex-wrap {
-  flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
+
+/* FLEX TABLE Tutorial: https://medium.com/@snowleo208/how-to-create-responsive-table-d1662cb62075 */
+
+.flex-table {
+    display: flex;
+    flex-flow: row wrap;
+    border-left: solid 1px #d9d9d9;
+    transition: 0.5s;
+}
+
+.flex-table:first-of-type {
+    /*border-top: solid 1px #d9d9d9;*/
+    border-left: solid 1px #d9d9d9;
+}
+
+.flex-table:first-of-type .flex-row {
+    background: darkcyan;
+    color: white;
+    border-color: #d9d9d9;
+}
+
+.flex-table.row:nth-child(odd) .flex-row {
+    background: #f4f2f1;
+}
+
+/*.flex-table:hover {
+    background: #F5F5F5;
+    transition: 500ms;
+}*/
+
+.flex-row {
+    width: calc(80% / 5);
+    text-align: center;
+    padding: 0.5em 0.5em;
+    border-right: solid 1px #d9d9d9;
+    border-bottom: solid 1px #d9d9d9;
+}
 
 @media all and (max-width: 600px) {
     .flex-half {
@@ -99,4 +182,26 @@
         flex-direction: row;
         flex-flow: column;
     }
+
+    .flex-table .flex-row {
+        border-bottom: 0;
+    }
+
+    .flex-table .flex-row:last-of-type {
+        border-bottom: solid 1px #d9d9d9;
+    }
+
+    .header .flex-row {
+        border-bottom: solid 1px;
+    }
+
+    .flex-row {
+        width: 100%;
+    }
+
+    .flex-row.first {
+        width: 100%;
+        border-bottom: solid 1px #d9d9d9;
+    }
+
 }

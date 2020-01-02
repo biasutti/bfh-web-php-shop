@@ -205,6 +205,22 @@ ul.side-navigation {
   float: right;
 }
 
+.cart {
+    box-sizing: border-box;
+}
+
+.table-container {
+    display: block;
+}
+
+.cart-total {
+    font-weight: bold;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
 #dropDownArrow{
   margin-top: 5px;
   display:none;
@@ -317,5 +333,9 @@ footer {
 
     .form-row, .form-row-button {
        padding-bottom: 10px;
+    }
+
+    .hidden {
+        visibility: visible;
     }
 }
