@@ -213,6 +213,10 @@ ul.side-navigation {
     display: block;
 }
 
+.cart-total {
+    font-weight: bold;
+}
+
 #dropDownArrow{
   margin-top: 5px;
   display:none;

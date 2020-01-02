@@ -53,9 +53,13 @@ if (!isset($_SESSION['uid'])) {
                     <?php
                 }
                 ?>
-                    <!--<div class="flex-item flex-container">
-                        <?php echo $total; ?>
-                    </div>-->
+                    <div class="flex-table row" role="rowgroup">
+                        <div class="flex-row" role="cell"></div>
+                        <div class="flex-row" role="cell"></div>
+                        <div class="flex-row" role="cell"></div>
+                        <div class="flex-row cart-total" role="cell"><?php echo $total; ?> CHF</div>
+                        <div class="flex-row" role="cell"><button>Kaufen</button></div>
+                    </div>
                 </div>
             </div>
             <?php
