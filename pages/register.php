@@ -1,5 +1,4 @@
 <?php
-require_once("lib/db-helper.php");
 
 if (isset($_SESSION['uid'])) {
     echo "<p>" . t("allReadyLogged") . "</p>";
