@@ -49,7 +49,7 @@ CREATE TABLE `types`
 CREATE TABLE `address`
 (
     Id_address          int(11)         AUTO_INCREMENT      PRIMARY KEY,
-    street              varchar(10)     DEFAULT NULL,
+    street              varchar(100)     DEFAULT NULL,
     town                varchar(50)     DEFAULT NULL,
     zip                 varchar(11)     DEFAULT NULL,
     country             varchar(75)     DEFAULT NULL
