@@ -56,7 +56,7 @@ if (!isset($_SESSION['uid'])) {
                     <div class="flex-table row" role="rowgroup">
                         <div class="flex-row" role="cell"></div>
                         <div class="flex-row" role="cell"></div>
-                        <div class="flex-row" role="cell"></div>
+                        <div class="flex-row" role="cell"><span class="hidden"><?php echo t('totalpreis'); ?></span></div>
                         <div class="flex-row cart-total" role="cell"><?php echo $total; ?> CHF</div>
                         <div class="flex-row" role="cell"><button>Kaufen</button></div>
                     </div>

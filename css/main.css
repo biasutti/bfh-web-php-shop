@@ -217,6 +217,10 @@ ul.side-navigation {
     font-weight: bold;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 #dropDownArrow{
   margin-top: 5px;
   display:none;
@@ -329,5 +333,9 @@ footer {
 
     .form-row, .form-row-button {
        padding-bottom: 10px;
+    }
+
+    .hidden {
+        visibility: visible;
     }
 }
