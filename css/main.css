@@ -205,6 +205,14 @@ ul.side-navigation {
   float: right;
 }
 
+.cart {
+    box-sizing: border-box;
+}
+
+.table-container {
+    display: block;
+}
+
 #dropDownArrow{
   margin-top: 5px;
   display:none;
