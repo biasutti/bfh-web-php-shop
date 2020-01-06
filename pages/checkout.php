@@ -58,7 +58,12 @@ if (!isset($_SESSION['uid'])) {
                         <div class="flex-row" role="cell"></div>
                         <div class="flex-row" role="cell"><span class="hidden"><?php echo t('totalpreis'); ?></span></div>
                         <div class="flex-row cart-total" role="cell"><?php echo $total; ?> CHF</div>
-                        <div class="flex-row" role="cell"><button>Kaufen</button></div>
+                        <div class="flex-row" role="cell">
+                            <form method="post" action="index.php?id=complete">
+                                <input type="hidden" name="cart" value="true">
+                                <button type="submit">Kaufen</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
