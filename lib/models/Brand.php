@@ -10,7 +10,6 @@ class Brand {
     $res = DB::doQuery("SELECT * FROM brands");
     if ($res) {
       while ($brand = $res->fetch_object(get_class())) {
-        //$prod->imgSrc = "./img/products/".$prod->imgSrc;
         $brands[] = $brand;
       }
     }

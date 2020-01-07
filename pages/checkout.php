@@ -47,7 +47,7 @@ if (!isset($_SESSION['uid'])) {
                             <div class="flex-row first" role="cell"><span><?php echo $product->getName(); ?></span></div>
                             <div class="flex-row" role="cell"><!--<input type="text" value="<?php echo $num; ?>" />--><?php echo $num; ?></div>
                             <div class="flex-row" role="cell"><span><?php echo $price; ?></span></div>
-                            <div class="flex-row" role="cell"><span><?php echo ($price * $num); ?></span></div>
+                            <div class="flex-row" role="cell"><span><?php echo sprintf('%0.2f',($price * $num)); ?></span></div>
                             <div class="flex-row" role="cell"><button>Remove</button></div>
                         </div>
                     <?php
@@ -57,7 +57,7 @@ if (!isset($_SESSION['uid'])) {
                         <div class="flex-row" role="cell"></div>
                         <div class="flex-row" role="cell"></div>
                         <div class="flex-row" role="cell"><span class="hidden"><?php echo t('totalpreis'); ?></span></div>
-                        <div class="flex-row cart-total" role="cell"><?php echo $total; ?> CHF</div>
+                        <div class="flex-row cart-total" role="cell"><?php echo sprintf('%0.2f',$total); ?> CHF</div>
                         <div class="flex-row" role="cell"><button>Kaufen</button></div>
                     </div>
                 </div>

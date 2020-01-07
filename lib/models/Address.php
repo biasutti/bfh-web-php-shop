@@ -59,6 +59,19 @@ class Address
         return $address_id;
     }
 
+    static public function renderBackendAddresses(){
+      $addresses = array();
+      $res = DB::doQuery("SELECT * FROM address");
+      if ($res->num_rows > 0) {
+          if ($a = $res->fetch_array()) {
+              $address = new Address($a['street'], $a['town'], $a['zip'], $a['country']);
+              $address->Id_address = $a['Id_address'];
+              $addresses[] = $address;
+          }
+      } 
+      return $addresses;
+    }
+
     /**
      * @param mixed $street
      */
@@ -113,6 +126,10 @@ class Address
     public function getTown()
     {
         return $this->town;
+    }
+
+    public function getCountry(){
+      return $this->country;
     }
 
 }
