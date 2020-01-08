@@ -62,3 +62,4 @@ register=S'inscrire
 email=Email
 password_retype=re-tapez le Mot de passe
 plz=NPA
+save=Enregistrer

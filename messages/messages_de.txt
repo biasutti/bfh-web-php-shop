@@ -63,3 +63,4 @@ register=Registrieren
 email=Email
 password_retype=Passwort erneut eingeben
 plz=PLZ
+save=Speichern
