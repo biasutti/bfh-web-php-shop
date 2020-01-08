@@ -138,6 +138,7 @@ if (!isset($_SESSION['uid'])) {
                     <div class="flex-item-5 flex-size-1 form-row">
                         <label for="street"> <?php echo t('street') ?>*</label>
                         <input type="text" name="account[street]"
+                               maxlength="100"
                                value="<?php echo $user->getAddress()->getStreet(); ?>"/>
                         <?php
                         if (isset($errorFields['street'])) {
@@ -148,6 +149,7 @@ if (!isset($_SESSION['uid'])) {
                     <div class="flex-item-6 flex-size-1 form-row">
                         <label for="zipcode"> <?php echo t('zipcode') ?>*</label>
                         <input type="text" name="account[zipcode]"
+                               maxlength="11"
                                value="<?php echo $user->getAddress()->getZip(); ?>"/>
                         <?php
                         if (isset($errorFields['zipcode'])) {
@@ -158,6 +160,7 @@ if (!isset($_SESSION['uid'])) {
                     <div class="flex-item-7 flex-size-1 form-row">
                         <label for="town"> <?php echo t('town') ?>*</label>
                         <input type="text" name="account[town]"
+                               maxlength="50"
                                value="<?php echo $user->getAddress()->getTown(); ?>"/>
                         <?php
                         if (isset($errorFields['town'])) {

@@ -49,10 +49,24 @@ CREATE TABLE `types`
 CREATE TABLE `address`
 (
     Id_address          int(11)         AUTO_INCREMENT      PRIMARY KEY,
-    street              varchar(10)     DEFAULT NULL,
+    street              varchar(100)    DEFAULT NULL,
     town                varchar(50)     DEFAULT NULL,
     zip                 varchar(11)     DEFAULT NULL,
     country             varchar(75)     DEFAULT NULL
 );
+
+CREATE TABLE `orders`
+(
+    Id_order            int(11)         AUTO_INCREMENT      PRIMARY KEY,
+    FK_user_Id          int(11)         NOT NULL,
+    order_date          DATE            NOT NULL
+);
+
+CREATE TABLE `orders_products`
+(
+    FK_order_Id         int(11)         NOT NULL,
+    FK_product_Id       int(11)         NOT NULL,
+    quantity            int(11)         NOT NULL
+)
 
 COMMIT;
