@@ -61,7 +61,7 @@ if (!isset($_SESSION['uid'])) {
                         <div class="flex-row" role="cell">
                             <form method="post" action="index.php?id=complete">
                                 <input type="hidden" name="cart" value="true">
-                                <button type="submit"><button><?php echo t("buy"); ?></button>
+                                <button type="submit"><?php echo t("buy"); ?></button>
                             </form>
                         </div>
                     </div>
