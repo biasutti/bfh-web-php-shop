@@ -62,7 +62,7 @@ CREATE TABLE `orders`
 (
     Id_order            int(11)         AUTO_INCREMENT      PRIMARY KEY,
     FK_user_Id          int(11)         NOT NULL,
-    order_date          DATE            NOT NULL
+    order_date          datetime        NOT NULL
 );
 
 CREATE TABLE `orders_products`
