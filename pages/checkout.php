@@ -29,9 +29,9 @@ if (!isset($_SESSION['uid'])) {
             <div class="cart">
                 <div class="table-container" role="table">
                     <div class="flex-table header" role="rowgroup">
-                        <div class="flex-row "role="columnheader">Article</div>
-                        <div class="flex-row" role="columnheader">Quantity</div>
-                        <div class="flex-row" role="columnheader">Price</div>
+                        <div class="flex-row "role="columnheader"><?php echo t("article"); ?></div>
+                        <div class="flex-row" role="columnheader"><?php echo t("quantity"); ?></div>
+                        <div class="flex-row" role="columnheader"><?php echo t("price"); ?></div>
                         <div class="flex-row" role="columnheader">Total</div>
                         <div class="flex-row" role="columnheader"></div>
                     </div>
@@ -48,7 +48,7 @@ if (!isset($_SESSION['uid'])) {
                             <div class="flex-row" role="cell"><!--<input type="text" value="<?php echo $num; ?>" />--><?php echo $num; ?></div>
                             <div class="flex-row" role="cell"><span><?php echo $price; ?></span></div>
                             <div class="flex-row" role="cell"><span><?php echo sprintf('%0.2f',($price * $num)); ?></span></div>
-                            <div class="flex-row" role="cell"><button>Remove</button></div>
+                            <div class="flex-row" role="cell"><button><?php echo t("remove"); ?></button></div>
                         </div>
                     <?php
                 }
@@ -58,7 +58,7 @@ if (!isset($_SESSION['uid'])) {
                         <div class="flex-row" role="cell"></div>
                         <div class="flex-row" role="cell"><span class="hidden"><?php echo t('totalpreis'); ?></span></div>
                         <div class="flex-row cart-total" role="cell"><?php echo sprintf('%0.2f',$total); ?> CHF</div>
-                        <div class="flex-row" role="cell"><button>Kaufen</button></div>
+                        <div class="flex-row" role="cell"><button><?php echo t("buy"); ?></button></div>
                     </div>
                 </div>
             </div>

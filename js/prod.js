@@ -101,7 +101,7 @@ $(function () {
       https://css-tricks.com/examples/ScrollingSidebar/
     */
     //TODO Disable on phone navigation
-    var $sidebar = $(".cartPreview"),
+    /* var $sidebar = $(".cartPreview"),
         $window = $(window),
         offset = $sidebar.offset();
 
@@ -115,12 +115,12 @@ $(function () {
                 marginTop: 0
             });
         }
-    });
+    });*/
 
 
 });
 
-//copied from https://stackoverflow.com/questions/15191058/css-rotation-cross-browser-with-jquery-animate
+//based on https://stackoverflow.com/questions/15191058/css-rotation-cross-browser-with-jquery-animate
 function AnimateRotate(angle, element, duration) {
     // caching the object for performance reasons
     var $elem = $(element);

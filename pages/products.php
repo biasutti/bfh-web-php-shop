@@ -79,6 +79,24 @@
     <div class="flex-container-column">
         <div class="flex-item-1">
             <div class="cartPreview">
+              <?php if(isset($_SESSION["cart"])){
+                // Get cart from session
+                $cart = $_SESSION["cart"];
+
+                echo "<table><tr><th>".t('articleName')."</th><th>".t('articleNum')."</th></tr>";
+                //echo $cart->renderPreview();
+                $total = 0;
+                foreach ($cart->getItems() as $item => $num) {
+                    $product = Product::getProductById($item);
+                    if ($product == null) continue;
+                    $price = $product->price;
+                    $total += $price * $num;
+                    echo "<tr><td>{$product->getName()}</td><td>$num</td></tr>";
+                }
+                echo "<tr><th>Total</th><th>".sprintf('%0.2f',$total)." CHF</th></tr>";
+                echo "</table>";
+                echo '<a href="./?id=checkout"><button name="tmp">'.t('gotoCheckout').'</button></a>';
+              } ?>
             </div>
         </div>
     </div>
