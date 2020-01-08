@@ -5,7 +5,7 @@
         </div>
         <div class="flex-item-2">
             <ul class="side-navigation">
-                <li class="filterMenu">TypeOf</li>
+                <li class="filterMenu"><?php echo t('typeOfBeer'); ?></li>
                 <?php
                 //filter settings type of beers
                 if (get_param("TypeOfBeer", "") === "") {
@@ -20,7 +20,7 @@
         </div>
         <div class="flex-item-3">
             <ul class="side-navigation">
-                <li class="filterMenu">Brand</li>
+                <li class="filterMenu"><?php echo t('brand'); ?></li>
                 <?php
                 //filter settings brand
                 if (get_param("Brand", "") === "") {

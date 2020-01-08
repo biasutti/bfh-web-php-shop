@@ -31,12 +31,6 @@
   if (count($_POST) > 0 && count($errArray) == 0 && isset($_POST['addBeerButton'])) {
       Product::insertBeer($_POST['beerName'],$_POST['beerNameFR'],$_POST['typeOfBeer'],$_POST['brand'],
       $_POST['price'],$_POST['imgSrc'],$_POST['alcPercent'],$_POST['energy']);
-      echo "<pre>";
-      print_r($_POST);
-      //print_r(Product::getAllProducts());
-      echo "</pre>";
-
-
   }
 
     $errBeerName = isset($errArray['beerName']) ? $errArray['beerName'] : '';

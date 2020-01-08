@@ -13,7 +13,7 @@ if (!isset($_SESSION['uid'])) {
     $order = new Order($_SESSION['uid'], $cart->getItems());
     if($order->insertOrder()) {
         ?>
-        <p>Vielen Dank für Ihre Bestellung!</p>
+        <p><?php echo t('checkoutMessage'); ?></p>
         <?php
     };
 }
