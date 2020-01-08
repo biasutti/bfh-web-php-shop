@@ -2,7 +2,7 @@
     <?php
     if (count($_POST) > 0 && isset($_POST['changeAdmin'])) {
       User::toggleAdminById($_POST['changeAdmin']);
-      echo "<mark>Removed sucessfully!</mark>";
+      echo "<mark>Toggled admin sucessfully!</mark>";
     }
      ?>
     <form class="flex-size-1 flex-container" method="Post">

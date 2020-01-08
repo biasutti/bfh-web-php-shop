@@ -14,7 +14,7 @@ if (!isset($_SESSION['uid'])) {
     if($order->insertOrder()) {
         unset($_SESSION['cart']);
         ?>
-        <p>Vielen Dank für Ihre Bestellung!</p>
+        <p><?php echo t('checkoutMessage'); ?></p>
         <?php
     };
 }

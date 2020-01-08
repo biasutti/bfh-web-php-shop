@@ -5,7 +5,7 @@
         </div>
         <div class="flex-item-2">
             <ul class="side-navigation">
-                <li class="filterMenu">TypeOf</li>
+                <li class="filterMenu"><?php echo t('typeOfBeer'); ?></li>
                 <?php
                 //filter settings type of beers
                 if (get_param("TypeOfBeer", "") === "") {
@@ -20,7 +20,7 @@
         </div>
         <div class="flex-item-3">
             <ul class="side-navigation">
-                <li class="filterMenu">Brand</li>
+                <li class="filterMenu"><?php echo t('brand'); ?></li>
                 <?php
                 //filter settings brand
                 if (get_param("Brand", "") === "") {
@@ -75,7 +75,7 @@
         ?>
     </div>
 </div>
-<div class="flex-item-3 side-navigation-background <?php echo isset($_SESSION["cart"]) ? "" : "displNone"; ?>">
+<div class="side-navigation-background cartPrevNav <?php echo isset($_SESSION["cart"]) ? "" : "displNone"; ?>">
     <div class="flex-container-column">
         <div class="flex-item-1">
             <div class="cartPreview">
@@ -91,9 +91,9 @@
                     if ($product == null) continue;
                     $price = $product->price;
                     $total += $price * $num;
-                    echo "<tr><td>{$product->getName()}</td><td>$num</td></tr>";
+                    echo "<tr><td>{$product->getName()}</td><td align=\"center\">$num</td></tr>";
                 }
-                echo "<tr><th>Total</th><th>".sprintf('%0.2f',$total)." CHF</th></tr>";
+                echo "<tr><th>Total</th><th>".sprintf('%0.2f',$total)."&nbsp;CHF</th></tr>";
                 echo "</table>";
                 echo '<a href="./?id=checkout"><button name="tmp">'.t('gotoCheckout').'</button></a>';
               } ?>
