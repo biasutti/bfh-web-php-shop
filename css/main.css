@@ -84,7 +84,7 @@ main .content-container {
 
 label {
     display: inline-block;
-    min-width: 150px;
+    min-width: 230px;
 }
 
 .form-row, .form-row-button {
@@ -306,7 +306,7 @@ footer {
         flex-flow: column wrap;
         padding: 0;
     }
-
+    
     .navigation li {
         text-align: center;
         padding-top: 1em;
