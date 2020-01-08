@@ -27,6 +27,6 @@ foreach ($cart->getItems() as $item => $num) {
     $total += $price * $num;
     echo "<tr><td>{$product->getName()}</td><td>$num</td></tr>";
 }
-echo "<tr><th>Total</th><th>".$total." CHF</th></tr>";
+echo "<tr><th>Total</th><th>".sprintf('%0.2f',$total)." CHF</th></tr>";
 echo "<table>";
 echo '<a href="./?id=checkout"><button name="tmp">'.t('gotoCheckout').'</button></a>';

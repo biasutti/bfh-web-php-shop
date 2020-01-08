@@ -47,6 +47,13 @@ if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
             include("./pages/backendPages/backend-setAdmin.php");
             ?>
         </div>
+        <div class="content flex-item-8 flex-size-1">
+            <a href="#" class="onClickBackend"><h2><?php echo t("addresses") ?></h2></a>
+
+            <?php
+            include("./pages/backendPages/backend-displAddress.php");
+            ?>
+        </div>
     </div>
 
     </div>
