@@ -12,6 +12,7 @@ if (!isset($_SESSION['uid'])) {
     $cart = $_SESSION['cart'];
     $order = new Order($_SESSION['uid'], $cart->getItems());
     if($order->insertOrder()) {
+        unset($_SESSION['cart']);
         ?>
         <p>Vielen Dank für Ihre Bestellung!</p>
         <?php
