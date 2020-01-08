@@ -74,3 +74,4 @@ checkoutMessage=Vielen Dank für Ihre Bestellung!
 orders=Bestellungen
 success_1=Registrierung erfolgreich!
 FormPasswordError=Ungültiges Passwort
+emptyCart=Der Warenkorb ist leider leer.

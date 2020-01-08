@@ -23,7 +23,7 @@ if (!isset($_SESSION['uid'])) {
         <?php
         // Render cart explicitly to enhence it
         if ($cart->isEmpty()) {
-            echo "<div class=\"cart empty\">[Empty Cart]</div>";
+            echo "<div class=\"cart empty\">".t("emptyCart")."</div>";
         } else {
             ?>
             <div class="cart">
