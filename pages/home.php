@@ -10,11 +10,9 @@
         ?>
         <p><?php echo t("homeText")."</p>";
             render_basicLink(new Page("products"));
-
             $db = DB::getInstance();
             $db->query('SET NAMES utf8');
             ?>
-        </p>
 
         <?php
     }
