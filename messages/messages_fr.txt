@@ -74,4 +74,5 @@ orders=Commandes
 success_1=Enregistrement complet!
 FormPasswordError=Mot de passe incorrecte
 emptyCart=Le panier est encore vide pour le moment.
-homeText=Bienvenue sur notre Webshop! Acceder aux produits :
+homeText=Bienvenue sur notre Webshop! Acceder aux produits:
+acceptCookie=Accepter
