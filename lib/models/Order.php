@@ -20,7 +20,7 @@ class Order
 
     public function insertOrder()
     {
-        $order_date = date("Y-m-d H:m:s");
+        $order_date = date("Y-m-d H:i:s");
         $res = DB::doQuery("INSERT INTO orders (FK_user_Id, order_date) VALUES ('$this->uid', '$order_date') ");
         if ($res) {
             $this->order_number = DB::getInstance()->insert_id;

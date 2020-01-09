@@ -111,6 +111,7 @@ if (empty($_POST) || !empty($errorFields)) {
                         <input type="text" name="register[firstname]"
                                value="<?php if (isset($clean_formdata['firstname'])) echo $clean_formdata['firstname'] ?>"
                                max="50"
+                               required
                         />
                         <?php
                         if (isset($errorFields['firstname'])) {
@@ -159,7 +160,8 @@ if (empty($_POST) || !empty($errorFields)) {
                     <div class="flex-item-7 flex-size-1 form-row">
                         <label for="register[city]"><?php echo t('city') ?>*</label>
                         <input type="text" name="register[city]"
-                               value="<?php if (isset($clean_formdata['city'])) echo $clean_formdata['city'] ?>"/>
+                               value="<?php if (isset($clean_formdata['city'])) echo $clean_formdata['city'] ?>"
+                               required/>
                     </div>
                     <div class="flex-item-8 flex-size-1 form-row-button">
                         <button class="ui-button ui-corner-all"
