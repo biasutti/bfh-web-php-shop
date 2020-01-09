@@ -8,8 +8,7 @@
     } else {
 
         ?>
-        <p><?php echo "Hello World Home</p>";
-            echo "<p>Take a look at our Products: ";
+        <p><?php echo t("homeText")."</p>";
             render_basicLink(new Page("products"));
 
             $db = DB::getInstance();
