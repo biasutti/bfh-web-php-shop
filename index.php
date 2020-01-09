@@ -59,9 +59,9 @@ if(isset($_GET['login'])) {
                         <li class="">
                             <?php
                             if ( isset( $_SESSION['uid'] ) ) {
-                                echo "<a href=" . get_pagePath('logout') . ">Logout</a>";
+                                echo "<a href='" . get_pagePath('logout') . "'>Logout</a>";
                             } else {
-                                echo "<a href=" . get_pagePath('login') .">Login</a>";
+                                echo "<a href='" . get_pagePath('login') . "'>Login</a>";
                             }
                             ?>
 
