@@ -161,7 +161,7 @@
 }*/
 
 .flex-row {
-    width: calc(80% / 5);
+    width: calc(80% / 6);
     text-align: center;
     padding: 0.5em 0.5em;
     border-right: solid 1px #d9d9d9;

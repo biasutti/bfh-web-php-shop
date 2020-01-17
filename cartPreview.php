@@ -14,11 +14,9 @@ $cart = $_SESSION["cart"];
 // Add item on post
 if (isset($_POST["prodId"])) {
   $cart->addItem($_POST["prodId"], 1);
-  //echo "<tr><td>".$_POST["prodId"]."</td><td>tada</td></tr>";
 }
 
 echo "<table><tr><th>".t('articleName')."</th><th>".t('articleNum')."</th></tr>";
-//echo $cart->renderPreview();
 $total = 0;
 foreach ($cart->getItems() as $item => $num) {
     $product = Product::getProductById($item);

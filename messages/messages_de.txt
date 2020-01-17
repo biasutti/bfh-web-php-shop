@@ -81,3 +81,4 @@ orderNumber=Bestellnummer
 totalpreis=Total
 noOrders=Sie haben noch keine Bestellungen
 orderDate=Bestelldatum
+productNumber=Produktnummer
