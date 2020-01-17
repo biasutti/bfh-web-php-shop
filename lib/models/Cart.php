@@ -20,6 +20,10 @@ class Cart {
         }
     }
 
+    public function removeAllItems($item) {
+        unset($this->items[$item]);
+    }
+
     public function getItems() {
         return $this->items;
     }

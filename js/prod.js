@@ -15,10 +15,25 @@ $(function () {
                 //show left menu when clicked on buy
                 cartDiv = $(".cartPreview").parent().parent().parent();
                 cartDiv.fadeIn(500);
-                //$(".cartPreview").parent().parent().css("display","table").css("position","fixed");
-                //$(".cartPreview").parent().parent().;
-                //$(".cartPreview").parent().parent().css('top', $(this).scrollTop());
                 $(".cartPreview").fadeIn(500).empty().append(response);
+            },
+            error: function () {
+                console.log("wrong data transmited, could not send data over ajax");
+            }
+        });
+    });
+
+    $('body').on('click', '.cart-remove', function () {
+        console.log("Triggered");
+        var prodId = $(this).attr("name");
+        console.log(prodId);
+        $.ajax({
+            url: "checkout-ajax.php",
+            type: "POST",
+            data: {prodId: prodId},
+            success: function (response) {
+                console.log("Success");
+                $(".content").html(response);
             },
             error: function () {
                 console.log("wrong data transmited, could not send data over ajax");
