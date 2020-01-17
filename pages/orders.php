@@ -1,38 +1,53 @@
-<?php
+<div class="content flex-item-1 flex-size-1">
+    <?php
+    if (!isset($_SESSION['uid'])) {
+        echo "<p>" . t('accNeeded') . " ";
+        render_basicLink(new Page("login"));
+        echo "</p>";
+    } else {
 
-if (!isset($_SESSION['uid'])) {
-    echo "<p>" . t('accNeeded') . "</p><br><p>";
-    render_basicLink(new Page("login"));
-    echo "</p>";
-} else {
-    ?>
+        ?>
+        <h3><?php echo t('orders'); ?></h3>
+        <?php
 
-    <div class="content flex-container">
-        <div class="flex-item-1 flex-size-1">
-            <table>
-                <tr>
-                    <th>Order Id</th>
-                    <th>Order date</th>
-                    <th>Products ordered</th>
-                </tr>
+        $orders = Order::getAllOrdersByUserId($_SESSION['uid']);
+
+        if(sizeof($orders) == 0) {
+            echo "<div class='empty'>" . t('noOrders') . "</div>";
+        } else {
+            ?>
+
+        <div class="orders">
+            <div class="table-container" role="table">
+                <div class="flex-table header" role="rowgroup">
+                    <div class="flex-row "role="columnheader"><?php echo t("orderNumber"); ?></div>
+                    <div class="flex-row" role="columnheader"><?php echo t("orderDate"); ?></div>
+                    <div class="flex-row" role="columnheader"><?php echo t("products"); ?></div>
+                </div>
                 <?php
-                foreach (Order::getAllOrdersByUserId($_SESSION['uid']) as $order) {
-                    echo "<tr><td>" . $order['id'] . "</td>" .
-                        "<td>" . $order['date'] . "</td>";
-                    echo "<td><table><tr><th>Product Name</th><th>Quantity</th></tr>";
-                    foreach ($order['Prod'] as $prod) {
-                        echo "<tr>" .
-                            "<td>" . $prod['prod'] . "</td>" .
-                            "<td>" . $prod['quantity'] . "</td>" .
-                            "</tr>";
-                    }
-                    echo "</table></td>";
+
+                foreach ($orders as $order) {
+                    ?>
+                    <div class="flex-table row" role="rowgroup">
+                        <div class="flex-row first" role="cell"><span><?php echo $order['id']; ?></span></div>
+                        <div class="flex-row" role="cell"><span><?php echo $order['date']; ?></span></div>
+                        <div class="flex-row" role="cell">
+                            <?php
+                            foreach ($order['Prod'] as $prod) {
+                                echo "<p>" . $prod['prod'] . ": " . $prod['quantity'] . "</p>";
+                            }
+                            ?>
+                        </div>
+                    </div>
+                <?php
                 }
                 ?>
-                </tr>
-            </table>
-        </div>
-    </div>
 
-    <?php
-}
+            </div>
+        </div>
+            <?php
+        }
+    }
+    ?>
+</div>
+<?php

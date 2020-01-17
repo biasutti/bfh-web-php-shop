@@ -23,7 +23,7 @@ class Order
                 $res_product = DB::doQuery("INSERT INTO orders_products (FK_order_Id, FK_product_Id, quantity) VALUES ('$this->order_number', '$item', '$num')");
                 if (!$res_product) return false;
             }
-            return true;
+            return $this;
         }
     }
 
@@ -75,6 +75,14 @@ class Order
             }
         }
         return $ordersProduct;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrderNumber()
+    {
+        return $this->order_number;
     }
 
 }

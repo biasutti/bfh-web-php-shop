@@ -1,3 +1,4 @@
+<div class="content flex-item-1 flex-size-1">
 <?php
 
 if (!isset($_SESSION['uid'])) {
@@ -17,9 +18,7 @@ if (!isset($_SESSION['uid'])) {
         $cart->addItem($item['id'], $item['num']);
     }
     ?>
-
-    <div class="content flex-item-1 flex-size-1">
-        <h4><?php echo t('checkout'); ?></h4>
+        <h3><?php echo t('checkout'); ?></h3>
         <?php
         // Render cart explicitly to enhence it
         if ($cart->isEmpty()) {
@@ -70,6 +69,9 @@ if (!isset($_SESSION['uid'])) {
             <?php
         }
         ?>
-    </div>
+
     <?php
 }
+?>
+</div>
+<?php

@@ -76,3 +76,7 @@ FormPasswordError=Mot de passe incorrecte
 emptyCart=Le panier est encore vide pour le moment.
 homeText=Bienvenue sur notre Webshop! Acceder aux produits:
 acceptCookie=Accepter
+orderNumber= Numéro de commande
+totalpreis=Totalement
+noOrders=Vous n'avez encore aucune commande
+orderDate=Date de commande
