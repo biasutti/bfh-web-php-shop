@@ -29,7 +29,7 @@ if (!isset($_SESSION['uid'])) { ?>
                 </form>
             </div>
             <div class="login-infobox flex-item flex-size-1 flex-container-reverse">
-                <a class="flex-item" href="./index.php?id=reset-password">Passwort vergessen</a>
+                <!--<a class="flex-item" href="./index.php?id=reset-password">Passwort vergessen</a>-->
                 <a class="flex-item" href="./index.php?id=register">Register</a>
             </div>
         </div>

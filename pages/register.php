@@ -72,7 +72,7 @@ if (empty($_POST) || !empty($errorFields)) {
             <div class="flex-half flex-item-1">
                 <div class="flex-container-column">
                     <div class="flex-item-1 flex-size-1">
-                        <h2><?php echo t('logindata') ?></h2>
+                        <h3><?php echo t('logindata') ?></h3>
                     </div>
                     <div class="flex-item-1 flex-size-1 form-row">
                         <label for="register[email]"><?php echo t('email') ?>*</label>
@@ -104,7 +104,7 @@ if (empty($_POST) || !empty($errorFields)) {
             <div class="flex-half flex-item-2">
                 <div class="flex-container-column">
                     <div class="flex-item-1 flex-size-1">
-                        <h2><?php echo t('userdata') ?></h2>
+                        <h3><?php echo t('userdata') ?></h3>
                     </div>
                     <div class="flex-item-1 flex-size-1 form-row">
                         <label for="register[firstname]"><?php echo t('firstName') ?>*</label>

@@ -209,7 +209,7 @@ ul.side-navigation {
   float: right;
 }
 
-.cart {
+.cart, .orders {
     box-sizing: border-box;
 }
 

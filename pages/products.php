@@ -10,10 +10,10 @@
                 //filter settings type of beers
                 if (get_param("TypeOfBeer", "") === "") {
                     foreach (Type::getAllTypes() as $types) {
-                        echo '<a href="' . renderProductFilterType($types->name) . '" class="typeFilter" value="' . $types->name . '"><li>' . $types->name . "</li></a>";
+                        echo '<li><a href="' . renderProductFilterType($types->name) . '" class="typeFilter" value="' . $types->name . '">' . $types->name . "</li></a>";
                     }
                 } else {
-                    echo '<a href="' . removeFilterParam("TypeOfBeer") . '" class="typeFilter" ><li>' . get_param("TypeOfBeer", "") . "</li></a>";
+                    echo '<li><a href="' . removeFilterParam("TypeOfBeer") . '" class="typeFilter" >' . get_param("TypeOfBeer", "") . "</li></a>";
                 }
                 ?>
             </ul>
@@ -25,10 +25,10 @@
                 //filter settings brand
                 if (get_param("Brand", "") === "") {
                     foreach (Brand::renderBrands() as $brand) {
-                        echo '<a href="' . renderProductFilterBrand($brand->name) . '" class="brandFilter"><li>' . $brand->name . "</li></a>";
+                        echo '<li><a href="' . renderProductFilterBrand($brand->name) . '" class="brandFilter">' . $brand->name . "</li></a>";
                     }
                 } else {
-                    echo '<a href="' . removeFilterParam("Brand") . '" class="brandFilter"><li>' . get_param("Brand", "") . "</li></a>";
+                    echo '<li><a href="' . removeFilterParam("Brand") . '" class="brandFilter">' . get_param("Brand", "") . "</li></a>";
                 }
                 ?>
             </ul>
@@ -52,15 +52,15 @@
             //check filter with the dbhelper.php filterbeer() function.
             if (filterBeers(Type::getTypeById($prod->FK_type_Id)->name, Brand::getBrandById($prod->FK_brand_Id)->name)) {
                 echo '<div class="products" style="order:' . $order . ';"><ul class="prodList">' .
-                    '<li><img class="prodImg" height="140px" src="./img/products/' . $prod->imgSrc . '" alt="product image"></li>' .
+                    '<li><img class="prodImg" height="140" src="./img/products/' . $prod->imgSrc . '" alt="product image"/></li>' .
                     '<li><b>' . $prod->getName() . '</b></li>' .
                     '<li>' . $prod->price . ' CHF</li>' .
                     '<li><button type="button" class="buy" name="' . $prod->Id_prod . '">' . t('productBuy') . '</button></li>' .
                     "</ul></div>";
                 $order++;
-                echo '<div class="productDetail flex-size-1" style="order:' . $order . ';""><ul class="prodList">' .
-                    '<img class="closeImg" height="30px" src="./img/ui/close.png" alt="product image">' .
-                    '<li><img class="prodImg" height="140px" src="./img/products/' . $prod->imgSrc . '" alt="product image"></li>' .
+                echo '<div class="productDetail flex-size-1" style="order:' . $order . ';"><ul class="prodList">' .
+                    '<img class="closeImg" height="30" src="./img/ui/close.png" alt="product image">' .
+                    '<li><img class="prodImg" height="140" src="./img/products/' . $prod->imgSrc . '" alt="product image"/></li>' .
                     '<li><b>' . $prod->getName() . '</b></li>' .
                     '<li>' . Type::getTypeById($prod->FK_type_Id)->name . '</li>' .
                     '<li>' . Brand::getBrandById($prod->FK_brand_Id)->name . '</li>' .

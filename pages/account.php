@@ -15,57 +15,60 @@ if (!isset($_SESSION['uid'])) {
             $clean_formdata[$property] = clear($value);
         }
 
-        if (isset($clean_formdata['email']) && filter_var($clean_formdata['email'], FILTER_VALIDATE_EMAIL)) {
-            $user->setEmail($clean_formdata['email']);
-        } else {
-            $errorFields['email'] = t('FormEmailError');
-        }
+        if($user->getEmail() != $clean_formdata['email'] && User::userExistsByEMail($clean_formdata['email'])) {
+            $message = new ErrorMessage(12); // E-Mail Addresse wird bereits verwendet
+        }  else {
+            if (isset($clean_formdata['email']) && filter_var($clean_formdata['email'], FILTER_VALIDATE_EMAIL)) {
+                $user->setEmail($clean_formdata['email']);
+            } else {
+                $errorFields['email'] = t('FormEmailError');
+            }
 
-        if (isset($clean_formdata['firstname']) && validLenght($clean_formdata['firstname'])) {
-            $user->setFirstname($clean_formdata['firstname']);
-        } else {
-            $errorFields['firstname'] = t('FormFirstNameError');
-        }
+            if (isset($clean_formdata['firstname']) && validLenght($clean_formdata['firstname'])) {
+                $user->setFirstname($clean_formdata['firstname']);
+            } else {
+                $errorFields['firstname'] = t('FormFirstNameError');
+            }
 
-        if (isset($clean_formdata['lastname']) && validLenght($clean_formdata['lastname'])) {
-            $user->setLastname($clean_formdata['lastname']);
-        } else {
-            $errorFields['lastname'] = t('FormLastNameError');
-        }
+            if (isset($clean_formdata['lastname']) && validLenght($clean_formdata['lastname'])) {
+                $user->setLastname($clean_formdata['lastname']);
+            } else {
+                $errorFields['lastname'] = t('FormLastNameError');
+            }
 
-        if (isset($clean_formdata['birthdate']) && validDate($clean_formdata['birthdate'])) {
-            $user->setBirthdate($clean_formdata['birthdate']);
-        } else {
-            $errorFields['birthdate'] = t('FormBirthdateError');
-        }
+            if (isset($clean_formdata['birthdate']) && validDate($clean_formdata['birthdate'])) {
+                $user->setBirthdate($clean_formdata['birthdate']);
+            } else {
+                $errorFields['birthdate'] = t('FormBirthdateError');
+            }
 
-        if (isset($clean_formdata['street']) && validLenght(($clean_formdata['street']))) {
-            $user->getAddress()->setStreet($clean_formdata['street']);
-        } else {
-            $errorFields['street'] = t('FormStreetError');
-        }
+            if (isset($clean_formdata['street']) && validLenght(($clean_formdata['street']))) {
+                $user->getAddress()->setStreet($clean_formdata['street']);
+            } else {
+                $errorFields['street'] = t('FormStreetError');
+            }
 
-        if (isset($clean_formdata['zipcode']) && validLenght(($clean_formdata['zipcode']))) {
-            $user->getAddress()->setZip($clean_formdata['zipcode']);
-        } else {
-            $errorFields['zipcode'] = t('FormZipCodeError');
-        }
+            if (isset($clean_formdata['zipcode']) && validLenght(($clean_formdata['zipcode']))) {
+                $user->getAddress()->setZip($clean_formdata['zipcode']);
+            } else {
+                $errorFields['zipcode'] = t('FormZipCodeError');
+            }
 
-        if (isset($clean_formdata['town']) && validLenght(($clean_formdata['town']))) {
-            $user->getAddress()->setTown($clean_formdata['town']);
-        } else {
-            $errorFields['town'] = t('FormTownError');
-        }
+            if (isset($clean_formdata['town']) && validLenght(($clean_formdata['town']))) {
+                $user->getAddress()->setTown($clean_formdata['town']);
+            } else {
+                $errorFields['town'] = t('FormTownError');
+            }
 
-        if (empty($errorFields)) {
-            $message = $user->updateUser();
-            $_SESSION['user'] = $user;
-            $_POST = array();
-            unset($clean_formdata);
-        } else {
-            $message = new ErrorMessage(11); // Bitte ueberpruefen Sie Ihres Eingaben.
+            if (empty($errorFields)) {
+                $message = $user->updateUser();
+                $_SESSION['user'] = $user;
+                $_POST = array();
+                unset($clean_formdata);
+            } else {
+                $message = new ErrorMessage(11); // Bitte ueberpruefen Sie Ihres Eingaben.
+            }
         }
-
 
     }
     ?>
@@ -74,7 +77,7 @@ if (!isset($_SESSION['uid'])) {
             <div class="flex-half flex-item-1">
                 <div class="flex-container-column">
                     <div class="flex-item-1 flex-size-1">
-                        <h2><?php echo t('logindata') ?></h2>
+                        <h3><?php echo t('logindata') ?></h3>
                     </div>
                     <div class="flex-item-1 flex-size-1 form-row">
                         <label for="email">Email</label>
@@ -87,17 +90,17 @@ if (!isset($_SESSION['uid'])) {
                         }
                         ?>
                     </div>
-                    <div class="flex-item-2 flex-size-1 form-row">
+                    <!--<div class="flex-item-2 flex-size-1 form-row">
                         <label for="password"><?php echo t('password') ?></label>
                         <input type="hidden" name="account[password]" readonly/>
                         <a href="<?php echo get_pagePath('changePassword'); ?>"><?php echo t('changePassword'); ?></a>
-                    </div>
+                    </div>-->
                 </div>
             </div>
             <div class="flex-half flex-item-2">
                 <div class="flex-container-column">
                     <div class="flex-item-1 flex-size-1">
-                        <h2><?php echo t('userdata') ?></h2>
+                        <h3><?php echo t('userdata') ?></h3>
                     </div>
                     <div class="flex-item-1 flex-size-1 form-row">
                         <label for="firstname"><?php echo t('firstName') ?>*</label>
