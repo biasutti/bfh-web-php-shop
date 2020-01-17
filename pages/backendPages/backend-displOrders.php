@@ -10,7 +10,7 @@
           <th>Products ordered</th>
         </tr>
           <?php
-            foreach(Order::renderAllOrders() as $order){
+            foreach(Order::getAllOrders() as $order){
               echo "<tr><td>".$order['id']."</td>".
               "<td>".$order['uid']."</td>".
               "<td>".$order['userLastname']."</td>".
